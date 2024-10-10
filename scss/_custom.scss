@@ -1,0 +1,28 @@
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:wght@400;700&display=swap');
+
+
+// Override Bootstrap's color variables
+$primary: #6DC066;    // Natural Green for main elements
+$secondary: #3B7737;  // Earthy Green for headings
+$info: #A1D6E2;       // Calming Light Blue for accents
+$body-bg: #F4F4F9;    // Soft Beige for background
+$body-color: #333333; // Dark Gray for text
+
+// Override Bootstrap's font settings
+$font-family-base: 'Roboto', sans-serif !default; // Main body font
+$headings-font-family: 'Lora', serif !default;    // Headings font
+
+// Set font weights
+$font-weight-base: 400;  // Normal weight
+$font-weight-bold: 700;  // Bold weight
+
+// Import Bootstrap's core SCSS
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Add any additional custom styles below this line
+
+// Example: Custom section background
+.bg-earthy {
+  background-color: #A47551;   // Earthy Brown for special sections
+}
