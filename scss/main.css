@@ -11988,12 +11988,13 @@ footer.footer {
   width: 100%;
 }
 
+p, a {
+  font-family: "Roboto", sans-serif;
+}
+
 .privacy-policy h1, .privacy-policy .h1, .privacy-policy h3, .privacy-policy .h3 {
   font-family: "Lora", serif;
   color: #3B7737;
-}
-.privacy-policy p, .privacy-policy a {
-  font-family: "Roboto", sans-serif;
 }
 .privacy-policy a {
   color: #6DC066;
@@ -12004,4 +12005,8 @@ footer.footer {
 
 .justify-text {
   text-align: justify;
+}
+
+.list-inline-item a:hover {
+  color: #6DC066 !important; /* Couleur primaire au survol */
 }/*# sourceMappingURL=main.css.map */

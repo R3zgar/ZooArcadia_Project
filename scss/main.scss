@@ -11,6 +11,7 @@ main{
     margin-bottom: 270px;
 }
 
+
 footer.footer{
     padding: 15px; 
     position: absolute;
@@ -18,14 +19,16 @@ footer.footer{
     width: 100%;
 }
 
+p, a {
+    font-family: $font-family-base;     // Utilisation correcte de la variable pour la police de base
+}
+
 .privacy-policy {
     h1, h3 {
         font-family: $headings-font-family; // Utilisation correcte de la variable pour la police
         color: $secondary;                  // Utilisation correcte de la couleur vert foncé pour les titres
     }
-    p, a {
-        font-family: $font-family-base;     // Utilisation correcte de la variable pour la police de base
-    }
+
     a {
         color: $primary;                    // Utilisation correcte de la couleur pour les liens
         &:hover {
@@ -36,4 +39,8 @@ footer.footer{
 
 .justify-text {
     text-align: justify;
+}
+
+.list-inline-item a:hover {
+    color: #6DC066 !important; /* Couleur primaire au survol */
 }
