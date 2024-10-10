@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Introuvable - Zoo Arcadia</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Zoo Arcadia</h1>
+        </div>
+
+        <div class="error-404">
+            <h2>Oops! La page que vous cherchez n'existe pas.</h2>
+            <p>Il semble que vous ayez pris un mauvais chemin dans notre jungle numérique.</p>
+            <div class="error-image">
+                <img src="/images/404-animal.png" alt="Animal perdu">
+            </div>
+            <p>Ne vous inquiétez pas, nous allons vous ramener à bon port !</p>
+            <a href="/" class="btn">Retour à l'accueil</a>
+        </div>
+    </div>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #F4F4F9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .header h1 {
+            color: #6DC066;
+            margin-bottom: 50px;
+        }
+
+        .error-404 h2 {
+            color: #6DC066;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .error-404 p {
+            margin: 20px 0;
+        }
+
+        .error-image img {
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6DC066;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #3B7737;
+        }
+    </style>
+</body>
+</html>
