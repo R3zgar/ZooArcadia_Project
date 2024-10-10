@@ -11970,4 +11970,38 @@ textarea.form-control-lg {
 }
 .bg-earthy {
   background-color: #A47551;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+main {
+  margin-bottom: 270px;
+}
+
+footer.footer {
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.privacy-policy h1, .privacy-policy .h1, .privacy-policy h3, .privacy-policy .h3 {
+  font-family: "Lora", serif;
+  color: #3B7737;
+}
+.privacy-policy p, .privacy-policy a {
+  font-family: "Roboto", sans-serif;
+}
+.privacy-policy a {
+  color: #6DC066;
+}
+.privacy-policy a:hover {
+  color: #3B7737;
+}
+
+.justify-text {
+  text-align: justify;
 }/*# sourceMappingURL=main.css.map */

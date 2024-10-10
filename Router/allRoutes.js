@@ -7,6 +7,8 @@ export const allRoutes = [
     new Route("/habitats", "Habitats", "/pages/habitats.html"),
     new Route("/contact", "Contact", "/pages/contact.html"),
     new Route("/connexion", "Connexion", "/pages/connexion.html"),
+    new Route("/confidentialite", "Politique de confidentialité", "/pages/confidentialite.html"),
+
 ];
 
 // Le titre du site Web
