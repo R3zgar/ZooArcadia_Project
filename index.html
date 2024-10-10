@@ -11,21 +11,40 @@
 
     <link rel="stylesheet" href="scss/main.css"/>
 
-    <title>Zoo Arcadia</title>
+    <title>Zoo Arcadia - Découvrez la Magie de la Nature</title>
+
 </head>
-<body>
+<body class="wrapper">
     <!-- HEADER - MENU-->
     <header>
-        <h1>Zoo Arcadia</h1>
-        <nav>
-            <ul>
-                <li><a href="/" onclick="route()">Accueil</a></li>
-                <li><a href="/services" onclick="route()">Services</a></li>
-                <li><a href="/habitats" onclick="route()">Habitats</a></li>
-                <li><a href="/contact" onclick="route()">Contact</a></li>
-                <li><a href="/connexion" onclick="route()">Connexion</a></li>
-            </ul>
-        </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
+            <div class="container">
+              <a class="navbar-brand" href="/">Zoo Arcadia</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/services">Services</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/habitats">Habitats</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/signin">Connexion</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          
     </header>
 
     <main id="main-page">
