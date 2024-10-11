@@ -11982,7 +11982,6 @@ main {
 }
 
 footer.footer {
-  padding: 15px;
   position: relative;
   bottom: 0;
   width: 100%;
@@ -12034,4 +12033,13 @@ p, a {
   overflow: hidden;
   border: 3px solid #fff;
   border-radius: 50%;
+}
+
+/* Style pour les etoiles */
+.stars {
+  font-size: 1rem; /* Adjusted to make stars smaller */
+}
+
+.stars i {
+  margin: 0 2px;
 }/*# sourceMappingURL=main.css.map */
