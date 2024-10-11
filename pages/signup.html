@@ -1,0 +1,101 @@
+<br class="mt-5">
+<!-- Contact 5 - Bootstrap Brain Component -->
+<section class="py-2 py-md-5 py-xl-8">
+    <div class="container p-4">
+      <h2 class="text-center text-dark">
+        <br />
+        <i class="bi bi-person-plus"></i> Inscription
+        <br />
+      </h2>
+    </div>
+  
+    <div class="container bg-light p-5 rounded mb-5 mt-4">
+        <form>
+            <div class="mb-3">
+                <label for="NomInput" class="form-label">Nom</label>
+                <input type="text" class="form-control bg-light" id="NomInput" placeholder="Votre nom">
+                <div class="invalid-feedback">Le nom est requis</div>
+             </div>
+
+             <div class="mb-3">
+                <label for="PrenomInput" class="form-label">Prénom</label>
+                <input type="text" class="form-control bg-light" id="PrenomInput" placeholder="Votre Prénom">
+                <div class="invalid-feedback">Le prénom est requis</div>
+             </div>
+
+            <div class="mb-3">
+               <label for="EmailInput" class="form-label">Email</label>
+               <input type="email" class="form-control bg-light" id="EmailInput" placeholder="emma-dupont@gmail.com">
+
+                 <div class="invalid-feedback">
+                  Veuillez saisir une adresse e-mail valide.
+                 </div>
+                  <div class="valid-feedback">
+                    L'adresse e-mail est valide.
+                  </div>
+
+            </div>
+                <div class="mb-3">
+                   <label for="PasswordInput" class="form-label">Mot de passe</label>
+                   <input type="password" class="form-control bg-light" id="PasswordInput">
+
+                    <!-- Message d'erreur en cas de mot de passe invalide -->
+                     <div class="invalid-feedback">
+                       <p class="warning-text">Le mot de passe fourni est insuffisant. Il doit :</p>
+                       <ul class="warning-list">
+                          <li>Comporter au minimum 8 caractères,</li>
+                          <li>Inclure au moins une lettre majuscule,</li>
+                          <li>Inclure au moins une lettre minuscule,</li>
+                          <li>Contenir au moins un caractère spécial (par exemple : @, #, $, etc.).</li>
+                        </ul>
+                      </div>
+      
+                     <!-- Message de succès si le mot de passe est valide -->
+                     <div class="valid-feedback">
+                        Le mot de passe est valide. Félicitations !
+                     </div>
+
+                </div>
+                  <div class="mb-3">
+                    <label for="ValidatePasswordInput" class="form-label">Confirmez votre mot de passe</label>
+                    <input type="password" class="form-control bg-light" id="ValidatePasswordInput" required>
+                    <div class="invalid-feedback">
+                        La confirmation n'est pas identique au mot de passe.
+                    </div>
+                    <div class="valid-feedback">
+                        Les mots de passe correspondent.
+                    </div>
+                </div>
+                <div class="text-center"> <button type="submit" class="btn btn-primary btn-lg mb-4 mt-4" id="btn-validation-inscription"> Inscription</button>
+                </div>
+
+        <div class=" text-center" >
+            Vous possédez un compte ? <a href="/signin" class="text-decoration-none">Connectez-vous ici.</a>
+        </div>
+              
+        </form>
+
+
+    </div>
+    
+  </section>
+  
+
+  <style>
+    .warning-text {
+        font-size: 0.9rem; /* Réduit la taille de la police du texte principal */
+        color: #dc3545; /* Couleur rouge pour attirer l'attention */
+        margin-bottom: 0.5rem; /* Espacement réduit sous le texte */
+    }
+
+    .warning-list {
+        font-size: 0.8rem; /* Taille de police réduite pour les éléments de la liste */
+        line-height: 1.2; /* Réduit l'espacement entre les lignes */
+        color: #6c757d; /* Couleur gris foncé pour les éléments de la liste */
+        margin-left: 1rem; /* Légère indentation de la liste */
+    }
+
+    .warning-list li {
+        margin-bottom: 0.3rem; /* Réduit l'espace entre les éléments de la liste */
+    }
+</style>

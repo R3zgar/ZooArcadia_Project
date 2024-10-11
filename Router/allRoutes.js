@@ -7,6 +7,7 @@ export const allRoutes = [
     new Route("/habitats", "Habitats", "/pages/habitats.html"),
     new Route("/contact", "Contact", "/pages/contact.html"),
     new Route("/signin", "Connexion", "/pages/signin.html"),
+    new Route("/signup", "Inscriotion", "/pages/signup.html"),
     new Route("/confidentialite", "Politique de confidentialité", "/pages/confidentialite.html"),
 
 ];
