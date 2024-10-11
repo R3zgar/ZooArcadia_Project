@@ -1,3 +1,5 @@
+
+<br>
 <!-- MAIN SECTION: PRÉSENTATION DU ZOO -->
 <section class="bg-primary text-dark p-3 pt-5 mt-5 text-center text-sm-start">
   <div class="container">
@@ -70,8 +72,6 @@
 </section>
 
 
-
-
 <!-- SERVICES - ZOO ARCADIA -->
 <section class="p-3 mb-3 mt-3">
     <div class="container">
@@ -129,7 +129,7 @@
 
 <!-- HABITATS ET ANIMAUX - ZOO ARCADIA -->
 <section id="habitats" class="p-3 text-light">
-  <div class="container">
+  <div class="container mb-5">
       <h2 class="text-center mb-5">Nos Habitats et Animaux</h2>
       <p class="lead text-center mb-4">Explorez nos différents habitats soigneusement recréés pour offrir aux animaux un cadre naturel optimal.</p>
       <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -184,11 +184,9 @@
 </section>
 
 
-
-
 <!-- QUESTION ACCORDION -->
 
-<section class="p-3 questions-section" id="questions">
+<section class="p-3 questions-section mb-4" id="questions">
     <div class="container">
       <h2 class="text-center mb-4">Questions Fréquentes</h2>
       <div class="accordion accordion-flush" id="questions">
@@ -427,9 +425,57 @@
                 </div>
               </div>
             </div>
-            <div class="text-center mt-4 btn-lg p-4">
-              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit-review">Laisser un avis</button>
+          <!-- Button to trigger the modal -->
+          <div class="text-center mt-4 btn-lg p-4">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitReviewModal">Laisser un avis</button>
           </div>
-          </div>
+        </div>
     </div>
 </section>
+
+
+<!-- Modal pour Laisser un avi -->
+<div class="modal fade" id="submitReviewModal" tabindex="-1" aria-labelledby="submitReviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="submitReviewModalLabel">Laissez votre avis</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="reviewForm">
+          <div class="mb-3">
+            <label for="pseudonym" class="form-label">Votre pseudonyme</label>
+            <input type="text" class="form-control" id="pseudonym" name="pseudonym" required>
+          </div>
+          <div class="mb-3">
+            <label for="reviewText" class="form-label">Votre avis</label>
+            <textarea class="form-control" id="reviewText" name="reviewText" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Envoyer l'avis</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript to handle form submission -->
+<script>
+  document.getElementById('reviewForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Collect form data
+    const pseudonym = document.getElementById('pseudonym').value;
+    const reviewText = document.getElementById('reviewText').value;
+
+    // Send data to backend for validation (this is just a simulation)
+    // You will need an actual backend to handle this request
+    console.log('Review Submitted:', { pseudonym, reviewText });
+
+    // Close the modal after submission
+    const modal = bootstrap.Modal.getInstance(document.getElementById('submitReviewModal'));
+    modal.hide();
+
+    alert('Votre avis a été soumis pour validation.');
+  });
+</script>
