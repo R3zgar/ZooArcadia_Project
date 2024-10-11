@@ -1,22 +1,23 @@
 
+
 @import url("/node_modules/bootstrap-icons/font/bootstrap-icons.css");
 @import 'custom';
 
 html{
-    position: relative;
+    position:relative;
     min-height: 100%;
 }
 
 main{
-    margin-bottom: 270px;
+    margin-bottom: 250px;
 }
-
 
 footer.footer{
     padding: 15px; 
-    position: absolute;
+    position: relative;
     bottom: 0; // position en bas de la page
-    width: 100%;
+    width:100%;
+
 }
 
 p, a {
@@ -44,3 +45,28 @@ p, a {
 .list-inline-item a:hover {
     color: #6DC066 !important; /* Couleur primaire au survol */
 }
+
+#habitats{
+    background-color: #A47551;
+    h3{
+        color: #2E86C1;
+    }
+
+    .card{
+        background-color: #F5F5DC
+    }
+}
+
+.testimonial-card .card-up {
+    height: 120px;
+    overflow: hidden;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+  .testimonial-card .avatar {
+    width: 110px;
+    margin-top: -60px;
+    overflow: hidden;
+    border: 3px solid #fff;
+    border-radius: 50%;
+  }

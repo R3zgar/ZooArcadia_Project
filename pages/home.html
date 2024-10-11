@@ -1,3 +1,371 @@
-<h1>Bienvenue sur le site du Zoo Arcadia</h1>
+<br>
 
-<button class="btn btn-primary">Hello </button>
+<!-- MAIN SECTION: PRÉSENTATION DU ZOO -->
+<section class="bg-primary text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <div class="container">
+      <div class="d-sm-flex align-items-center justify-text">
+        <div class=""> <!-- Ajout de marge à droite pour le texte -->
+          <br />
+          <h1 class="p-3">
+            Bienvenue Au
+            <span class="text-danger text-opacity-50"> Zoo Arcadia </span>
+          </h1>
+          <p class="lead my-4">
+            Situé en France, près de la forêt de Brocéliande, le Zoo Arcadia a ouvert ses portes en 1960. Engagé dans la protection des espèces et la préservation des habitats naturels, le zoo est un véritable sanctuaire où le bien-être des animaux est au cœur de nos priorités.
+          </p>
+          <p class="lead my-4">
+            Découvrez une expérience unique en explorant notre diversité d'espèces animales, dont les lions majestueux de la savane et les tigres imposants de la jungle, dans des environnements recréés pour leur offrir un cadre naturel.
+          </p>
+          <p class="lead my-4">
+            En visitant le Zoo Arcadia, vous contribuez à la protection des espèces menacées tout en découvrant des actions concrètes pour la préservation de la biodiversité.
+          </p>
+        
+          <br />
+  
+          <button class="btn btn-outline-dark btn-lg p mb-5" data-bs-toggle="modal" data-bs-target="#enroll">
+            Contactez-nous
+          </button>
+        </div>
+  
+        <!-- Ajout de marge à gauche pour l'image -->
+        <img
+          class="img-fluid w-50 d-none d-sm-block ms-3"
+          src="../images/animal (1).jpg"
+          alt="Tiger-sitting-on-the-tree"
+        />
+      </div>
+    </div>
+  </section>
+
+<!-- SERVICES - ZOO ARCADIA -->
+<section class="p-5 mb-3 mt-3">
+    <div class="container">
+        <h2 class="text-center pb-3">Nos Services</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            <!-- Restauration -->
+            <div class="col">
+                <div class="card h-100 bg-secondary text-light">
+                    <div class="card-body d-flex flex-column">
+                        <div class="h2 mb-5 text-center">
+                            <i class="bi bi-cup-straw"></i>
+                        </div>
+                        <h3 class="card-title mb-4 text-center pb-4">Restauration</h3>
+                        <p class="card-text mb-4 justify-text pb-4">
+                            Profitez de nos restaurants et kiosques offrant des repas locaux, des spécialités internationales, ainsi que des options adaptées aux enfants pour toute la famille.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visite Guidée -->
+            <div class="col">
+                <div class="card h-100 bg-earthy text-light">
+                    <div class="card-body d-flex flex-column">
+                        <div class="h2 mb-5 text-center">
+                            <i class="bi bi-compass"></i>
+                        </div>
+                        <h3 class="card-title mb-4 text-center pb-4">Visite Guidée Gratuite</h3>
+                        <p class="card-text mb-4 justify-text pb-4">
+                            Rejoignez nos experts pour des visites guidées gratuites et découvrez en profondeur les comportements de nos animaux et nos initiatives de conservation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visite en Petit Train -->
+            <div class="col">
+                <div class="card h-100 bg-secondary text-light">
+                    <div class="card-body d-flex flex-column">
+                        <div class="h2 mb-5 text-center">
+                            <i class="bi bi-train-front"></i>
+                        </div>
+                        <h3 class="card-title mb-4 text-center pb-4">Visite en Petit Train</h3>
+                        <p class="card-text mb-4 justify-text pb-4">
+                            Explorez le zoo de manière relaxante grâce à notre petit train, idéal pour les familles avec enfants. Profitez d'une balade confortable tout en découvrant nos animaux.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="habitats" class="p-5 text-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Nos Habitats et Animaux</h2>
+        <p class="lead text-center mb-4">Explorez nos différents habitats soigneusement recréés pour offrir aux animaux un cadre naturel optimal.</p>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            <!-- Savane -->
+            <div class="col">
+                <div class="card h-100 bg-light">
+                    <img src="images/savane.jpg" class="card-img-top" alt="Savane">
+                    <div class="card-body text-center">
+                        <h3 class="card-title p-4">Savane</h3>
+                        <p class="card-text text-center">
+                            La savane recrée les vastes plaines africaines où vous pourrez admirer des espèces emblématiques comme les lions, les girafes et les éléphants.
+                        </p>
+                        <a href="/habitats/savane" class="btn btn-primary mt-3">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jungle -->
+            <div class="col">
+                <div class="card h-100 bg-light">
+                    <img src="images/jungle.jpg" class="card-img-top" alt="Jungle">
+                    <div class="card-body text-center">
+                        <h3 class="card-title p-4">Jungle</h3>
+                        <p class="card-text text-center">
+                            Observez des animaux tropicaux comme les tigres et les oiseaux colorés au cœur d'une jungle luxuriante.
+                        </p>
+                        <a href="/habitats/jungle" class="btn btn-primary mt-3">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marais -->
+            <div class="col">
+                <div class="card h-100 bg-light">
+                    <img src="images/marais.jpg" class="card-img-top" alt="Marais">
+                    <div class="card-body text-center">
+                        <h3 class="card-title p-4">Marais</h3>
+                        <p class="card-text text-center">
+                            Découvrez des créatures aquatiques fascinantes dans notre marais, un habitat recréé pour accueillir crocodiles et tortues.
+                        </p>
+                        <a href="/habitats/marais" class="btn btn-primary mt-3">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- QUESTION ACCORDION -->
+
+<section class="p-5 questions-section" id="questions">
+    <div class="container">
+      <h2 class="text-center mb-4">Questions Fréquentes</h2>
+      <div class="accordion accordion-flush" id="questions">
+        
+        <!-- ITEM 1 -->
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#question-un"
+            >
+              Quels sont les horaires d'ouverture du Zoo Arcadia ?
+            </button>
+          </h4>
+          <div
+            id="question-un"
+            class="accordion-collapse collapse"
+            data-bs-parent="#questions"
+          >
+            <div class="accordion-body">
+              <p>
+                Le Zoo Arcadia est ouvert tous les jours de 9h00 à 18h00 en semaine, et de 9h00 à 19h00 le week-end. Nous recommandons de vérifier notre site web avant votre visite, car les horaires peuvent varier en fonction des saisons et des événements spéciaux. Les derniers billets sont vendus une heure avant la fermeture, alors assurez-vous d'arriver à temps pour profiter pleinement de votre visite !
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- ITEM 2 -->
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#question-deux"
+            >
+              Quels types d'animaux puis-je voir au Zoo Arcadia ?
+            </button>
+          </h4>
+          <div
+            id="question-deux"
+            class="accordion-collapse collapse"
+            data-bs-parent="#questions"
+          >
+            <div class="accordion-body">
+              <p>
+                Le Zoo Arcadia abrite une grande diversité d'espèces, allant des mammifères majestueux comme les lions et les éléphants, aux oiseaux tropicaux colorés, en passant par les reptiles exotiques et les créatures aquatiques. Nos habitats recréés avec soin permettent à nos animaux de vivre dans des environnements proches de leur milieu naturel, vous offrant ainsi une expérience immersive unique. Consultez notre carte des habitats lors de votre visite pour découvrir chaque espèce.
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- ITEM 3 -->
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#question-trois"
+            >
+              Le Zoo Arcadia propose-t-il des visites guidées ?
+            </button>
+          </h4>
+          <div
+            id="question-trois"
+            class="accordion-collapse collapse"
+            data-bs-parent="#questions"
+          >
+            <div class="accordion-body">
+              <p>
+                Oui, nous proposons des visites guidées pour les groupes et les familles. Nos experts en conservation vous accompagnent à travers les différents habitats, en vous offrant des informations fascinantes sur les comportements des animaux et nos initiatives de protection. Les visites guidées peuvent être réservées en ligne ou directement à l'accueil du zoo. Pour des groupes de plus de 10 personnes, il est préférable de réserver à l'avance.
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- ITEM 4 -->
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#question-quatre"
+            >
+              Le Zoo Arcadia est-il accessible aux personnes à mobilité réduite ?
+            </button>
+          </h4>
+          <div
+            id="question-quatre"
+            class="accordion-collapse collapse"
+            data-bs-parent="#questions"
+          >
+            <div class="accordion-body">
+              <p>
+                Le Zoo Arcadia est entièrement accessible aux personnes à mobilité réduite. Nous disposons de chemins spécialement conçus pour les fauteuils roulants, ainsi que d'ascenseurs dans certaines zones. Des fauteuils roulants sont également disponibles à la location. Nos installations, y compris les toilettes et les aires de restauration, sont conçues pour garantir une expérience agréable pour tous nos visiteurs.
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- ITEM 5 -->
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#question-cinq"
+            >
+              Comment puis-je réserver des billets pour le Zoo Arcadia ?
+            </button>
+          </h4>
+          <div
+            id="question-cinq"
+            class="accordion-collapse collapse"
+            data-bs-parent="#questions"
+          >
+            <div class="accordion-body">
+              <p>
+                Les billets pour le Zoo Arcadia peuvent être achetés directement sur notre site web, par téléphone ou à l'accueil le jour de votre visite. Nous vous recommandons d'acheter vos billets à l'avance, surtout pendant les périodes de forte affluence, comme les week-ends et les vacances scolaires. Des tarifs spéciaux sont disponibles pour les familles, les seniors et les étudiants. Pour toute question concernant les billets ou les réductions, n'hésitez pas à nous contacter.
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- ITEM 6 -->
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#question-six"
+            >
+              Le Zoo Arcadia participe-t-il à des projets de conservation ?
+            </button>
+          </h4>
+          <div
+            id="question-six"
+            class="accordion-collapse collapse"
+            data-bs-parent="#questions"
+          >
+            <div class="accordion-body">
+              <p>
+                Oui, le Zoo Arcadia est impliqué dans plusieurs programmes de conservation à l'échelle mondiale. Nous travaillons avec des organisations internationales pour la reproduction et la réintroduction d'espèces menacées dans leur milieu naturel. En visitant le zoo, vous soutenez directement ces initiatives cruciales. Nous organisons également des événements tout au long de l'année pour sensibiliser le public aux défis environnementaux auxquels nous sommes confrontés.
+              </p>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>  
+
+<!-- AVIS DES VISITEURS -->
+<section id="avis" class="pb-4 bg-body">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10 col-xl-8 text-center">
+              <h3 class="mb-4">Avis des Visiteurs</h3>
+            </div>
+          </div>       
+          <div class="row text-center d-flex align-items-stretch">
+            <div class="col-md-4 mb-5 mb-md-0 d-flex align-items-stretch">
+              <div class="card testimonial-card">
+                <div class="card-up" style="background-color: #9d789b;"></div>
+                <div class="avatar mx-auto bg-white">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+                    class="rounded-circle img-fluid" />
+                </div>
+                <div class="card-body">
+                  <h4 class="mb-4">Marie D.</h4>
+                  <hr />
+                  <p class="dark-grey-text mt-4">
+                    <i class="bi bi-quote pe-2"></i>Une expérience incroyable ! Les animaux sont magnifiques et le zoo est très bien organisé. J'ai adoré la visite guidée.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-5 mb-md-0 d-flex align-items-stretch">
+              <div class="card testimonial-card">
+                <div class="card-up" style="background-color: #7a81a8;"></div>
+                <div class="avatar mx-auto bg-white">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+                    class="rounded-circle img-fluid" />
+                </div>
+                <div class="card-body">
+                  <h4 class="mb-4">Sophie M.</h4>
+                  <hr />
+                  <p class="dark-grey-text mt-4">
+                    <i class="bi bi-quote pe-2"></i>Un sanctuaire pour les animaux ! J'ai beaucoup appris sur la conservation et la protection des espèces.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-0 d-flex align-items-stretch">
+              <div class="card testimonial-card">
+                <div class="card-up" style="background-color: #6d5b98;"></div>
+                <div class="avatar mx-auto bg-white">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
+                    class="rounded-circle img-fluid" />
+                </div>
+                <div class="card-body">
+                  <h4 class="mb-4">Pierre L.</h4>
+                  <hr />
+                  <p class="dark-grey-text mt-4">
+                    <i class="bi bi-quote pe-2"></i>Un sanctuaire pour les animaux ! J'ai beaucoup appris sur la conservation et la protection des espèces.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-4 btn-lg p-4">
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit-review">Laisser un avis</button>
+          </div>
+          </div>
+    </div>
+</section>
