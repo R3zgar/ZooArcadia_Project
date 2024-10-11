@@ -1,23 +1,28 @@
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 @import url("/node_modules/bootstrap-icons/font/bootstrap-icons.css");
 @import 'custom';
 
 html{
-    position:relative;
+    position: relative;
     min-height: 100%;
 }
 
 main{
-    margin-bottom: 250px;
+    margin-bottom: 268px; /* Réduction de l'espace pour ajuster la hauteur */
+    
 }
 
+
 footer.footer{
-   // padding: 15px; 
+    padding: 15px; 
     position: relative;
     bottom: 0; // position en bas de la page
     width:100%;
-
 }
 
 p, a {
