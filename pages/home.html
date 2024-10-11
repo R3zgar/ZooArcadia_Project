@@ -1,24 +1,64 @@
-<br>
-
 <!-- MAIN SECTION: PRÉSENTATION DU ZOO -->
 <section class="bg-primary text-dark p-3 pt-5 mt-5 text-center text-sm-start">
   <div class="container">
-    <div class="d-sm-flex align-items-center justify-text">
-      <div class=""> <!-- Ensuring margin for desktop and mobile -->
+    <div class="row align-items-center justify-text justify-content-between">
+      
+<!-- Slide Section for Mobile First -->
+<div class="col-12 col-md-6 order-md-2 mb-4 mb-md-0">
+  <!-- Carousel Section with autoplay -->
+  <div id="slideImages" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="false">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#slideImages" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#slideImages" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#slideImages" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#slideImages" data-bs-slide-to="4" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#slideImages" data-bs-slide-to="5" aria-label="Slide 5"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../images/animal (8).jpg" class="d-block w-100" style="height: 350px; object-fit: cover;" alt="Panda">
+      </div>
+      <div class="carousel-item">
+        <img src="../images/animal (6).jpg" class="d-block w-100" style="height: 350px; object-fit: cover;" alt="oiseaux">
+      </div>
+      <div class="carousel-item">
+        <img src="../images/animal (4).jpg" class="d-block w-100" style="height: 350px; object-fit: cover;" alt="crocodile">
+      </div>
+      <div class="carousel-item">
+        <img src="../images/animal (2).jpg" class="d-block w-100" style="height: 350px; object-fit: cover;" alt="girafe">
+      </div>
+      <div class="carousel-item">
+        <img src="../images/animal (1).jpg" class="d-block w-100" style="height: 350px; object-fit: cover;" alt="tigre">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#slideImages" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Précédent</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#slideImages" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Suivant</span>
+    </button>
+  </div>
+</div>
+
+
+      <!-- Text Section -->
+      <div class="col-12 col-md-6 order-md-1">
         <h1 class="p-3">
           Bienvenue Au
           <span class="text-danger text-opacity-50"> Zoo Arcadia </span>
         </h1>
         <p class="lead my-4">
-          Situé en France, près de la forêt de Brocéliande, le Zoo Arcadia a ouvert ses portes en 1960. Engagé dans la protection des espèces et la préservation des habitats naturels, le zoo est un véritable sanctuaire où le bien-être des animaux est au cœur de nos priorités.
+          Le Zoo Arcadia, ouvert en 1960 près de la forêt de Brocéliande, est un sanctuaire dédié à la protection des espèces et à la préservation des habitats naturels.
         </p>
         <p class="lead my-4">
-          Découvrez une expérience unique en explorant notre diversité d'espèces animales, dont les lions majestueux de la savane et les tigres imposants de la jungle, dans des environnements recréés pour leur offrir un cadre naturel.
+          Explorez une diversité d'espèces, des lions de la savane aux tigres de la jungle, dans des environnements recréés pour leur bien-être.
         </p>
         <p class="lead my-4">
-          En visitant le Zoo Arcadia, vous contribuez à la protection des espèces menacées tout en découvrant des actions concrètes pour la préservation de la biodiversité.
+          En visitant le zoo, vous soutenez la protection des espèces menacées et nos efforts pour préserver la biodiversité.
         </p>
-      
+
         <br />
 
         <a href="/contact" class="btn btn-outline-dark btn-lg p mb-5">
@@ -26,15 +66,10 @@
         </a>
       </div>
 
-      <!-- Image Section -->
-      <img
-        class="img-fluid w-50 d-none d-sm-block ms-3 mt-3 mt-md-0"
-        src="../images/animal (1).jpg"
-        alt="Tiger-sitting-on-the-tree"
-      />
     </div>
   </div>
 </section>
+
 
 
 <!-- SERVICES - ZOO ARCADIA -->

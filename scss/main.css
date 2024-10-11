@@ -12071,4 +12071,20 @@ p, a {
 }
 .card-link:hover {
   text-decoration: none;
+}
+
+.animate-image {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }/*# sourceMappingURL=main.css.map */
