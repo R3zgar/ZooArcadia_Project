@@ -79,3 +79,42 @@ p, a {
   .stars i {
     margin: 0 2px;
   }
+
+
+// Define hover effect for the card
+.hover-card {
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    position: relative;
+
+    // Default card background color
+    background-color: #f8f9fa;  // Light color for the card
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.3);  // Apply black tint with 0.3 opacity
+        transform: scale(1.05);  // Slightly increase the size on hover
+        cursor: pointer;
+    }
+}
+
+// Ensure the card text remains visible and unaffected by hover
+.card-title, .card-text {
+    transition: color 0.3s ease-in-out;
+    color: #000;  // Default black text color for both title and paragraph
+
+    .hover-card:hover & {
+        color: #000;  // Keep text color black on hover (no color change)
+    }
+}
+
+// Make the entire card clickable (no underlined text)
+.card-link {
+    text-decoration: none;
+
+    .hover-card {
+        color: inherit;  // Inherit text color from card
+    }
+
+    &:hover {
+        text-decoration: none;  // Remove text underline on hover
+    }
+}

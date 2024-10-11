@@ -12042,4 +12042,33 @@ p, a {
 
 .stars i {
   margin: 0 2px;
+}
+
+.hover-card {
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  position: relative;
+  background-color: #f8f9fa;
+}
+.hover-card:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.card-title, .card-text {
+  transition: color 0.3s ease-in-out;
+  color: #000;
+}
+.hover-card:hover .card-title, .hover-card:hover .card-text {
+  color: #000;
+}
+
+.card-link {
+  text-decoration: none;
+}
+.card-link .hover-card {
+  color: inherit;
+}
+.card-link:hover {
+  text-decoration: none;
 }/*# sourceMappingURL=main.css.map */
