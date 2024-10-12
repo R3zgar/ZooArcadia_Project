@@ -1,0 +1,67 @@
+<main id="manage-services">
+    <!-- Titre de la page -->
+    <section class="py-5">
+        <div class="container">
+            <h1 class="text-center mb-5">Gestion des Services</h1>
+
+            <!-- Bouton d'ajout de service -->
+            <div class="text-end mb-4">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addServiceModal">
+                    Ajouter un service
+                </button>
+            </div>
+
+            <!-- Tableau des services -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nom du service</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Exemple de service -->
+                        <tr>
+                            <td>Visite Guidée</td>
+                            <td>Une visite guidée du zoo avec un expert.</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Modifier</button>
+                                <button class="btn btn-danger btn-sm">Supprimer</button>
+                            </td>
+                        </tr>
+                        <!-- D'autres lignes services seront affichées ici -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal pour ajouter/modifier un service -->
+    <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addServiceModalLabel">Ajouter un service</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="serviceForm">
+                        <!-- Nom du service -->
+                        <div class="mb-3">
+                            <label for="serviceNameInput" class="form-label">Nom du service</label>
+                            <input type="text" class="form-control" id="serviceNameInput" required>
+                        </div>
+                        <!-- Description du service -->
+                        <div class="mb-3">
+                            <label for="serviceDescriptionInput" class="form-label">Description</label>
+                            <textarea class="form-control" id="serviceDescriptionInput" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

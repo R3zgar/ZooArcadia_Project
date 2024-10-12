@@ -1,0 +1,77 @@
+<main id="manage-habitats">
+    <!-- Titre de la page -->
+    <section class="py-5">
+        <div class="container">
+            <h1 class="text-center mb-5">Gestion des Habitats</h1>
+
+            <!-- Bouton d'ajout d'habitat -->
+            <div class="text-end mb-4">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addHabitatModal">
+                    Ajouter un habitat
+                </button>
+            </div>
+
+            <!-- Tableau des habitats -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Type d'habitat</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Exemple d'habitat -->
+                        <tr>
+                            <td>Savane</td>
+                            <td>Grand espace pour les animaux de la savane africaine</td>
+                            <td>Extérieur</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Modifier</button>
+                                <button class="btn btn-danger btn-sm">Supprimer</button>
+                            </td>
+                        </tr>
+                        <!-- D'autres lignes d'habitats seront affichées ici -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal pour ajouter/modifier un habitat -->
+    <div class="modal fade" id="addHabitatModal" tabindex="-1" aria-labelledby="addHabitatModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addHabitatModalLabel">Ajouter un habitat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="habitatForm">
+                        <!-- Nom -->
+                        <div class="mb-3">
+                            <label for="nomInput" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="nomInput" required>
+                        </div>
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label for="descriptionInput" class="form-label">Description</label>
+                            <textarea class="form-control" id="descriptionInput" rows="3" required></textarea>
+                        </div>
+                        <!-- Type d'habitat -->
+                        <div class="mb-3">
+                            <label for="typeInput" class="form-label">Type d'habitat</label>
+                            <select id="typeInput" class="form-select" required>
+                                <option value="Intérieur">Intérieur</option>
+                                <option value="Extérieur">Extérieur</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
