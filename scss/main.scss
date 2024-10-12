@@ -12,16 +12,23 @@ html{
     min-height: 100%;
 }
 
-main{
-    margin-bottom: 268px; /* Réduction de l'espace pour ajuster la hauteur */
-    
+body {
+    display: flex;
+    flex-direction: column; /* Utilise flexbox pour le body */
+    min-height: 100vh; /* Assure que le body occupe toute la hauteur de la fenêtre */
+}
+
+main {
+    flex: 1; /* Prend tout l'espace disponible */
+    margin-bottom: 0; /* Réduction de l'espace pour le footer */
+    padding-top: 70px; /* Ajustez cette valeur selon la hauteur de votre header */
 }
 
 
 footer.footer{
     padding: 15px; 
     position: relative;
-    bottom: 0; // position en bas de la page
+    //bottom: 0; // position en bas de la page
     width:100%;
 }
 
