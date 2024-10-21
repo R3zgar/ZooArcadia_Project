@@ -10,22 +10,22 @@
     </div>
   
     <div class="container bg-light p-5 rounded mb-5 mt-4">
-        <form>
+        <form id="formulaireInscription">
             <div class="mb-3">
                 <label for="NomInput" class="form-label">Nom</label>
-                <input type="text" class="form-control bg-light" id="NomInput" placeholder="Votre nom">
+                <input type="text" class="form-control bg-light" id="NomInput" placeholder="Votre nom" name="nom">
                 <div class="invalid-feedback">Le nom est requis</div>
              </div>
 
              <div class="mb-3">
                 <label for="PrenomInput" class="form-label">Prénom</label>
-                <input type="text" class="form-control bg-light" id="PrenomInput" placeholder="Votre Prénom">
+                <input type="text" class="form-control bg-light" id="PrenomInput" placeholder="Votre Prénom" name="prenom">
                 <div class="invalid-feedback">Le prénom est requis</div>
              </div>
 
             <div class="mb-3">
                <label for="EmailInput" class="form-label">Email</label>
-               <input type="email" class="form-control bg-light" id="EmailInput" placeholder="emma-dupont@gmail.com">
+               <input type="email" class="form-control bg-light" id="EmailInput" placeholder="emma-dupont@gmail.com" name="email">
 
                  <div class="invalid-feedback">
                   Veuillez saisir une adresse e-mail valide.
@@ -37,7 +37,7 @@
             </div>
                 <div class="mb-3">
                    <label for="PasswordInput" class="form-label">Mot de passe</label>
-                   <input type="password" class="form-control bg-light" id="PasswordInput">
+                   <input type="password" class="form-control bg-light" id="PasswordInput" name="password">
 
                     <!-- Message d'erreur en cas de mot de passe invalide -->
                      <div class="invalid-feedback">

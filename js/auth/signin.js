@@ -2,23 +2,46 @@
 const mailInput = document.getElementById("EmailInput")
 const passwordInput = document.getElementById("PasswordInput")
 const btnSingin = document.getElementById("btnSignin");
+const signinForm = document.getElementById("signinForm")
 
 btnSingin.addEventListener("click", checkCredentials);
 
 function checkCredentials(){
+    
+    let dataForm = new FormData(signinForm);
+    
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-    // Ici, une requête API sera effectuée pour vérifier les identifiants dans la base de données
-    if(mailInput.value == "test@gmail.com" && passwordInput.value == "12345"){
-        // Il faudra récupérer un token réel depuis l'API
-        const token = "fjsd94rGh3kTz9Lm82PvQbX6nA5sjkF45LpMxN7QyHcRtZ0wBd";
+    let raw = JSON.stringify({
+        "username": dataForm.get("email"),
+        "password": dataForm.get("password")
+    });
+
+    let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(apiUrl+"login", requestOptions)
+    .then(response => {
+        if(response.ok){
+            return response.json();
+        }
+        else{
+            mailInput.classList.add("is-invalid");
+            passwordInput.classList.add("is-invalid");
+        }
+    })
+    .then(result => {
+        const token = result.apiToken;
         setToken(token);
+        //placer ce token en cookie
 
-        // Enregistrer ce token dans les cookies
-        setCookie(RoleCookieName, "client", 7);
+        setCookie(RoleCookieName, result.roles[0], 7);
         window.location.replace("/");
-    }
-    else{
-        mailInput.classList.add("is-invalid");
-        passwordInput.classList.add("is-invalid");
-    }
+    })
+    .catch(error => console.log('error', error));
 }
