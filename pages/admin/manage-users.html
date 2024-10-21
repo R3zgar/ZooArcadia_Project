@@ -1,17 +1,14 @@
 <main id="manage-users">
-    <!-- Titre de la page -->
     <section class="py-5">
         <div class="container">
             <h1 class="text-center mb-5">Gestion des Utilisateurs</h1>
 
-            <!-- Bouton d'ajout d'utilisateur -->
             <div class="text-end mb-4">
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">
                     Ajouter un utilisateur
                 </button>
             </div>
 
-            <!-- Tableau des utilisateurs -->
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -24,7 +21,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Exemple d'utilisateur -->
                         <tr>
                             <td>Dupont</td>
                             <td>Marie</td>
@@ -35,14 +31,13 @@
                                 <button class="btn btn-danger btn-sm">Supprimer</button>
                             </td>
                         </tr>
-                        <!-- D'autres lignes utilisateurs seront affichées ici -->
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 
-    <!-- Modal pour ajouter/modifier un utilisateur -->
+    <!-- Modal for Adding User -->
     <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -52,25 +47,21 @@
                 </div>
                 <div class="modal-body">
                     <form id="userForm">
-                        <!-- Nom -->
                         <div class="mb-3">
                             <label for="nomInput" class="form-label">Nom</label>
-                            <input type="text" class="form-control" id="nomInput" required>
+                            <input type="text" class="form-control" id="nomInput">
                         </div>
-                        <!-- Prénom -->
                         <div class="mb-3">
                             <label for="prenomInput" class="form-label">Prénom</label>
-                            <input type="text" class="form-control" id="prenomInput" required>
+                            <input type="text" class="form-control" id="prenomInput">
                         </div>
-                        <!-- E-mail -->
                         <div class="mb-3">
                             <label for="emailInput" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="emailInput" required>
+                            <input type="email" class="form-control" id="emailInput" >
                         </div>
-                        <!-- Rôle -->
                         <div class="mb-3">
                             <label for="roleSelect" class="form-label">Rôle</label>
-                            <select id="roleSelect" class="form-select" required>
+                            <select id="roleSelect" class="form-select" >
                                 <option value="admin">Administrateur</option>
                                 <option value="employee">Employé</option>
                                 <option value="veterinary">Vétérinaire</option>
@@ -83,3 +74,4 @@
         </div>
     </div>
 </main>
+

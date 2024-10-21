@@ -1,31 +1,31 @@
-console.log("Script manage-users.js chargé");
+document.addEventListener('DOMContentLoaded', async () => {
+    const token = localStorage.getItem('token'); // Récupération du token stocké dans localStorage
 
-// Vérification du rôle utilisateur
-document.addEventListener('DOMContentLoaded', () => {
-    const userRole = localStorage.getItem('userRole');
-    
-    if (userRole !== 'admin') {
-        window.location.href = "/403";  // Redirection si l'utilisateur n'est pas admin
+    if (!token) {
+        alert('Token non trouvé, redirection vers la page de connexion.');
+        window.location.href = '/signin'; // Redirection vers la page de connexion si le token est absent
         return;
     }
 
-    // Continuez le reste du code si l'utilisateur est admin
-    const userForm = document.getElementById('userForm');
-    
-    // Vérifie que le formulaire existe sur la page
-    if (userForm) {
-        userForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-    
-            const nom = document.getElementById('nomInput').value;
-            const prenom = document.getElementById('prenomInput').value;
-            const email = document.getElementById('emailInput').value;
-            const role = document.getElementById('roleSelect').value;
-    
-            // Simuler l'ajout d'un nouvel utilisateur (connexion avec un backend si nécessaire)
-            console.log('Nouvel utilisateur ajouté :', { nom, prenom, email, role });
-    
-            alert('Utilisateur ajouté avec succès !');
+    try {
+        // Requête pour obtenir la liste des utilisateurs via le token
+        const response = await fetch('http://localhost:3001/api/users', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Ajout du token dans l'en-tête Authorization
+                'Content-Type': 'application/json'
+            }
         });
+
+        if (response.ok) {
+            const users = await response.json(); // Récupération des utilisateurs
+            console.log(users); // Affichage de la liste des utilisateurs dans la console
+        } else {
+            alert('Token invalide, veuillez vous reconnecter.');
+            window.location.href = '/signin'; // Redirection si le token est invalide
+        }
+    } catch (error) {
+        console.error('Erreur lors de la vérification du token:', error);
+        window.location.href = '/signin'; // Redirection en cas d'erreur
     }
 });

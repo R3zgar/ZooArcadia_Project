@@ -1,29 +1,25 @@
-// Exemple d'ajout d'un service
-document.getElementById('serviceForm').addEventListener('submit', function (event) {
-    event.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+        window.location.href = '/signin';
+        return;
+    }
 
-    // Récupération des valeurs du formulaire
-    const serviceName = document.getElementById('serviceNameInput').value;
-    const serviceDescription = document.getElementById('serviceDescriptionInput').value;
+    // Verify token
+    fetch('http://localhost:3001/api/verify-token', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            window.location.href = '/signin';
+        }
+    });
 
-    // Afficher les valeurs (c'est ici que tu pourras ajouter la logique pour envoyer les données à l'API backend ou les stocker localement)
-    console.log('Service Name:', serviceName);
-    console.log('Service Description:', serviceDescription);
-
-    // Exemple de mise à jour du tableau (à remplacer par une vraie logique)
-    const tableBody = document.querySelector('tbody');
-    const newRow = `
-        <tr>
-            <td>${serviceName}</td>
-            <td>${serviceDescription}</td>
-            <td>
-                <button class="btn btn-warning btn-sm">Modifier</button>
-                <button class="btn btn-danger btn-sm">Supprimer</button>
-            </td>
-        </tr>
-    `;
-    tableBody.innerHTML += newRow;
-
-    // Réinitialiser le formulaire après enregistrement
-    document.getElementById('serviceForm').reset();
+    // Proceed with managing services or habitats
+    console.log("Token verified, proceed with managing services/habitats...");
 });

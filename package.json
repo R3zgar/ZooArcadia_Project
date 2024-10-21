@@ -1,6 +1,20 @@
 {
   "dependencies": {
+    "body-parser": "^1.20.3",
     "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3"
-  }
+    "bootstrap-icons": "^1.11.3",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "name": "zooarcadia_project",
+  "version": "1.0.0",
+  "description": "L'application \"Zoo Arcadia\" est une plateforme web interactive développée pour le zoo Arcadia, permettant aux visiteurs d'explorer les habitats et les animaux du zoo, de consulter les services proposés, et de laisser des avis. L'application comporte aussi des espaces sécurisés pour les vétérinaires, employés, et administrateurs, leur permettant de gérer les informations sur les animaux et d'assurer le bon fonctionnement du zoo.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
