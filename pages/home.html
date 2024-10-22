@@ -425,38 +425,67 @@
               </div>
             </div>
           <!-- Button to trigger the modal -->
-          <div class="text-center mt-4 btn-lg p-4">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitReviewModal">Laisser un avis</button>
+          <div class="text-center mt-4 p-4">
+            <a href="commentaire" class="btn btn-primary  btn-lg">Laisser un avis</a>
           </div>
         </div>
     </div>
 </section>
 
+<!-- Script Fetch en Français -->
+<script>
+// Implémentation du JS pour le formulaire d'avis
 
-<!-- Modal pour Laisser un avi -->
-<div class="modal fade" id="submitReviewModal" tabindex="-1" aria-labelledby="submitReviewModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="submitReviewModalLabel">Laissez votre avis</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="reviewForm">
-          <div class="mb-3">
-            <label for="pseudonym" class="form-label">Votre pseudonyme</label>
-            <input type="text" class="form-control" id="pseudonym" name="pseudonym" required>
-          </div>
-          <div class="mb-3">
-            <label for="reviewText" class="form-label">Votre avis</label>
-            <textarea class="form-control" id="reviewText" name="reviewText" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Envoyer l'avis</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+const formReview = document.getElementById('reviewForm');
+const inputPseudonym = document.getElementById('pseudonym');
+const inputReviewText = document.getElementById('reviewText');
+
+formReview.addEventListener('click', function (e) {
+  e.preventDefault();  // Empêche l'envoi par défaut du formulaire
+
+  let dataForm = new FormData(formReview);
+
+  // Préparer les en-têtes
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+\ // Remplacer par votre token
+
+  // Corps de la requête
+  let raw = JSON.stringify({
+      "animal_id": 1,  // ID de l'animal à ajuster si nécessaire
+      "auteur": dataForm.get("pseudonym"),
+      "contenu": dataForm.get("reviewText"),
+      "date": new Date().toISOString().split('T')[0]  // Format de date yyyy-mm-dd
+  });
+
+  let requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+  };
+
+  // Envoie des données à l'API et gestion de la réponse
+  fetch("https://127.0.0.1:8000/api/commentaire", requestOptions)
+      .then(response => {
+          if (response.ok) {
+              return response.json();
+          } else {
+              throw new Error("Erreur lors de l'envoi de l'avis.");
+          }
+      })
+      .then(result => {
+          alert("Votre avis a été envoyé avec succès !");
+          formReview.reset();  // Réinitialise le formulaire
+          var modal = bootstrap.Modal.getInstance(document.getElementById('submitReviewModal'));
+          modal.hide();  // Ferme la modal après l'envoi
+      })
+      .catch(error => {
+          console.error('Erreur:', error);
+          alert("Une erreur est survenue lors de l'envoi de votre avis.");
+      });
+});
+</script>
 
 <!-- JavaScript to handle form submission -->
 <script>

@@ -1,0 +1,185 @@
+<!-- SECTION: Checkup des animaux par habitat -->
+<section class="p-3 bg-light">
+    <div class="container p-3">
+        <h1 class="text-center mb-5">Checkup des Animaux par Habitat</h1>
+        <p class="lead text-center mb-4">Suivez la santé de nos animaux grâce aux rapports détaillés des vétérinaires. Chaque habitat abrite un animal dont la santé est régulièrement surveillée.</p>
+
+        <!-- HABITAT: Savane -->
+        <div class="row mb-5">
+            <div class="col-md-4 mb-3">
+                <a data-bs-toggle="modal" data-bs-target="#simbaModal">
+                    <div class="card hover-card">
+                        <img src="images/lion.jpg" class="card-img-top" alt="Lion, roi de la savane">
+                        <div class="card-body">
+                            <h4 class="card-title">Simba</h4>
+                            <p class="card-text">Majestueux lion de la savane africaine.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <a data-bs-toggle="modal" data-bs-target="#graceModal">
+                    <div class="card hover-card">
+                        <img src="images/girafe.jpg" class="card-img-top" alt="Girafe">
+                        <div class="card-body">
+                            <h4 class="card-title">Grace</h4>
+                            <p class="card-text">Girafe élancée avec un long cou caractéristique.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <a data-bs-toggle="modal" data-bs-target="#dumboModal">
+                    <div class="card hover-card">
+                        <img src="images/elephant.jpg" class="card-img-top" alt="Éléphant">
+                        <div class="card-body">
+                            <h4 class="card-title">Dumbo</h4>
+                            <p class="card-text">Éléphant géant, emblème de la force et de la sagesse.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- HABITAT: Jungle -->
+        <div class="row mb-5">
+            <div class="col-md-4 mb-3">
+                <a data-bs-toggle="modal" data-bs-target="#rajahModal">
+                    <div class="card hover-card">
+                        <img src="images/tigre.jpg" class="card-img-top" alt="Tigre">
+                        <div class="card-body">
+                            <h4 class="card-title">Rajah</h4>
+                            <p class="card-text">Tigre solitaire de la jungle asiatique.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODALS POUR CHAQUE ANIMAL -->
+
+<!-- Modal pour Simba (Savane) -->
+<div class="modal fade" id="simbaModal" tabindex="-1" aria-labelledby="simbaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="simbaModalLabel">Simba - Roi de la Savane</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/lion.jpg" alt="Simba" class="img-fluid rounded mb-3">
+                    </div>
+                    <div class="col-md-6">
+                        <h6><strong>Nom :</strong> Simba</h6>
+                        <h6><strong>Espèce :</strong> Panthera leo</h6>
+                        <h6><strong>Origine :</strong> Savane africaine</h6>
+                        <h6><strong>Âge :</strong> 7 ans</h6>
+                        <h6><strong>Statut de conservation :</strong> Vulnérable (IUCN)</h6>
+                        <p>Simba est en excellente forme. Son poids est stable et ses examens ne montrent aucun problème particulier.</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h5>Informations supplémentaires :</h5>
+                    <p>Simba est né en captivité et fait partie de notre programme de conservation. Les visiteurs peuvent le voir lors de ses séances d'alimentation quotidiennes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pour Grace (Savane) -->
+<div class="modal fade" id="graceModal" tabindex="-1" aria-labelledby="graceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="graceModalLabel">Grace - Sentinelle des Plaines</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/girafe.jpg" alt="Grace" class="img-fluid rounded mb-3">
+                    </div>
+                    <div class="col-md-6">
+                        <h6><strong>Nom :</strong> Grace</h6>
+                        <h6><strong>Espèce :</strong> Giraffa camelopardalis</h6>
+                        <h6><strong>Origine :</strong> Savane africaine</h6>
+                        <h6><strong>Âge :</strong> 5 ans</h6>
+                        <h6><strong>Statut de conservation :</strong> Vulnérable (IUCN)</h6>
+                        <p>Grace est en bonne santé. Sa hauteur lui permet de repérer les prédateurs de loin, assurant ainsi la sécurité de son troupeau.</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h5>Informations supplémentaires :</h5>
+                    <p>Grace est une espèce emblématique de la savane africaine. Elle se nourrit principalement des feuilles des arbres acacias.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pour Dumbo (Savane) -->
+<div class="modal fade" id="dumboModal" tabindex="-1" aria-labelledby="dumboModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dumboModalLabel">Dumbo - Géant de la Savane</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/elephant.jpg" alt="Dumbo" class="img-fluid rounded mb-3">
+                    </div>
+                    <div class="col-md-6">
+                        <h6><strong>Nom :</strong> Dumbo</h6>
+                        <h6><strong>Espèce :</strong> Loxodonta africana</h6>
+                        <h6><strong>Origine :</strong> Savane africaine</h6>
+                        <h6><strong>Âge :</strong> 10 ans</h6>
+                        <h6><strong>Statut de conservation :</strong> Vulnérable (IUCN)</h6>
+                        <p>Dumbo est en bonne santé. Il joue un rôle important dans son troupeau, où il aide les jeunes éléphants à se protéger des prédateurs.</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h5>Informations supplémentaires :</h5>
+                    <p>Dumbo vit dans un espace vaste, avec accès à de l'eau pour se rafraîchir et interagir avec d'autres éléphants.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pour Rajah (Jungle) -->
+<div class="modal fade" id="rajahModal" tabindex="-1" aria-labelledby="rajahModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rajahModalLabel">Rajah - Tigre de la Jungle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/tigre.jpg" alt="Rajah" class="img-fluid rounded mb-3">
+                    </div>
+                    <div class="col-md-6">
+                        <h6><strong>Nom :</strong> Rajah</h6>
+                        <h6><strong>Espèce :</strong> Panthera tigris</h6>
+                        <h6><strong>Origine :</strong> Jungle asiatique</h6>
+                        <h6><strong>Âge :</strong> 6 ans</h6>
+                        <h6><strong>Statut de conservation :</strong> En danger (IUCN)</h6>
+                        <p>Rajah montre des signes de fatigue, mais reste sous surveillance médicale pour des analyses plus approfondies.</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h5>Informations supplémentaires :</h5>
+                    <p>Rajah est un prédateur solitaire qui préfère les zones denses et ombragées de la jungle pour chasser sa proie en silence.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

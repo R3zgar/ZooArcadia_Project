@@ -1,0 +1,31 @@
+<section class="p-4" id="avis-section">
+    <div class="container pt-5 mp-5">
+        <h1 class="text-center mb-4 text-primary pb-5">Laisser un Avis</h1>
+        
+        <!-- Formulaire d'Avis avec effet hover et dynamique -->
+        <form id="formulaireSoumettre" class="shadow p-4 rounded" style="background-color: #f8f9fa;">
+            <div class="mb-3">
+                <label for="pseudonym" class="form-label">Nom ou Pseudonyme</label>
+                <input type="text" class="form-control bg-light" id="pseudonym" placeholder="Entrez votre nom ou pseudonyme" name="nom">
+            </div>
+
+            <div class="mb-3">
+                <label for="reviewText" class="form-label">Votre Commentaire</label>
+                <textarea class="form-control bg-light" id="reviewText" rows="4" placeholder="Entrez votre commentaire ici" name="avis"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="animal_id" class="form-label">ID de l'Animal</label>
+                <input type="number" class="form-control bg-light" id="animal_id" value="1" name="animalid">
+            </div>
+            <div class="text-center mt-4 p-4">
+                <button id="btn-soumettre" type="button" class="btn btn-primary btn-lg ">Soumettre l'avis</button>
+              </div>
+            <!-- Bouton de soumission avec effet de chargement -->
+
+        </form>
+
+        <!-- Affichage des résultats avec animation -->
+        <div id="result" class="mt-4 text-center"></div>
+    </div>
+</section>

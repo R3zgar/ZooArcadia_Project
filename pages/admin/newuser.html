@@ -1,0 +1,99 @@
+<section class="py-2 py-md-5 py-xl-8">
+    <div class="container p-4">
+      <h1 class="text-center text-primary">
+        <br />
+        <i class="bi bi-person-plus"></i> Inscription
+        <br />
+      </h1>
+    </div>
+  
+    <div class="container bg-light p-5 rounded mb-5 mt-4 shadow-lg">
+        <form id="formulaireInscription" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="NomInput" class="form-label">Nom</label>
+                <input type="text" class="form-control bg-light border-primary" id="NomInput" placeholder="Votre nom" name="nom" required>
+                <div class="invalid-feedback">Le nom est requis</div>
+             </div>
+
+             <div class="mb-3">
+                <label for="PrenomInput" class="form-label">Prénom</label>
+                <input type="text" class="form-control bg-light border-primary" id="PrenomInput" placeholder="Votre Prénom" name="prenom" required>
+                <div class="invalid-feedback">Le prénom est requis</div>
+             </div>
+
+            <div class="mb-3">
+               <label for="EmailInput" class="form-label">Email</label>
+               <input type="email" class="form-control bg-light border-primary" id="EmailInput" placeholder="emma-dupont@gmail.com" name="email" required>
+                 <div class="invalid-feedback">
+                  Veuillez saisir une adresse e-mail valide.
+                 </div>
+                  <div class="valid-feedback">
+                    L'adresse e-mail est valide.
+                  </div>
+            </div>
+
+            <div class="mb-3">
+               <label for="PasswordInput" class="form-label">Mot de passe</label>
+               <input type="password" class="form-control bg-light border-primary" id="PasswordInput" name="password" required>
+                 <div class="invalid-feedback">
+                   <p class="warning-text">Le mot de passe fourni est insuffisant. Il doit :</p>
+                   <ul class="warning-list">
+                      <li>Comporter au minimum 8 caractères,</li>
+                      <li>Inclure au moins une lettre majuscule,</li>
+                      <li>Inclure au moins une lettre minuscule,</li>
+                      <li>Contenir au moins un caractère spécial (par exemple : @, #, $, etc.).</li>
+                    </ul>
+                  </div>
+                 <div class="valid-feedback">
+                    Le mot de passe est valide. Félicitations !
+                 </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="ValidatePasswordInput" class="form-label">Confirmez votre mot de passe</label>
+                <input type="password" class="form-control bg-light border-primary" id="ValidatePasswordInput" required>
+                <div class="invalid-feedback">
+                    La confirmation n'est pas identique au mot de passe.
+                </div>
+                <div class="valid-feedback">
+                    Les mots de passe correspondent.
+                </div>
+            </div>
+
+
+            <div class="text-center">
+                <button type="button" class="btn btn-primary btn-lg mb-4 mt-4 shadow-sm" id="btn-validation-inscription">
+                    <i class="bi bi-check-circle"></i> Inscription
+                </button>
+            </div>
+
+            <div class="text-center mt-3">
+                Vous êtes administrateur ? <a href="/manage-users" class="text-decoration-none text-primary">Gérez vos utilisateurs ici.</a>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+<style>
+    /* Effets de hover pour les champs de formulaire */
+    .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+
+    /* Effets de hover pour le bouton */
+    #btn-validation-inscription:hover {
+        background-color: #0a58ca;
+        transition: background-color 0.3s ease;
+    }
+
+    .text-primary {
+        color: #0d6efd;
+    }
+
+    /* Ombre légère pour le conteneur de formulaire */
+    .container.bg-light {
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+</style>

@@ -1,0 +1,213 @@
+<main id="manage-stock">
+    <!-- Titre de la page -->
+    <section class="py-5">
+        <div class="container">
+            <h1 class="text-center mb-5">Gestion des Stocks</h1>
+
+            <!-- Bouton d'ajout de stock -->
+            <div class="text-end mb-4">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStockModal">
+                    Ajouter un stock
+                </button>
+            </div>
+
+            <!-- Tableau des stocks -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nom du Stock</th>
+                            <th>Description</th>
+                            <th>Quantité Disponible (kg)</th>
+                            <th>Dernière Mise à Jour</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Exemple de stock -->
+                        <tr>
+                            <td>Viande</td>
+                            <td>Viande rouge pour les lions et les tigres.</td>
+                            <td>50 kg</td>
+                            <td>22 Octobre 2024</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Modifier</button>
+                                <button class="btn btn-danger btn-sm">Supprimer</button>
+                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewStockViandeModal">Détails</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fruits</td>
+                            <td>Fruits frais pour les singes et les oiseaux.</td>
+                            <td>30 kg</td>
+                            <td>21 Octobre 2024</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Modifier</button>
+                                <button class="btn btn-danger btn-sm">Supprimer</button>
+                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewStockFruitsModal">Détails</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Légumes</td>
+                            <td>Légumes verts pour les herbivores.</td>
+                            <td>40 kg</td>
+                            <td>20 Octobre 2024</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Modifier</button>
+                                <button class="btn btn-danger btn-sm">Supprimer</button>
+                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewStockLegumesModal">Détails</button>
+                            </td>
+                        </tr>
+                        <!-- D'autres lignes de stock seront affichées ici -->
+                    </tbody>
+                </table>
+            </div>
+                        <!-- Lien pour revenir à la gestion des services -->
+                        <div class="text-start mb-4">
+                            <a href="/manage-services" class="btn btn-secondary">Revenir à la gestion des services</a>
+                        </div>
+        </div>
+    </section>
+
+    <!-- Modal pour ajouter/modifier un stock -->
+    <div class="modal fade" id="addStockModal" tabindex="-1" aria-labelledby="addStockModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addStockModalLabel">Ajouter un stock</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="stockForm">
+                        <!-- Nom du Stock -->
+                        <div class="mb-3">
+                            <label for="nomStockInput" class="form-label">Nom du Stock</label>
+                            <input type="text" class="form-control" id="nomStockInput">
+                        </div>
+
+                        <!-- Description du Stock -->
+                        <div class="mb-3">
+                            <label for="descriptionStockInput" class="form-label">Description du Stock</label>
+                            <textarea class="form-control" id="descriptionStockInput" rows="3"></textarea>
+                        </div>
+
+                        <!-- Quantité du Stock -->
+                        <div class="mb-3">
+                            <label for="quantiteStockInput" class="form-label">Quantité Disponible (kg)</label>
+                            <input type="number" class="form-control" id="quantiteStockInput">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal pour Viande -->
+<div class="modal fade" id="viewStockViandeModal" tabindex="-1" aria-labelledby="viewStockViandeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewStockViandeModalLabel">Détails du Stock - Viande</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/Restaurant-food.jpg" alt="Stock Viande" class="img-fluid rounded mb-3">
+                    </div>
+                    <div class="col-md-6">
+                        <h6><strong>Nom du Stock :</strong> Viande Rouge</h6>
+                        <h6><strong>Description :</strong> Viande de bœuf et de mouton pour les carnivores.</h6>
+                        <h6><strong>Quantité Disponible :</strong> 120 kg</h6>
+                        <h6><strong>Dernière Mise à Jour :</strong> 25 Octobre 2024</h6>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h5>Informations supplémentaires :</h5>
+                    <p>
+                        Ce stock de viande est crucial pour l'alimentation des lions, tigres et autres carnivores du zoo. Chaque animal reçoit environ 2 à 4 kg de viande par jour selon son poids et ses besoins spécifiques.
+                    </p>
+                    <p>
+                        La viande est conservée à une température de -18°C et doit être utilisée dans les deux semaines suivant son arrivée pour garantir sa fraîcheur et la santé des animaux.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pour Fruits -->
+<div class="modal fade" id="viewStockFruitsModal" tabindex="-1" aria-labelledby="viewStockFruitsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewStockFruitsModalLabel">Détails du Stock - Fruits</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/Restaurant-food.jpg" alt="Stock Fruits" class="img-fluid rounded mb-3">
+                    </div>
+                    <div class="col-md-6">
+                        <h6><strong>Nom du Stock :</strong> Fruits Frais</h6>
+                        <h6><strong>Description :</strong> Pommes, bananes et oranges pour les primates et les oiseaux.</h6>
+                        <h6><strong>Quantité Disponible :</strong> 75 kg</h6>
+                        <h6><strong>Dernière Mise à Jour :</strong> 24 Octobre 2024</h6>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h5>Informations supplémentaires :</h5>
+                    <p>
+                        Les singes capucins, les chimpanzés et les perroquets dépendent de ces fruits frais pour leur apport quotidien en vitamines. Les fruits sont distribués le matin et l'après-midi, avec une attention particulière à leur fraîcheur.
+                    </p>
+                    <p>
+                        Les fruits sont achetés localement et livrés tous les trois jours pour garantir qu'ils sont toujours de la meilleure qualité.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal pour Légumes -->
+<div class="modal fade" id="viewStockLegumesModal" tabindex="-1" aria-labelledby="viewStockLegumesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewStockLegumesModalLabel">Détails du Stock - Légumes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/Restaurant-food.jpg" alt="Stock Légumes" class="img-fluid rounded mb-3">
+                    </div>
+                    <div class="col-md-6">
+                        <h6><strong>Nom du Stock :</strong> Légumes Verts</h6>
+                        <h6><strong>Description :</strong> Légumes pour les herbivores tels que les éléphants et les girafes.</h6>
+                        <h6><strong>Quantité Disponible :</strong> 90 kg</h6>
+                        <h6><strong>Dernière Mise à Jour :</strong> 23 Octobre 2024</h6>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h5>Informations supplémentaires :</h5>
+                    <p>
+                        Les éléphants et les girafes consomment quotidiennement une grande quantité de légumes verts, principalement des laitues, épinards et choux. Ce stock est crucial pour leur alimentation équilibrée.
+                    </p>
+                    <p>
+                        Nous nous assurons que les légumes sont biologiques et exempts de pesticides, et qu'ils sont livrés chaque jour pour garantir leur fraîcheur et leurs bienfaits nutritifs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</main>

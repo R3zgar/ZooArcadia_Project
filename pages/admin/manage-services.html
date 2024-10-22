@@ -1,20 +1,25 @@
 <main id="manage-services">
     <!-- Titre de la page -->
-    <section class="py-5">
+    <section class="py-5 bg-light">
         <div class="container">
-            <h1 class="text-center mb-5">Gestion des Services</h1>
+            <h1 class="text-center mb-5 text-primary">Gestion des Services</h1>
 
             <!-- Bouton d'ajout de service -->
             <div class="text-end mb-4">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addServiceModal">
-                    Ajouter un service
+
+                <a href="editPassword" class="btn btn-info btn-lg shadow-sm">
+                    <i class="bi bi-key"></i> Changer le mot de passe
+                </a>
+
+                <button class="btn btn-primary btn-lg shadow-sm" data-bs-toggle="modal" data-bs-target="#addServiceModal">
+                    <i class="bi bi-plus-circle"></i> Ajouter un service
                 </button>
             </div>
 
             <!-- Tableau des services -->
             <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
+                <table class="table table-hover table-bordered text-center">
+                    <thead class="table-dark">
                         <tr>
                             <th>Nom du service</th>
                             <th>Description</th>
@@ -23,18 +28,96 @@
                     </thead>
                     <tbody>
                         <!-- Exemple de service -->
-                        <tr>
+                        <tr class="hover-row">
                             <td>Visite Guidée</td>
-                            <td>Une visite guidée du zoo avec un expert.</td>
+                            <td>Une visite guidée du zoo avec un expert qui vous fera découvrir les animaux de près.</td>
                             <td>
-                                <button class="btn btn-warning btn-sm">Modifier</button>
-                                <button class="btn btn-danger btn-sm">Supprimer</button>
+                                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
+                                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
+                            </td>
+                        </tr>
+                        <tr class="hover-row">
+                            <td>Expérience Familiale</td>
+                            <td>Une journée immersive pour les familles avec des activités spéciales pour les enfants.</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
+                                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
+                            </td>
+                        </tr>
+                        <tr class="hover-row">
+                            <td>Soirée Safari</td>
+                            <td>Un safari nocturne pour découvrir les comportements des animaux la nuit.</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
+                                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
+                            </td>
+                        </tr>
+                        <tr class="hover-row">
+                            <td>Anniversaire au Zoo</td>
+                            <td>Fêtez un anniversaire inoubliable avec des activités ludiques pour les enfants.</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
+                                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
                             </td>
                         </tr>
                         <!-- D'autres lignes services seront affichées ici -->
                     </tbody>
                 </table>
             </div>
+
+            <!-- Lien pour accéder à la gestion des stocks -->
+            <div class="text-start mt-4">
+                <a href="manage-food" class="btn btn-success btn-lg">
+                    <i class="bi bi-box-seam"></i> Gérer les Stocks
+                </a>
+            </div>
+
+            <!-- Bloc de gestion des commentaires -->
+            <section class="py-5 mt-5">
+                <div class="container">
+                    <h2 class="text-center mb-4 text-primary">Gestion des Commentaires</h2>
+
+                    <!-- Tableau des commentaires -->
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Nom de l'utilisateur</th>
+                                    <th>Commentaire</th>
+                                    <th>Date</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Exemple de commentaire -->
+                                <tr class="hover-row">
+                                    <td>Jean Dupont</td>
+                                    <td>Un excellent service, toute la famille a adoré la visite guidée !</td>
+                                    <td>21 Octobre 2024</td>
+                                    <td><span class="badge bg-success">Approuvé</span></td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
+                                        <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover-row">
+                                    <td>Marie Legrand</td>
+                                    <td>L'expérience familiale était bien organisée, mais je pense qu'il pourrait y avoir plus d'activités pour les enfants.</td>
+                                    <td>18 Octobre 2024</td>
+                                    <td><span class="badge bg-warning">En attente</span></td>
+                                    <td>
+                                        <button class="btn btn-success btn-sm me-2"><i class="bi bi-check-circle"></i> Approuver</button>
+                                        <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
+                                    </td>
+                                </tr>
+                                <!-- D'autres lignes de commentaires seront affichées ici -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </section>
 
@@ -42,7 +125,7 @@
     <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-primary text-light">
                     <h5 class="modal-title" id="addServiceModalLabel">Ajouter un service</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -51,18 +134,17 @@
                         <!-- Nom du service -->
                         <div class="mb-3">
                             <label for="nomServiceInput" class="form-label">Nom du Service</label>
-                            <input type="text" class="form-control" id="nomServiceInput" >
+                            <input type="text" class="form-control" id="nomServiceInput" placeholder="Saisir le nom du service">
                         </div>
                     
                         <!-- Description du service -->
                         <div class="mb-3">
                             <label for="descriptionServiceInput" class="form-label">Description du Service</label>
-                            <textarea class="form-control" id="descriptionServiceInput" rows="3"></textarea>
+                            <textarea class="form-control" id="descriptionServiceInput" rows="3" placeholder="Saisir la description du service"></textarea>
                         </div>
                     
-                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary w-100">Enregistrer</button>
                     </form>                    
-                    
                 </div>
             </div>
         </div>

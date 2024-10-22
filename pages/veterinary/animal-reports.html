@@ -1,0 +1,146 @@
+<!-- SECTION RAPPORTS VÉTÉRINAIRES -->
+<section class="p-3 bg-light">
+  <div class="container p-3">
+      <h1 class="text-center mb-5 mt-5">Rapports de Santé des Animaux</h1>
+      <p class="lead text-center pt-4 pb-4">Chaque jour, nos vétérinaires veillent à la santé de nos animaux, assurant un suivi constant de leur bien-être et de leur alimentation.</p>
+
+      <!-- RAPPORT POUR SIMBA -->
+      <div class="container bg-earthy mb-5 p-3 rounded">
+          <div class="row mb-5">
+              <div class="col-md-6">
+                  <img src="images/lion.jpg" class="img-fluid rounded" alt="Simba, le lion majestueux">
+              </div>
+              <div class="col-md-6">
+                  <h3 class="m-5">Rapport pour Simba</h3>
+                  <p class="lead my-4">
+                      <strong>État de santé :</strong> En bonne santé <br>
+                      <strong>Dernière visite :</strong> 21 Octobre 2024 <br>
+                      <strong>Alimentation :</strong> 2 kg de viande <br>
+                      <strong>Grammage :</strong> 2.5 kg
+                  </p>
+                  <blockquote class="blockquote">
+                      <p class="mb-0">Simba est en excellente forme. Son poids est stable et ses examens ne montrent aucun problème particulier.</p>
+                      <footer class="blockquote-footer mt-5 text-light">Dr. Marie Dupont, <cite title="Source Title">Vétérinaire</cite></footer>
+                  </blockquote>
+              </div>
+          </div>
+      </div>
+
+      <!-- RAPPORT POUR ZIRA -->
+      <div class="container bg-primary mb-5 p-3 rounded">
+          <div class="row mb-5">
+              <div class="col-md-6 order-md-last">
+                  <img src="images/panda.jpg" class="img-fluid rounded" alt="Zira, la tigresse majestueuse">
+              </div>
+              <div class="col-md-6 order-md-first">
+                  <h3 class="m-5">Rapport pour Zira</h3>
+                  <p class="lead my-4">
+                      <strong>État de santé :</strong> Légère fatigue observée <br>
+                      <strong>Dernière visite :</strong> 20 Octobre 2024 <br>
+                      <strong>Alimentation :</strong> 3 kg de viande <br>
+                      <strong>Grammage :</strong> 3.2 kg
+                  </p>
+                  <blockquote class="blockquote">
+                      <p class="mb-0">Zira montre des signes de fatigue. Elle reste sous observation pour des analyses plus poussées.</p>
+                      <footer class="blockquote-footer mt-5 text-light">Dr. Jean Leroy, <cite title="Source Title">Vétérinaire</cite></footer>
+                  </blockquote>
+              </div>
+          </div>
+      </div>
+
+      <!-- RAPPORT POUR KIKI -->
+      <div class="container bg-info mb-5 p-3 rounded">
+          <div class="row mb-5">
+              <div class="col-md-6">
+                  <img src="images/tortue-2.jpg" class="img-fluid rounded" alt="Kiki, le singe capucin espiègle">
+              </div>
+              <div class="col-md-6">
+                  <h3 class="m-5">Rapport pour Kiki</h3>
+                  <p class="lead my-4">
+                      <strong>État de santé :</strong> En observation <br>
+                      <strong>Dernière visite :</strong> 19 Octobre 2024 <br>
+                      <strong>Alimentation :</strong> 1.2 kg de fruits <br>
+                      <strong>Grammage :</strong> 1.5 kg
+                  </p>
+                  <blockquote class="blockquote">
+                      <p class="mb-0">Kiki présente des symptômes digestifs légers. Elle est sous surveillance pour prévenir tout problème.</p>
+                      <footer class="blockquote-footer mt-5">Dr. Pierre Martin, <cite title="Source Title">Vétérinaire</cite></footer>
+                  </blockquote>
+              </div>
+          </div>
+      </div>
+
+      <!-- RAPPORT POUR NALA -->
+      <div class="container bg-success mb-5 p-3 rounded">
+          <div class="row mb-5">
+              <div class="col-md-6">
+                  <img src="images/animal (4).jpg" class="img-fluid rounded" alt="Nala, la lionne agile">
+              </div>
+              <div class="col-md-6">
+                  <h3 class="m-5">Rapport pour Nala</h3>
+                  <p class="lead my-4">
+                      <strong>État de santé :</strong> En bonne santé, mais surveillée <br>
+                      <strong>Dernière visite :</strong> 22 Octobre 2024 <br>
+                      <strong>Alimentation :</strong> 2.8 kg de viande <br>
+                      <strong>Grammage :</strong> 3 kg
+                  </p>
+                  <blockquote class="blockquote">
+                      <p class="mb-0">Nala est en bonne santé générale, mais des légères variations de comportement nécessitent une observation continue.</p>
+                      <footer class="blockquote-footer mt-5 text-light">Dr. Sophie Durand, <cite title="Source Title">Vétérinaire</cite></footer>
+                  </blockquote>
+              </div>
+          </div>
+      </div>
+<!-- Boutons pour ajouter un nouveau rapport et revenir à la gestion des habitats -->
+<div class="d-flex justify-content-between mb-4 p-5">
+  <!-- Lien pour revenir à la page de gestion des habitats -->
+  <a href="/manage-habitats" class="btn btn-secondary">Revenir à la gestion des habitats</a>
+
+  <!-- Bouton pour ajouter un nouveau rapport -->
+  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addReportModal">Ajouter un nouveau rapport</button>
+</div>
+
+
+  </div>
+</section>
+
+<!-- Modal pour ajouter un nouveau rapport -->
+<div class="modal fade" id="addReportModal" tabindex="-1" aria-labelledby="addReportModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="addReportModalLabel">Ajouter un nouveau rapport</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form id="newReportForm">
+                  <!-- État de l'animal -->
+                  <div class="mb-3">
+                      <label for="etatAnimalInput" class="form-label">État de l'animal</label>
+                      <input type="text" class="form-control" id="etatAnimalInput" required>
+                  </div>
+                  
+                  <!-- Nourriture -->
+                  <div class="mb-3">
+                      <label for="nourritureInput" class="form-label">Nourriture</label>
+                      <input type="text" class="form-control" id="nourritureInput" required>
+                  </div>
+
+                  <!-- Grammage -->
+                  <div class="mb-3">
+                      <label for="grammageInput" class="form-label">Grammage</label>
+                      <input type="number" class="form-control" id="grammageInput" required>
+                  </div>
+
+                  <!-- Observations -->
+                  <div class="mb-3">
+                      <label for="observationsInput" class="form-label">Observations</label>
+                      <textarea class="form-control" id="observationsInput" rows="3" required></textarea>
+                  </div>
+
+                  <button type="button" class="btn btn-primary">Enregistrer le rapport</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
