@@ -19,11 +19,12 @@ jobs:
           protocol: ftps
           server: ftp-rzgar.alwaysdata.net
           username: rzgar
-          password: ${{ secrets.ftp_password }}    
+          password: ${{ secrets.ftp_password }}
+          server-dir: /www/
+          concurrent-uploads: 5
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/bootstrap/scss/**
             **/node_modules/bootstrap/js/**
-            **/node_modules/bootstrap-icons/icons/**  
-          server-dir: /www/
+            **/node_modules/bootstrap-icons/icons/** 
