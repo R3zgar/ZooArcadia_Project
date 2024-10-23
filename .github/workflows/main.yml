@@ -16,7 +16,7 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          protocol: ftps
+          protocol: sftp
           server: ftp-rzgar.alwaysdata.net
           username: rzgar
           password: ${{ secrets.ftp_password }}
@@ -27,4 +27,4 @@ jobs:
             **/node_modules/bootstrap/scss/**
             **/node_modules/bootstrap/js/**
             **/node_modules/bootstrap-icons/icons/**
-          dangerous-clean-slate: false
+            dangerous-clean-slate: false
