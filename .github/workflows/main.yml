@@ -16,19 +16,11 @@ jobs:
       - name: 📂 Install npm dependencies
         run: npm install
 
-      - name: 📂 Sync files using FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          protocol: ftps
-          server: ftp-rzgar.alwaysdata.net
-          username: rzgar
-          password: ${{ secrets.ftp_password }}
-          port: 990 
-          timeout: 60000
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/bootstrap/scss/**
-            **/node_modules/bootstrap/js/**
-            **/node_modules/bootstrap-icons/icons/**
-          server-dir: /www/
+      - name: 📂 Sync files using SFTP
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-rltgoDzvO"
+          REMOTE_HOST: "ftp-rzgar.alwaysdata.net"
+          REMOTE_USER: "rzgar"
+          TARGET: "/www/"
