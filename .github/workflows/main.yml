@@ -23,8 +23,8 @@ jobs:
           server: ftp-rzgar.alwaysdata.net
           username: rzgar
           password: ${{ secrets.ftp_password }}
+          port: 990
           timeout: 6000
-          security: strict
           exclude: |
             **/.git*
             **/.git*/**
