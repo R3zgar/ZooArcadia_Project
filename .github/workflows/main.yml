@@ -23,6 +23,7 @@ jobs:
           username: rzgar
           password: ${{ secrets.ftp_password }}
           protocol: ftps
+          port: 990
           timeout: 60000
           exclude: |
             **/.git*
