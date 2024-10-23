@@ -27,5 +27,6 @@ jobs:
             **/node_modules/bootstrap/scss/**
             **/node_modules/bootstrap/js/**
             **/node_modules/bootstrap-icons/icons/**
-          dangerous-clean-slate: false
+          concurrent-uploads: 1
           timeout: 600
+          passive: true
