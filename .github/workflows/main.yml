@@ -16,13 +16,14 @@ jobs:
       - name: 📂 Install npm dependencies
         run: npm install
 
-      - name: 📂 Sync files using FTP
+      - name: 📂 Sync files using FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
+          protocol: ftps
           server: ftp-rzgar.alwaysdata.net
           username: rzgar
           password: ${{ secrets.ftp_password }}
-          port: 21 
+          port: 990 
           timeout: 60000
           exclude: |
             **/.git*
