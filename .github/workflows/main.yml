@@ -13,9 +13,6 @@ jobs:
         with:
           node-version: '14'
 
-      - name: 📂 Install npm dependencies
-        run: npm install  
-
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -30,3 +27,5 @@ jobs:
             **/node_modules/bootstrap/scss/**
             **/node_modules/bootstrap/js/**
             **/node_modules/bootstrap-icons/icons/**
+          dangerous-clean-slate: false
+      
