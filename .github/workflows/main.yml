@@ -24,7 +24,6 @@ jobs:
           password: ${{ secrets.ftp_password }}
           protocol: ftps
           port: 990
-          timeout: 6000
           exclude: |
             **/.git*
             **/.git*/**
