@@ -7,12 +7,15 @@ jobs:
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
+
       - name: 📂 Install dependencies
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  
+          node-version: '14'
+
       - name: 📂 Install npm dependencies
         run: npm install  
+
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -21,10 +24,9 @@ jobs:
           username: rzgar
           password: ${{ secrets.ftp_password }}
           server-dir: /www/
-          concurrent-uploads: 5
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/bootstrap/scss/**
             **/node_modules/bootstrap/js/**
-            **/node_modules/bootstrap-icons/icons/** 
+            **/node_modules/bootstrap-icons/icons/**
