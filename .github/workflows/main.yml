@@ -6,28 +6,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
-        uses: actions/checkout@v2
-  
-      - name: Install node.js 16
-        uses: actions/setup-node@v2
+        uses: actions/checkout@v3
+
+      - name: 📂 Install dependencies
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '15'
 
-      - name: 📂 Install npm dependencies
-        run: npm install
-
-      - name: 📂 Sync files using SFTP
-        uses: easingthemes/ssh-deploy@v2.1.5
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rltgoDzvO"
-          REMOTE_HOST: "ftp-rzgar.alwaysdata.net"
-          REMOTE_USER: "rzgar"
-          TARGET: "/www/"
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          protocol: ftps
+          server: ftp-rzgar.alwaysdata.net
+          username: rzgar
+          password: ${{ secrets.ftp_password }}
+          server-dir: /www/
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/bootstrap/scss/**
             **/node_modules/bootstrap/js/**
             **/node_modules/bootstrap-icons/icons/**
-
