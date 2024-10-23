@@ -8,16 +8,16 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
 
-      - name: Install node.js 14
+      - name: Install node.js 16
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
 
       - name: 📂 Install npm dependencies
         run: npm install
 
       - name: 📂 Sync files using FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           protocol: ftps
           server: ftp-rzgar.alwaysdata.net
