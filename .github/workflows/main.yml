@@ -16,7 +16,7 @@ jobs:
       - name: 📂 Install npm dependencies
         run: npm install
 
-      - name: 📂 Sync files
+      - name: 📂 Sync files using SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           protocol: ftps
