@@ -28,4 +28,4 @@ jobs:
             **/node_modules/bootstrap/js/**
             **/node_modules/bootstrap-icons/icons/**
           dangerous-clean-slate: false
-          timeout: 300
+          timeout: 600
