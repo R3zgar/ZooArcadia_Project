@@ -11,7 +11,10 @@ jobs:
       - name: 📂 Install dependencies
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
+
+      - name: 📂 Install npm dependencies
+        run: npm install
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -19,14 +22,13 @@ jobs:
           server: ftp-rzgar.alwaysdata.net
           username: rzgar
           password: ${{ secrets.ftp_password }}
-          server-dir: /www/
           protocol: ftps
+          timeout: 60000
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/bootstrap/scss/**
             **/node_modules/bootstrap/js/**
             **/node_modules/bootstrap-icons/icons/**
-          dangerous-clean-slate: false
-          timeout: 600
+          server-dir: /www/
 
