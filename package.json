@@ -5,7 +5,8 @@
     "bootstrap-icons": "^1.11.3",
     "express": "^4.21.1",
     "ftp-deploy": "^2.4.7",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.7.3"
   },
   "name": "zooarcadia_project",
   "version": "1.0.0",
