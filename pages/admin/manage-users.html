@@ -1,20 +1,15 @@
 <main id="manage-users">
-
-    <!-- Titre de la page -->
     <section class="py-5 bg-light">
         <div class="container">
             <h1 class="text-center mb-5 text-primary">Gestion des Utilisateurs</h1>
-
-            <!-- Bouton d'ajout d'utilisateur -->
             <div class="text-end mb-4">
-
+                <div class="text-center mb-5 mt-5" id="alertContainer"></div>
                 <a href="editPassword" class="btn btn-info btn-lg shadow-sm">
                     <i class="bi bi-key"></i> Changer le mot de passe
                 </a>
-                
-
-                     <a href="new-users" class="btn btn-primary btn-lg shadow-sm" ><i class="bi bi-plus-circle"></i> Ajouter un utilisateur</a>
-
+                <a href="new-users" class="btn btn-primary btn-lg shadow-sm">
+                    <i class="bi bi-plus-circle"></i> Ajouter un utilisateur
+                </a>
             </div>
 
             <!-- Tableau des utilisateurs -->
@@ -25,54 +20,17 @@
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>E-mail</th>
+                            <th>Rôle</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Exemple d'utilisateur -->
-                        <tr class="hover-row">
-                            <td>Dupont</td>
-                            <td>Jean</td>
-                            <td>jean.dupont@example.com</td>
-                            <td>
-                                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
-                                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
-                            </td>
-                        </tr>
-                        <tr class="hover-row">
-                            <td>Martin</td>
-                            <td>Marie</td>
-                            <td>marie.martin@example.com</td>
-                            <td>
-                                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
-                                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
-                            </td>
-                        </tr>
-                        <tr class="hover-row">
-                            <td>Leroy</td>
-                            <td>Pierre</td>
-                            <td>pierre.leroy@example.com</td>
-                            <td>
-                                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
-                                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
-                            </td>
-                        </tr>
-                        <!-- D'autres utilisateurs seront affichés ici -->
+                        <!-- Les utilisateurs seront ajoutés ici par JavaScript -->
                     </tbody>
                 </table>
             </div>
         </div>
-    </section>
 
-    <!-- Modal pour ajouter/modifier un utilisateur -->
-    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-light">
-                    <h5 class="modal-title" id="addUserModalLabel">Ajouter un utilisateur</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    </section>
 </main>

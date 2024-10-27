@@ -1,74 +1,143 @@
-// Sélectionner les éléments du formulaire
-const formInscription = document.getElementById("userForm");
-const inputNom = document.getElementById("NomInput");
-const inputPreNom = document.getElementById("PrenomInput");
-const inputMail = document.getElementById("EmailInput");
-const inputPassword = document.getElementById("PasswordInput"); // Mot de passe
+// Variables pour la table des utilisateurs
+const usersTableBody = document.querySelector('#manage-users tbody');
+const alertContainer = document.getElementById('alertContainer');
 
-inputNom.addEventListener("keyup", validateForm); 
-inputPreNom.addEventListener("keyup", validateForm);
-inputMail.addEventListener("keyup", validateForm);
-inputPassword.addEventListener("keyup", validateForm);
+console.log("Variables initialisées.");
 
-btnValidation.addEventListener("click", InscrireUtilisateur);
-
-
-//Function permettant de valider tout le formulaire
-function validateForm(){
-    const nomOk = validateRequired(inputNom);
-    const prenomOk = validateRequired(inputPreNom);
-    const mailOk = validateMail(inputMail);
-    const passwordOk = validatePassword(inputPassword);
-   
-
-    if(nomOk && prenomOk && mailOk && passwordOk){
-        btnValidation.disabled = false;
-    }
-    else{
-        btnValidation.disabled = true;
-    }
-}
-
-
-function validateRequired(input){
-    if(input.value != ''){
-        input.classList.add("is-valid");
-        input.classList.remove("is-invalid"); 
-        return true;
-    }
-    else{
-        input.classList.remove("is-valid");
-        input.classList.add("is-invalid");
-        return false;
-    }
-}
-
-
-function InscrireUtilisateur(){
-
-    let dataForm = new FormData(formInscription);
-
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("X-AUTH-TOKEN", "••••••");
-
-    let raw = JSON.stringify({
-        "firstName": dataForm.get("nom"),
-        "lastName": dataForm.get("prenom"),
-        "email": dataForm.get("email"),
-        "password": dataForm.get("password")
-    });
-
-    let requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow"
-    };
-
+// Fonction pour afficher les messages d'alerte
+function showAlert(type, message) {
+    const alertElement = document.createElement('div');
+    alertElement.className = `alert alert-${type} alert-dismissible fade show`;
+    alertElement.role = 'alert';
+    alertElement.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
     
-    fetch("https://127.0.0.1:8000/api/registration", requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.error(error));
+    alertContainer.appendChild(alertElement);
+
+    // Cacher le message après 5 secondes
+    setTimeout(() => {
+        alertElement.classList.remove('show');
+        alertElement.classList.add('d-none');
+        alertContainer.removeChild(alertElement);
+    }, 7000);
 }
+
+// Fonction pour récupérer le token depuis les cookies
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
+    return null;
+}
+
+// Fonction pour charger les utilisateurs depuis l'API
+async function loadUsers() {
+    console.log("Chargement des utilisateurs...");
+    const authToken = getCookie('accesstoken');
+
+    if (!authToken) {
+        showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+        return;
+    }
+
+    try {
+        const response = await fetch('https://127.0.0.1:8000/api/users', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': authToken
+            }
+        });
+
+        if (response.ok) {
+            const users = await response.json();
+            populateUserTable(users);
+            console.log("Utilisateurs chargés avec succès.");
+        } else {
+            const errorData = await response.json();
+            console.error("Erreur lors de la récupération des utilisateurs:", errorData);
+            showAlert('danger', errorData.message || "Erreur lors de la récupération des utilisateurs.");
+        }
+    } catch (error) {
+        console.error('Erreur de connexion:', error);
+        showAlert('danger', "Une erreur est survenue pendant la connexion au serveur. Veuillez réessayer plus tard.");
+    }
+}
+
+// Fonction pour afficher une boîte de dialogue de confirmation personnalisée
+function showDeleteConfirmation(user) {
+    const confirmationMessage = `Voulez-vous vraiment supprimer l'utilisateur : ${user.firstName} ${user.lastName} avec le rôle ${user.roles.join(', ')} ?`;
+    if (confirm(confirmationMessage)) {
+        deleteUser(user.id, user.firstName, user.lastName, user.roles);
+    } else {
+        showAlert('warning', `La suppression de ${user.firstName} ${user.lastName} a été annulée.`);
+    }
+}
+
+// Fonction pour gérer la suppression de l'utilisateur
+async function deleteUser(userId, firstName, lastName, roles) {
+    console.log("Suppression de l'utilisateur avec l'ID:", userId);
+    const authToken = getCookie('accesstoken');
+
+    if (!authToken) {
+        showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://127.0.0.1:8000/api/users/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': authToken
+            }
+        });
+
+        if (response.ok) {
+            showAlert('success', `L'utilisateur ${firstName} ${lastName} avec le rôle ${roles.join(', ')} a été supprimé avec succès.`);
+            loadUsers(); // Recharge la liste des utilisateurs sans rafraîchir la page
+        } else {
+            const errorData = await response.json();
+            console.error("Erreur lors de la suppression de l'utilisateur:", errorData);
+            showAlert('danger', errorData.message || "Erreur lors de la suppression de l'utilisateur.");
+        }
+    } catch (error) {
+        console.error('Erreur de connexion:', error);
+        showAlert('danger', "Une erreur est survenue pendant la connexion au serveur. Veuillez réessayer plus tard.");
+    }
+}
+
+// Fonction pour remplir la table des utilisateurs
+function populateUserTable(users) {
+    usersTableBody.innerHTML = '';
+    users.forEach(user => {
+        const roles = user.roles.join(', ');
+        const row = document.createElement('tr');
+        row.classList.add('hover-row');
+
+        row.innerHTML = `
+            <td>${user.lastName}</td>
+            <td>${user.firstName}</td>
+            <td>${user.email}</td>
+            <td>${roles}</td>
+            <td>
+                <button class="btn btn-warning btn-sm me-2 edit-user-btn">
+                    <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-danger btn-sm delete-user-btn">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </td>
+        `;
+
+        row.querySelector('.delete-user-btn').addEventListener('click', () => showDeleteConfirmation(user));
+        usersTableBody.appendChild(row);
+    });
+}
+
+// Appelle la fonction pour charger les utilisateurs lorsque la page est prête
+loadUsers();
