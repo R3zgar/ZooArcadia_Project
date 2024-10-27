@@ -1,36 +1,106 @@
 <main id="manage-users">
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h1 class="text-center mb-5 text-primary">Gestion des Utilisateurs</h1>
-            <div class="text-end mb-4">
-                <div class="text-center mb-5 mt-5" id="alertContainer"></div>
-                <a href="editPassword" class="btn btn-info btn-lg shadow-sm">
-                    <i class="bi bi-key"></i> Changer le mot de passe
-                </a>
-                <a href="new-users" class="btn btn-primary btn-lg shadow-sm">
-                    <i class="bi bi-plus-circle"></i> Ajouter un utilisateur
-                </a>
-            </div>
-
-            <!-- Tableau des utilisateurs -->
-            <div class="table-responsive">
-                <table class="table table-hover table-bordered text-center">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>E-mail</th>
-                            <th>Rôle</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Les utilisateurs seront ajoutés ici par JavaScript -->
-                    </tbody>
-                </table>
-            </div>
+    <div class="container py-5 bg-light">
+        <h1 class="text-start mb-5 text-primary">
+            <i class="bi bi-people-fill me-2"></i> Gestion des Utilisateurs
+        </h1>
+        <div class="text-end mb-4">
+            <div class="text-center mb-5 mt-5" id="alertContainer"></div>
+            <a href="editPassword" class="btn btn-info btn-lg shadow-sm">
+                <i class="bi bi-key"></i> Changer le mot de passe
+            </a>
+            <a href="new-users" class="btn btn-primary btn-lg shadow-sm">
+                <i class="bi bi-plus-circle"></i> Ajouter un utilisateur
+            </a>
         </div>
 
+        <!-- Tableau des utilisateurs -->
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>E-mail</th>
+                        <th>Rôle</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Les utilisateurs seront ajoutés ici par JavaScript -->
+                </tbody>
+            </table>
+        </div>
+<!-- Modal pour la modification des utilisateurs -->
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content shadow-lg border-0 rounded-3">
+            <div class="modal-header bg-primary text-white rounded-top">
+                <h5 class="modal-title" id="editUserModalLabel">
+                    <i class="bi bi-pencil-square me-2"></i> Modifier l'utilisateur
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-light">
+                <form id="editUserForm">
+                    <input type="hidden" id="editUserId">
+                    <div class="mb-3">
+                        <label for="editLastName" class="form-label">Nom</label>
+                        <input type="text" class="form-control border-primary shadow-sm" id="editLastName" placeholder="Entrez le nom" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editFirstName" class="form-label">Prénom</label>
+                        <input type="text" class="form-control border-primary shadow-sm" id="editFirstName" placeholder="Entrez le prénom" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editEmail" class="form-label">E-mail</label>
+                        <input type="email" class="form-control border-primary shadow-sm" id="editEmail" placeholder="Entrez l'e-mail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editRoles" class="form-label">Rôle</label>
+                        <select class="form-control border-primary shadow-sm" id="editRoles" required>
+                            <option value="ROLE_ADMIN">Administrateur</option>
+                            <option value="ROLE_EMPLOYE">Employé</option>
+                            <option value="ROLE_VETERINAIRE">Vétérinaire</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer bg-light rounded-bottom">
+                <button type="button" class="btn btn-secondary shadow-sm" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary shadow-sm" id="saveUserChanges">
+                    <i class="bi bi-save2"></i> Enregistrer les modifications
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
-    </section>
+
+    </div>
 </main>
+
+<style>
+
+.modal-content {
+    border-radius: 1rem;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.25);
+}
+
+#saveUserChanges:hover {
+    background-color: #0a58ca;
+    transition: background-color 0.3s ease;
+}
+
+</style>

@@ -18,8 +18,6 @@ function showAlert(type, message) {
 
     // Cacher le message après 5 secondes
     setTimeout(() => {
-        alertElement.classList.remove('show');
-        alertElement.classList.add('d-none');
         alertContainer.removeChild(alertElement);
     }, 7000);
 }
@@ -134,10 +132,87 @@ function populateUserTable(users) {
             </td>
         `;
 
-        row.querySelector('.delete-user-btn').addEventListener('click', () => showDeleteConfirmation(user));
+        // Ajout de l'événement pour le bouton de modification
+        row.querySelector('.edit-user-btn').addEventListener('click', (event) => {
+            event.stopPropagation(); // Empêche l'événement de propagation pour éviter d'ouvrir deux fois le modal
+            showEditUserModal(user);
+        });
+
+        // Ajout de l'événement pour le bouton de suppression
+        row.querySelector('.delete-user-btn').addEventListener('click', (event) => {
+            event.stopPropagation(); // Empêche l'événement de propagation pour éviter d'ouvrir deux fois le modal
+            showDeleteConfirmation(user);
+        });
+
+        // Ajout de l'événement pour l'ensemble de la ligne
+        row.addEventListener('click', () => showEditUserModal(user));
+
         usersTableBody.appendChild(row);
     });
 }
 
-// Appelle la fonction pour charger les utilisateurs lorsque la page est prête
+// Fonction pour afficher le modal de modification avec les données de l'utilisateur
+function showEditUserModal(user) {
+    document.getElementById('editUserId').value = user.id;
+    document.getElementById('editLastName').value = user.lastName;
+    document.getElementById('editFirstName').value = user.firstName;
+    document.getElementById('editEmail').value = user.email;
+
+    // Sélectionne le rôle approprié dans le select
+    document.getElementById('editRoles').value = user.roles[0];
+
+    const editUserModal = new bootstrap.Modal(document.getElementById('editUserModal'));
+    editUserModal.show();
+}
+
+// Fonction pour gérer la sauvegarde des modifications de l'utilisateur
+async function saveUserChanges() {
+    const userId = document.getElementById('editUserId').value;
+    const lastName = document.getElementById('editLastName').value;
+    const firstName = document.getElementById('editFirstName').value;
+    const email = document.getElementById('editEmail').value;
+    const role = document.getElementById('editRoles').value;
+
+    const authToken = getCookie('accesstoken');
+
+    if (!authToken) {
+        showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://127.0.0.1:8000/api/users/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': authToken
+            },
+            body: JSON.stringify({
+                lastName: lastName,
+                firstName: firstName,
+                email: email,
+                roles: [role] // Envoie le rôle sélectionné comme un tableau
+            })
+        });
+
+        if (response.ok) {
+            showAlert('success', "Les modifications ont été enregistrées avec succès.");
+            loadUsers();
+            const editUserModal = bootstrap.Modal.getInstance(document.getElementById('editUserModal'));
+            editUserModal.hide();
+        } else {
+            const errorData = await response.json();
+            console.error("Erreur lors de la modification de l'utilisateur:", errorData);
+            showAlert('danger', errorData.message || "Erreur lors de la modification de l'utilisateur.");
+        }
+    } catch (error) {
+        console.error('Erreur de connexion:', error);
+        showAlert('danger', "Une erreur est survenue pendant la connexion au serveur. Veuillez réessayer plus tard.");
+    }
+}
+
+// Ajout de l'événement pour le bouton de sauvegarde des modifications
+document.getElementById('saveUserChanges').addEventListener('click', saveUserChanges);
+
+// Charger les utilisateurs lorsque la page est prête
 loadUsers();
