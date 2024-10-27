@@ -11,7 +11,7 @@ export const allRoutes = [
     new Route("/account", "Mon compte", "/pages/auth/account.html", ["disconnected"]),
     new Route("/signin", "Connexion", "/pages/auth/signin.html", ["disconnected"], "/js/auth/signin.js"),
     new Route("/signup", "Inscriotion", "/pages/auth/signup.html", ["disconnected"],"/js/auth/signup.js"),
-    new Route("/editPassword", "Changement de mot de passe", "/pages/auth/editPassword.html", ["ROLE_ADMIN", "ROLE_VETERINAIRE", "ROLE_EMPLOYE"]),
+    new Route("/editPassword", "Changement de mot de passe", "/pages/auth/editPassword.html", ["ROLE_ADMIN", "ROLE_VETERINAIRE", "ROLE_EMPLOYE"], "/js/auth/editPassword.js"),
 
     new Route("/manage-users", "Gestion des utilisateurs", "/pages/admin/manage-users.html", ["ROLE_ADMIN"], "/js/admin/manage-users.js"),
     new Route("/manage-services", "Gestion des services", "/pages/admin/manage-services.html", ["ROLE_EMPLOYE"], "/js/admin/manage-services.js"),
