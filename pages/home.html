@@ -424,86 +424,14 @@
                 </div>
               </div>
             </div>
-          <!-- Button to trigger the modal -->
-          <div class="text-center mt-4 p-4">
-            <a href="commentaire" class="btn btn-primary  btn-lg">Laisser un avis</a>
-          </div>
+
+            <!-- Bouton pour ouvrir la page de soumission de commentaires -->
+<div class="text-center my-5">
+  <a href="/commentaire" class="btn btn-primary btn-lg">
+      <i class="bi bi-pencil-square"></i> Laisser un avis
+  </a>
+</div>
+
         </div>
     </div>
 </section>
-
-<!-- Script Fetch en Français -->
-<script>
-// Implémentation du JS pour le formulaire d'avis
-
-const formReview = document.getElementById('reviewForm');
-const inputPseudonym = document.getElementById('pseudonym');
-const inputReviewText = document.getElementById('reviewText');
-
-formReview.addEventListener('click', function (e) {
-  e.preventDefault();  // Empêche l'envoi par défaut du formulaire
-
-  let dataForm = new FormData(formReview);
-
-  // Préparer les en-têtes
-  let myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-\ // Remplacer par votre token
-
-  // Corps de la requête
-  let raw = JSON.stringify({
-      "animal_id": 1,  // ID de l'animal à ajuster si nécessaire
-      "auteur": dataForm.get("pseudonym"),
-      "contenu": dataForm.get("reviewText"),
-      "date": new Date().toISOString().split('T')[0]  // Format de date yyyy-mm-dd
-  });
-
-  let requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow"
-  };
-
-  // Envoie des données à l'API et gestion de la réponse
-  fetch("https://127.0.0.1:8000/api/commentaire", requestOptions)
-      .then(response => {
-          if (response.ok) {
-              return response.json();
-          } else {
-              throw new Error("Erreur lors de l'envoi de l'avis.");
-          }
-      })
-      .then(result => {
-          alert("Votre avis a été envoyé avec succès !");
-          formReview.reset();  // Réinitialise le formulaire
-          var modal = bootstrap.Modal.getInstance(document.getElementById('submitReviewModal'));
-          modal.hide();  // Ferme la modal après l'envoi
-      })
-      .catch(error => {
-          console.error('Erreur:', error);
-          alert("Une erreur est survenue lors de l'envoi de votre avis.");
-      });
-});
-</script>
-
-<!-- JavaScript to handle form submission -->
-<script>
-  document.getElementById('reviewForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Collect form data
-    const pseudonym = document.getElementById('pseudonym').value;
-    const reviewText = document.getElementById('reviewText').value;
-
-    // Send data to backend for validation (this is just a simulation)
-    // You will need an actual backend to handle this request
-    console.log('Review Submitted:', { pseudonym, reviewText });
-
-    // Close the modal after submission
-    const modal = bootstrap.Modal.getInstance(document.getElementById('submitReviewModal'));
-    modal.hide();
-
-    alert('Votre avis a été soumis pour validation.');
-  });
-</script>
