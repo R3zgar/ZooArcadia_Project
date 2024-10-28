@@ -1,144 +1,42 @@
 <main id="manage-habitats">
-    <!-- Titre de la page -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h1 class="text-center mb-5 text-primary">Gestion des Habitats</h1>
+    <div class="container py-5 bg-light">
+        <h1 class="text-primary mb-5">
+            <i class="bi bi-tree"></i> Gestion des Habitats
+        </h1>
 
-            <!-- Bouton d'ajout d'habitat -->
-            <div class="text-end mb-4">
+        
+        <div class="text-center mb-5 mt-5" id="alertContainer"></div>
 
-                <a href="editPassword" class="btn btn-info btn-lg shadow-sm">
-                    <i class="bi bi-key"></i> Changer le mot de passe
-                </a>
-                
-                <button class="btn btn-primary btn-lg shadow-sm" data-bs-toggle="modal" data-bs-target="#addHabitatModal">
-                    <i class="bi bi-plus-circle"></i> Ajouter un habitat
-                </button>
-            </div>
+        
+        <!-- Bouton pour ajouter un habitat -->
+        <div class="text-end mb-4">
 
-            <!-- Tableau des habitats -->
-            <div class="table-responsive">
-                <table class="table table-hover table-bordered text-center">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Nom de l'Habitat</th>
-                            <th>Description</th>
-                            <th>Rapport Vétérinaire</th>
-                            <th>Checkups</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Exemple d'habitat -->
-                        <tr class="hover-row">
-                            <td>Savane</td>
-                            <td>Un vaste habitat pour les animaux de la savane africaine.</td>
-                            <td>
-                                <a href="animal-reports" class="btn btn-info btn-sm"><i class="bi bi-file-earmark-medical"></i> Voir le rapport</a>
-                            </td>
-                            <td>
-                                <a href="checkups" class="btn btn-success btn-sm"><i class="bi bi-file-check"></i> Voir les checkups</a>
-                            </td>
-                            <td>
-                                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
-                                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
-                            </td>
-                        </tr>
-                        <tr class="hover-row">
-                            <td>Jungle</td>
-                            <td>Une jungle dense et verdoyante pour nos animaux exotiques.</td>
-                            <td>
-                                <a href="animal-reports" class="btn btn-info btn-sm"><i class="bi bi-file-earmark-medical"></i> Voir le rapport</a>
-                            </td>
-                            <td>
-                                <a href="checkups" class="btn btn-success btn-sm"><i class="bi bi-file-check"></i> Voir les checkups</a>
-                            </td>
-                            <td>
-                                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
-                                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
-                            </td>
-                        </tr>
-                        <tr class="hover-row">
-                            <td>Marais</td>
-                            <td>Un habitat humide et marécageux pour les crocodiles et tortues.</td>
-                            <td>
-                                <a href="animal-reports" class="btn btn-info btn-sm"><i class="bi bi-file-earmark-medical"></i> Voir le rapport</a>
-                            </td>
-                            <td>
-                                <a href="checkups" class="btn btn-success btn-sm"><i class="bi bi-file-check"></i> Voir les checkups</a>
-                            </td>
-                            <td>
-                                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
-                                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
-                            </td>
-                        </tr>
-                        <!-- D'autres lignes habitats seront affichées ici -->
-                    </tbody>
-                </table>
-            </div>
+            <a href="editPassword" class="btn btn-info btn-lg shadow-sm">
+                <i class="bi bi-key"></i> Changer le mot de passe
+            </a>
 
-            <!-- Lien pour accéder à la section Habitats et Animaux -->
-            <div class="text-start mt-4">
-                <a href="#habitats" class="btn btn-success btn-lg">
-                    <i class="bi bi-map"></i> Voir tous les habitats
-                </a>
-            </div>
+            <button class="btn btn-primary btn-lg shadow-sm" data-bs-toggle="modal" data-bs-target="#addHabitatModal">
+                <i class="bi bi-plus-circle"></i> Ajouter un habitat
+            </button>
         </div>
-    </section>
 
-    <!-- SECTION: Habitats et Animaux -->
-    <section id="habitats" class="p-5 text-light bg-secondary">
-        <div class="container mb-5">
-            <h2 class="text-center mb-5">Nos Habitats et Animaux</h2>
-            <p class="lead text-center mb-4">Explorez nos différents habitats soigneusement recréés pour offrir aux animaux un cadre naturel optimal.</p>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <!-- Savane -->
-                <div class="col">
-                    <a href="/habitats" class="card-link">
-                        <div class="card h-100 bg-light hover-card shadow-sm">
-                            <img src="images/savane.jpg" class="card-img-top" alt="Habitat Savane">
-                            <div class="card-body text-center">
-                                <h3 class="card-title p-4">Savane</h3>
-                                <p class="card-text text-center">
-                                    La savane recrée les vastes plaines africaines où vous pourrez admirer des espèces emblématiques comme les lions, les girafes et les éléphants.
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Jungle -->
-                <div class="col">
-                    <a href="/habitats" class="card-link">
-                        <div class="card h-100 bg-light hover-card shadow-sm">
-                            <img src="images/jungle.jpg" class="card-img-top" alt="Habitat Jungle">
-                            <div class="card-body text-center">
-                                <h3 class="card-title p-4">Jungle</h3>
-                                <p class="card-text text-center">
-                                    Observez des animaux tropicaux comme les tigres et les oiseaux colorés au cœur d'une jungle luxuriante.
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Marais -->
-                <div class="col">
-                    <a href="/habitats" class="card-link">
-                        <div class="card h-100 bg-light hover-card shadow-sm">
-                            <img src="images/marais.jpg" class="card-img-top" alt="Habitat Marais">
-                            <div class="card-body text-center">
-                                <h3 class="card-title p-4">Marais</h3>
-                                <p class="card-text text-center">
-                                    Découvrez des créatures aquatiques fascinantes dans notre marais, un habitat recréé pour accueillir crocodiles et tortues.
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+        <!-- Tableau des habitats -->
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nom de l'Habitat</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="habitatTableBody">
+                    <!-- Les données des habitats seront chargées ici via JavaScript -->
+                </tbody>
+            </table>
         </div>
-    </section>
+    </div>
 
     <!-- Modal pour ajouter/modifier un habitat -->
     <div class="modal fade" id="addHabitatModal" tabindex="-1" aria-labelledby="addHabitatModalLabel" aria-hidden="true">
@@ -152,14 +50,20 @@
                     <form id="habitatForm">
                         <!-- Nom de l'Habitat -->
                         <div class="mb-3">
-                            <label for="nomHabitatInput" class="form-label">Nom de l'Habitat</label>
-                            <input type="text" class="form-control" id="nomHabitatInput" placeholder="Saisir le nom de l'habitat">
+                            <label for="habitatName" class="form-label">Nom de l'Habitat</label>
+                            <input type="text" class="form-control" id="habitatName" placeholder="Saisir le nom de l'habitat" required>
                         </div>
 
                         <!-- Description de l'Habitat -->
                         <div class="mb-3">
-                            <label for="descriptionHabitatInput" class="form-label">Description de l'Habitat</label>
-                            <textarea class="form-control" id="descriptionHabitatInput" rows="3" placeholder="Saisir la description de l'habitat"></textarea>
+                            <label for="habitatDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="habitatDescription" rows="3" placeholder="Saisir la description de l'habitat" required></textarea>
+                        </div>
+
+                        <!-- Image de l'Habitat -->
+                        <div class="mb-3">
+                            <label for="habitatImage" class="form-label">Image</label>
+                            <input type="text" class="form-control" id="habitatImage" placeholder="URL de l'image de l'habitat" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">Enregistrer</button>
