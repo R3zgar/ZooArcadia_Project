@@ -1,0 +1,86 @@
+<main id="manage-feeding">
+    <div class="container py-5 bg-light">
+        <h1 class="text-primary mb-5">
+            <i class="bi bi-egg-fried"></i> Gestion de l'alimentation
+        </h1>
+        
+        <div class="text-center mb-5 mt-5" id="alertContainer"></div>
+
+        <!-- Bouton d'ajout d'alimentation -->
+        <div class="text-end mb-4">
+            <a href="manage-services" class="me-3 text-primary text-decoration-none">
+                <i class="bi bi-arrow-left-circle"></i> Revenir à la gestion des services
+            </a>
+            <a href="editPassword" class="btn btn-info btn-lg shadow-sm">
+                <i class="bi bi-key"></i> Changer le mot de passe
+            </a>
+            <button class="btn btn-primary btn-lg shadow-sm" data-bs-toggle="modal" data-bs-target="#addFeedingModal">
+                <i class="bi bi-plus-circle"></i> Ajouter une alimentation
+            </button>
+        </div>
+
+        <!-- Table des rapports vétérinaires -->
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>État de l'animal</th>
+                        <th>Nourriture</th>
+                        <th>Grammage (g)</th>
+                        <th>Date de passage</th>
+                        <th>Dernière mise à jour</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="veterinaireRapportsTable">
+                    <!-- Les rapports seront chargés ici par JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-end mb-4">
+            <a href="javascript:void(0)" class="text-warning text-decoration-none" onclick="checkAnimalHealth(event)">
+                <i class="bi bi-exclamation-triangle"></i> Vérifier l'état des animaux
+            </a>
+        </div>
+
+    </div>
+
+
+    <!-- Modal pour la modification des rapports vétérinaires -->
+<div class="modal fade" id="editFeedingModal" tabindex="-1" aria-labelledby="editFeedingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-light">
+                <h5 class="modal-title" id="editFeedingModalLabel">Modifier le rapport vétérinaire</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editFeedingForm">
+                    <input type="hidden" id="rapportIdInput">
+                    <div class="mb-3">
+                        <label for="editEtatAnimalInput" class="form-label">État de l'animal</label>
+                        <input type="text" class="form-control" id="editEtatAnimalInput" placeholder="Entrez l'état de l'animal">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editNourritureInput" class="form-label">Nourriture</label>
+                        <input type="text" class="form-control" id="editNourritureInput" placeholder="Entrez la nourriture">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editGrammageInput" class="form-label">Grammage (g)</label>
+                        <input type="number" class="form-control" id="editGrammageInput" placeholder="Entrez le grammage">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDatePassageInput" class="form-label">Date de passage</label>
+                        <input type="datetime-local" class="form-control" id="editDatePassageInput">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Enregistrer les modifications</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</main>

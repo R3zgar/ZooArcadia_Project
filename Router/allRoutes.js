@@ -17,7 +17,7 @@ export const allRoutes = [
     new Route("/manage-services", "Gestion des services", "/pages/admin/manage-services.html", ["ROLE_EMPLOYE"], "/js/admin/manage-services.js"),
     new Route("/manage-habitats", "Gestion des habitats", "/pages/admin/manage-habitats.html", ["ROLE_VETERINAIRE"], "/js/admin/manage-habitats.js"),
 
-    new Route("/manage-food", "Gestion des stocks alimentaires", "/pages/employee/manage-food.html", ["ROLE_EMPLOYE"]),
+    new Route("/manage-feeding", "Gérer l'alimentation", "/pages/employee/manage-feeding.html", ["ROLE_EMPLOYE"], "/js/employee/manage-feeding.js"),
     new Route("/validate-reviews", "Validation des avis", "/pages/employee/validate-reviews.html", ["ROLE_EMPLOYE"]),
     
     new Route("/checkups", "Contrôles de santé", "/pages/veterinary/checkups.html", ["ROLE_VETERINAIRE"]),
@@ -25,11 +25,7 @@ export const allRoutes = [
 
     new Route("/new-users", "Ajouter des nouvelle  utilisateurs", "/pages/admin/newuser.html", ["ROLE_ADMIN"], "/js/admin/newuser.js"),
     new Route("/commentaire", "Ajouter les nouvelle commentaires", "/pages/employee/commentaire.html", [], "/js/employee/commentaire.js"),
-
-
    
-
-
 
 ];
 
