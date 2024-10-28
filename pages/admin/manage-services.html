@@ -2,7 +2,10 @@
     <!-- Titre de la page -->
     <section class="py-5 bg-light">
         <div class="container">
-            <h1 class="text-center mb-5 text-primary">Gestion des Services</h1>
+            <h1 class=" mb-3 text-primary">Gestion des Services</h1>
+
+            <div class="text-center mb-5 mt-5" id="alertContainer"></div>
+
 
             <!-- Bouton d'ajout de service -->
             <div class="text-end mb-4">
@@ -15,35 +18,27 @@
                 </button>
             </div>
 
-            <!-- Tableau des services -->
-            <div class="table-responsive">
-                <table class="table table-hover table-bordered text-center">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Nom du service</th>
-                            <th>Description</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Exemple de service -->
-                        <tr class="hover-row">
-                            <td>Visite Guidée</td>
-                            <td>Une visite guidée du zoo avec un expert qui vous fera découvrir les animaux de près.</td>
-                            <td>
-                                <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i> Modifier</button>
-                                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Supprimer</button>
-                            </td>
-                        </tr>
-                        <!-- D'autres lignes services seront affichées ici -->
-                    </tbody>
-                </table>
-            </div>
+                <!-- Tableau des services -->
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered text-center">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Nom du service</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="servicesTableBody">
+                            <!-- Les services seront affichés ici -->
+                        </tbody>
+                    </table>
+                </div>
+
 
             <!-- Bloc de gestion des commentaires -->
             <section class="py-5 mt-5">
                 <div class="container">
-                    <h2 class="text-center mb-4 text-primary">Gestion des Commentaires</h2>
+                    <h2 class=" mb-2 text-primary">Gestion des Commentaires</h2>
 
                         <!-- Tableau des commentaires -->
                         <div class="table-responsive">
@@ -94,3 +89,31 @@
         </div>
     </div>
 </main>
+
+
+
+<!-- Modal pour ajouter/modifier un service -->
+<div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-light">
+                <h5 class="modal-title" id="addServiceModalLabel">Ajouter/Modifier un service</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="serviceForm">
+                    <input type="hidden" id="serviceIdInput">
+                    <div class="mb-3">
+                        <label for="nomServiceInput" class="form-label">Nom du Service</label>
+                        <input type="text" class="form-control" id="nomServiceInput" placeholder="Saisir le nom du service">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descriptionServiceInput" class="form-label">Description du Service</label>
+                        <textarea class="form-control" id="descriptionServiceInput" rows="3" placeholder="Saisir la description du service"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

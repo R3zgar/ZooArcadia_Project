@@ -2,6 +2,10 @@
 const commentsTableBody = document.querySelector('#commentsTableBody');
 const alertContainer = document.getElementById('alertContainer');
 
+// Variables pour la table des services
+const servicesTableBody = document.querySelector('#servicesTableBody');
+
+console.log("Variables initialisées pour la gestion des services.");
 console.log("Variables initialisées pour la gestion des commentaires.");
 
 // Fonction pour afficher un message d'alerte dans alertContainer
@@ -72,7 +76,6 @@ async function loadComments() {
 }
 
 
-
 // Fonction pour approuver un commentaire
 async function approveComment(commentId) {
     console.log("Approbation du commentaire ID:", commentId);
@@ -111,11 +114,15 @@ async function approveComment(commentId) {
 
 // Fonction pour gérer la suppression d'un commentaire
 async function deleteComment(commentId) {
-    console.log("Suppression du commentaire avec l'ID:", commentId);
     const authToken = getCookie('accesstoken');
 
     if (!authToken) {
         showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+        return;
+    }
+
+    // Afficher une confirmation avant de supprimer le commentaire
+    if (!confirm("Êtes-vous sûr de vouloir supprimer ce commentaire ? Cette action est irréversible.")) {
         return;
     }
 
@@ -130,7 +137,7 @@ async function deleteComment(commentId) {
 
         if (response.ok) {
             showAlert('success', "Commentaire supprimé avec succès.");
-            loadComments();
+            loadComments(); // Rafraîchir la liste des commentaires après suppression
         } else {
             const errorData = await response.json();
             console.error("Erreur lors de la suppression du commentaire:", errorData);
@@ -141,6 +148,7 @@ async function deleteComment(commentId) {
         showAlert('danger', "Une erreur est survenue pendant la connexion au serveur. Veuillez réessayer plus tard.");
     }
 }
+
 
 
 function populateCommentTable(comments) {
@@ -179,3 +187,339 @@ function populateCommentTable(comments) {
 
 // Charger les commentaires lorsque la page est prête
 loadComments();
+
+
+/// Fonction pour remplir la table des services
+function populateServiceTable(services) {
+    const servicesTableBody = document.querySelector('#servicesTableBody');
+    servicesTableBody.innerHTML = '';
+
+    services.forEach(service => {
+        const row = document.createElement('tr');
+        row.classList.add('hover-row');
+
+        row.innerHTML = `
+            <td>${service.nom_service}</td>
+            <td>${service.description_service}</td>
+            <td class="action-buttons d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
+                <button class="btn btn-warning btn-sm mb-2 mb-md-0" onclick="editService(${service.id})" title="Modifier">
+                    <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-danger btn-sm" onclick="deleteService(${service.id}, '${service.nom_service}')" title="Supprimer">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </td>
+        `;
+
+        servicesTableBody.appendChild(row);
+    });
+}
+
+
+
+
+async function loadServices() {
+    console.log("Chargement des services...");
+    const authToken = getCookie('accesstoken');
+
+    if (!authToken) {
+        showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+        return;
+    }
+
+    try {
+        const response = await fetch('https://127.0.0.1:8000/api/service', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': authToken
+            }
+        });
+
+        console.log('Statut de la réponse:', response.status);
+        const data = await response.json();
+        console.log('Données reçues:', data); // Gelen verileri kontrol etmek için
+
+        if (response.ok) {
+            populateServiceTable(data.data);
+            console.log("Services chargés avec succès.");
+        } else {
+            console.error("Erreur lors de la récupération des services:", data);
+            showAlert('danger', data.message || "Erreur lors de la récupération des services.");
+        }
+    } catch (error) {
+        console.error('Erreur de connexion:', error);
+        showAlert('danger', "Une erreur est survenue pendant la connexion au serveur. Veuillez réessayer plus tard.");
+    }
+}
+
+// Fonction pour gérer la modification d'un service
+function editService(serviceId) {
+    console.log(`Modification du service avec l'ID: ${serviceId}`);
+    const authToken = getCookie('accesstoken');
+
+    // Vérifier si le token est disponible
+    if (!authToken) {
+        showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+        return;
+    }
+
+    // Récupérer les données du service pour pré-remplir le formulaire de modification
+    fetch(`https://127.0.0.1:8000/api/service/${serviceId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-AUTH-TOKEN': authToken
+        }
+    })
+    .then(response => {
+        console.log('Statut de la réponse:', response.status); // Yanıt durumu kontrolü
+        return response.json();
+    })
+    .then(data => {
+        console.log('Données reçues pour la modification:', data); // API'den alınan veriler
+        
+        // Vérifier si les données sont présentes
+        if (data?.data?.nom_service && data?.data?.description_service) {
+            const service = data.data;
+
+            // Pré-remplir les champs du formulaire avec les données du service
+            document.getElementById('serviceIdInput').value = service.id || '';
+            document.getElementById('nomServiceInput').value = service.nom_service || '';
+            document.getElementById('descriptionServiceInput').value = service.description_service || '';
+
+            // Ouvrir le modal de modification
+            const addServiceModal = new bootstrap.Modal(document.getElementById('addServiceModal'));
+            addServiceModal.show();
+        } else {
+            showAlert('danger', "Erreur lors de la récupération des données du service.");
+        }
+    })
+    .catch(error => {
+        console.error("Erreur lors de la récupération du service:", error);
+        showAlert('danger', "Une erreur est survenue pendant la connexion au serveur. Veuillez réessayer plus tard.");
+    });
+}
+
+
+
+// Fonction pour mettre à jour un service existant
+async function updateService(serviceId, nomService, descriptionService) {
+    console.log("Mise à jour du service ID:", serviceId);
+
+    const authToken = getCookie('accesstoken');
+    if (!authToken) {
+        showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://127.0.0.1:8000/api/service/${serviceId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': authToken
+            },
+            body: JSON.stringify({
+                nom_service: nomService,
+                description_service: descriptionService
+            })
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            showAlert('success', result.message || 'Service mis à jour avec succès.');
+        } else {
+            const errorData = await response.json();
+            console.error("Erreur lors de la mise à jour du service:", errorData);
+            showAlert('danger', errorData.message || "Erreur lors de la mise à jour du service.");
+        }
+    } catch (error) {
+        console.error('Erreur de connexion:', error);
+        showAlert('danger', "Une erreur est survenue pendant la connexion au serveur. Veuillez réessayer plus tard.");
+    }
+}
+
+
+// Fonction pour ouvrir le modal pour ajouter un nouveau service
+function openAddServiceModal() {
+    console.log("Ouverture du modal pour ajouter un nouveau service.");
+    
+    // Réinitialiser les champs du formulaire avant d'ouvrir le modal
+    document.getElementById('serviceIdInput').value = ''; // ID alanını temizle
+    document.getElementById('nomServiceInput').value = ''; // Nom alanını temizle
+    document.getElementById('descriptionServiceInput').value = ''; // Description alanını temizle
+
+    // Ouvrir le modal
+    const addServiceModal = new bootstrap.Modal(document.getElementById('addServiceModal'));
+    addServiceModal.show();
+}
+
+// Écouter l'événement de clic sur le bouton "Ajouter un service"
+document.getElementById('addServiceModalLabel').addEventListener('click', openAddServiceModal);
+
+
+// Fonction pour ajouter un nouveau service
+async function addService(nomService, descriptionService) {
+    console.log("Ajout d'un nouveau service:", nomService);
+
+    const authToken = getCookie('accesstoken');
+    if (!authToken) {
+        showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+        return;
+    }
+
+    try {
+        const response = await fetch('https://127.0.0.1:8000/api/service', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': authToken
+            },
+            body: JSON.stringify({
+                nom_service: nomService,
+                description_service: descriptionService
+            })
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            showAlert('success', result.message || 'Nouveau service créé avec succès.');
+        } else {
+            const errorData = await response.json();
+            console.error("Erreur lors de l'ajout du service:", errorData);
+            showAlert('danger', errorData.message || "Erreur lors de l'ajout du service.");
+        }
+    } catch (error) {
+        console.error('Erreur de connexion:', error);
+        showAlert('danger', "Une erreur est survenue pendant la connexion au serveur. Veuillez réessayer plus tard.");
+    }
+}
+
+
+
+
+// Fonction pour gérer la sauvegarde des modifications de service
+async function saveServiceChanges(event) {
+    event.preventDefault();
+    
+    const serviceId = document.getElementById('serviceIdInput').value;
+    const nomService = document.getElementById('nomServiceInput').value;
+    const descriptionService = document.getElementById('descriptionServiceInput').value;
+
+    const authToken = getCookie('accesstoken');
+
+    if (!authToken) {
+        showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://127.0.0.1:8000/api/service/${serviceId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': authToken
+            },
+            body: JSON.stringify({
+                nom_service: nomService,
+                description_service: descriptionService
+            })
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            showAlert('success', result.message);
+            loadServices(); // Recharger les services pour afficher les mises à jour
+            const addServiceModal = bootstrap.Modal.getInstance(document.getElementById('addServiceModal'));
+            addServiceModal.hide();
+        } else {
+            const errorData = await response.json();
+            console.error("Erreur lors de la modification du service:", errorData);
+            showAlert('danger', errorData.message || "Erreur lors de la modification du service.");
+        }
+    } catch (error) {
+        console.error('Erreur de connexion:', error);
+        showAlert('danger', "Une erreur est survenue pendant la connexion au serveur. Veuillez réessayer plus tard.");
+    }
+}
+
+
+
+// Écouter l'événement de soumission du formulaire de service
+document.getElementById('serviceForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const serviceId = document.getElementById('serviceIdInput').value; // Récupérer l'ID du service à partir du champ caché
+    const nomService = document.getElementById('nomServiceInput').value;
+    const descriptionService = document.getElementById('descriptionServiceInput').value;
+
+    console.log('Service ID:', serviceId);
+    console.log('Nom du Service:', nomService);
+    console.log('Description du Service:', descriptionService);
+
+    if (serviceId) {
+        // Mettre à jour un service existant
+        await updateService(serviceId, nomService, descriptionService);
+    } else {
+        // Ajouter un nouveau service
+        await addService(nomService, descriptionService);
+    }
+
+    // Réinitialiser le formulaire et masquer le modal après soumission
+    this.reset();
+    const editModal = bootstrap.Modal.getInstance(document.getElementById('addServiceModal'));
+    editModal.hide();
+
+    // Recharger la liste des services pour afficher les changements
+    loadServices();
+});
+
+
+
+
+
+
+// Fonction pour gérer la suppression d'un service
+async function deleteService(serviceId, nomService) {
+    console.log(`Demande de suppression du service: ${nomService} avec l'ID: ${serviceId}`);
+    const authToken = getCookie('accesstoken');
+
+    if (!authToken) {
+        showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+        return;
+    }
+
+    // Afficher un message de confirmation avant de procéder à la suppression
+    if (!confirm(`Êtes-vous sûr de vouloir supprimer le service : ${nomService} ? Cette action est irréversible.`)) {
+        showAlert('warning', "La suppression a été annulée.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://127.0.0.1:8000/api/service/${serviceId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': authToken
+            }
+        });
+
+        if (response.ok) {
+            showAlert('success', `Service "${nomService}" supprimé avec succès.`);
+            loadServices(); // Recharger la liste des services pour mettre à jour l'affichage
+        } else {
+            const errorData = await response.json();
+            console.error("Erreur lors de la suppression du service:", errorData);
+            showAlert('danger', errorData.message || "Erreur lors de la suppression du service.");
+        }
+    } catch (error) {
+        console.error('Erreur de connexion:', error);
+        showAlert('danger', "Une erreur est survenue pendant la connexion au serveur. Veuillez réessayer plus tard.");
+    }
+}
+
+
+
+// Charger les services lorsque la page est prête
+loadServices();
