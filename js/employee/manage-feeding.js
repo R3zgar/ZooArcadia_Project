@@ -31,10 +31,6 @@ function showAlert(type, message, etatAnimal = '') {
 
 
 
-
-
-
-
 // Fonction pour récupérer le token depuis les cookies
 function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -93,10 +89,15 @@ function checkAnimalHealth() {
     } else {
         showAlert('success', `Tous les animaux sont en bonne santé. (${enBonneSante} animal(s))`);
     }
+
+    // Charger les rapports vétérinaires lorsque la page est prête
+    loadVeterinaireRapports();
+
+    highlightMaladeRows();
+
+
 }
 
-// Charger les rapports vétérinaires lorsque la page est prête
-loadVeterinaireRapports();
 
 
 
@@ -135,16 +136,15 @@ function populateVeterinaireRapportsTable(rapports) {
                 <button class="btn btn-warning btn-sm" title="Modifier" onclick='openEditModal(${JSON.stringify(rapport)})'>
                     <i class="bi bi-pencil"></i>
                 </button>
-                <button class="btn btn-danger btn-sm" onclick="deleteVeterinaireRapport(${rapport.id})" title="Supprimer">
+                <button class="btn btn-danger btn-sm" onclick="deleteVeterinaireRapport(${rapport.id}, '${rapport.etat_animal}')" title="Supprimer">
                     <i class="bi bi-trash"></i>
                 </button>
             </td>
         `;
         veterinaireRapportsTableBody.appendChild(row);
     });
+    highlightMaladeRows();
 }
-
-
 
 
 
@@ -153,11 +153,16 @@ function populateVeterinaireRapportsTable(rapports) {
 // Fonction pour gérer la suppression d'un rapport vétérinaire
 async function deleteVeterinaireRapport(rapportId, etatAnimal) {
     console.log("Demande de suppression pour le rapport ID:", rapportId);
-    const authToken = getCookie('accesstoken');
+    const authToken = getAuthTokenFromCookie();
 
     if (!authToken) {
         showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
         return;
+    }
+
+    // Assurez-vous que etatAnimal est défini correctement avant de continuer
+    if (!etatAnimal) {
+        etatAnimal = "inconnu";
     }
 
     // Afficher une confirmation avant de supprimer le rapport
@@ -176,7 +181,7 @@ async function deleteVeterinaireRapport(rapportId, etatAnimal) {
         });
 
         if (response.ok) {
-            showAlert('success', "Rapport vétérinaire supprimé avec succès pour l'animal en état: " + etatAnimal);
+            showAlert('success', `Rapport vétérinaire supprimé avec succès pour l'animal en état: ${etatAnimal}`);
             loadVeterinaireRapports(); // Recharger la liste des rapports après suppression
         } else {
             const errorData = await response.json();
@@ -192,27 +197,6 @@ async function deleteVeterinaireRapport(rapportId, etatAnimal) {
 
 
 
-
-
-
-// Fonction pour ouvrir le modal pour la modification d'un rapport
-function openEditModal(rapport) {
-    const editModal = new bootstrap.Modal(document.getElementById('editFeedingModal'));
-    if (!editModal) {
-        console.error("Modal couldn't be found.");
-        return;
-    }
-    // Préremplir les champs du formulaire avec les données du rapport
-    document.getElementById('editEtatAnimalInput').value = rapport.etat_animal;
-    document.getElementById('editNourritureInput').value = rapport.nourriture;
-    document.getElementById('editGrammageInput').value = rapport.grammage;
-    document.getElementById('editDatePassageInput').value = rapport.date_passage;
-    document.getElementById('rapportIdInput').value = rapport.id;
-
-    // Afficher le modal de modification
-    editModal.show();
-    console.log('Modal ouvert pour le rapport:', rapport);
-}
 
 // Fonction pour sauvegarder les modifications du rapport
 async function saveRapportChanges(event) {
@@ -263,11 +247,107 @@ async function saveRapportChanges(event) {
     }
 }
 
-// Écouter l'événement de soumission du formulaire de modification
-document.getElementById('editFeedingForm').addEventListener('submit', saveRapportChanges);
+
 
 
 // Charger les rapports vétérinaires lorsque la page est prête
 loadVeterinaireRapports();
 
 
+// Fonction pour récupérer le token depuis les cookies
+function getAuthTokenFromCookie() {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; accesstoken=`);
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
+    return null;
+}
+
+// Fonction pour ajouter un nouveau rapport vétérinaire
+async function addVeterinaireRapport(event) {
+    event.preventDefault();
+
+    const etatAnimal = document.getElementById('etatAnimalInput').value.trim();
+    const nourriture = document.getElementById('nourritureInput').value.trim();
+    const grammage = document.getElementById('grammageInput').value.trim();
+    const datePassage = document.getElementById('datePassageInput').value.trim();
+    const animalId = parseInt(document.getElementById('animalIdInput').value.trim());
+
+    // Validation des champs
+    if (!etatAnimal || !nourriture || !grammage || !datePassage || isNaN(animalId)) {
+        showAlert('danger', "Tous les champs sont obligatoires. Veuillez remplir tous les champs.");
+        return;
+    }
+
+    // Validation pour l'ID de l'animal (1 à 3)
+    if (animalId < 1 || animalId > 3) {
+        showAlert('danger', "L'ID de l'animal doit être compris entre 1 et 3.");
+        return;
+    }
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("X-AUTH-TOKEN", getAuthTokenFromCookie());
+
+    const raw = JSON.stringify({
+        "etat_animal": etatAnimal,
+        "nourriture": nourriture,
+        "grammage": parseInt(grammage),
+        "date_passage": datePassage,
+        "animal_id": animalId
+    });
+
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
+
+    try {
+        const response = await fetch("https://127.0.0.1:8000/api/veterinaire_rapport", requestOptions);
+        const result = await response.json();
+
+        if (response.ok) {
+            showAlert('success', "Nouveau rapport vétérinaire ajouté avec succès.");
+            loadVeterinaireRapports(); // Recharger la liste après l'ajout
+            const addModal = bootstrap.Modal.getInstance(document.getElementById('addFeedingModal'));
+            addModal.hide();
+            document.getElementById('addFeedingForm').reset();
+        } else {
+            console.error("Erreur lors de l'ajout du rapport:", result);
+            showAlert('danger', result.message || "Erreur lors de l'ajout du rapport vétérinaire.");
+        }
+    } catch (error) {
+        console.error('Erreur de connexion:', error);
+        showAlert('danger', "Une erreur est survenue pendant la connexion au serveur.");
+    }
+}
+
+
+// Écouter l'événement de soumission du formulaire d'ajout
+document.getElementById('addFeedingForm').addEventListener('submit', addVeterinaireRapport);
+
+
+
+
+// Fonction pour ouvrir le modal de modification avec les données du rapport
+function openEditModal(rapport) {
+    const editModal = new bootstrap.Modal(document.getElementById('editFeedingModal'));
+    document.getElementById('editEtatAnimalInput').value = rapport.etat_animal;
+    document.getElementById('editNourritureInput').value = rapport.nourriture;
+    document.getElementById('editGrammageInput').value = rapport.grammage;
+    document.getElementById('editDatePassageInput').value = rapport.date_passage;
+    document.getElementById('rapportIdInput').value = rapport.id;
+    editModal.show();
+}
+
+// Écouter l'événement de soumission du formulaire de modification
+document.getElementById('editFeedingForm').addEventListener('submit', saveRapportChanges);
+
+
+// Charger les rapports vétérinaires lorsque la page est prête
+document.addEventListener('DOMContentLoaded', loadVeterinaireRapports);
+// Charger les rapports vétérinaires lorsque la page est prête
+loadVeterinaireRapports();

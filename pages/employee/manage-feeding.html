@@ -8,7 +8,7 @@
 
         <!-- Bouton d'ajout d'alimentation -->
         <div class="text-end mb-4">
-            <a href="manage-services" class="me-3 text-primary text-decoration-none">
+            <a href="manage-services" class="me-3 text-secondary text-decoration-none">
                 <i class="bi bi-arrow-left-circle"></i> Revenir à la gestion des services
             </a>
             <a href="editPassword" class="btn btn-info btn-lg shadow-sm">
@@ -39,20 +39,21 @@
         </div>
 
         <div class="text-end mb-4">
-            <a href="javascript:void(0)" class="text-warning text-decoration-none" onclick="checkAnimalHealth(event)">
+            <a href="javascript:void(0)" class="text-secondary text-decoration-none" onclick="checkAnimalHealth(event)">
                 <i class="bi bi-exclamation-triangle"></i> Vérifier l'état des animaux
             </a>
         </div>
 
     </div>
 
-
-    <!-- Modal pour la modification des rapports vétérinaires -->
+<!-- Modal pour la modification des rapports vétérinaires -->
 <div class="modal fade" id="editFeedingModal" tabindex="-1" aria-labelledby="editFeedingModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-light">
-                <h5 class="modal-title" id="editFeedingModalLabel">Modifier le rapport vétérinaire</h5>
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content shadow-lg border-0">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="editFeedingModalLabel">
+                    <i class="bi bi-pencil-square"></i> Modifier le rapport vétérinaire
+                </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -74,7 +75,9 @@
                         <label for="editDatePassageInput" class="form-label">Date de passage</label>
                         <input type="datetime-local" class="form-control" id="editDatePassageInput">
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Enregistrer les modifications</button>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">
+                        <i class="bi bi-save"></i> Enregistrer les modifications
+                    </button>
                 </form>
             </div>
         </div>
@@ -83,4 +86,46 @@
 
 
 
+
 </main>
+
+<!-- Modal pour l'ajout des rapports vétérinaires -->
+<div class="modal fade" id="addFeedingModal" tabindex="-1" aria-labelledby="addFeedingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content shadow-lg border-0">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="addFeedingModalLabel">
+                    <i class="bi bi-plus-circle"></i> Ajouter un rapport vétérinaire
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addFeedingForm">
+                    <div class="mb-3">
+                        <label for="etatAnimalInput" class="form-label">État de l'animal</label>
+                        <input type="text" class="form-control" id="etatAnimalInput" placeholder="Entrez l'état de l'animal">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nourritureInput" class="form-label">Nourriture</label>
+                        <input type="text" class="form-control" id="nourritureInput" placeholder="Entrez la nourriture">
+                    </div>
+                    <div class="mb-3">
+                        <label for="grammageInput" class="form-label">Grammage (g)</label>
+                        <input type="number" class="form-control" id="grammageInput" placeholder="Entrez le grammage">
+                    </div>
+                    <div class="mb-3">
+                        <label for="datePassageInput" class="form-label">Date de passage</label>
+                        <input type="datetime-local" class="form-control" id="datePassageInput">
+                    </div>
+                    <div class="mb-3">
+                        <label for="animalIdInput" class="form-label">ID de l'animal</label>
+                        <input type="number" class="form-control" id="animalIdInput" placeholder="Entrez l'ID de l'animal">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">
+                        <i class="bi bi-check-circle"></i> Ajouter le rapport
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
