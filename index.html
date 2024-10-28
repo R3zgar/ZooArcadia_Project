@@ -55,47 +55,63 @@
     </main>
 
 <!-- FOOTER -->
-<footer class="footer bg-secondary text-white py-4">
+<footer class="footer bg-secondary text-white py-5">
   <div class="container">
-    <div class="row text-center text-md-start">
+    <div class="row text-center text-md-start align-items-start">
       <!-- Section À propos -->
-      <div class="col-md-4 mb-3 text-center">
-        <h5 class="text-uppercase text-info">Zoo Arcadia</h5>
-        <p class="justify-text">
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase text-info mb-3">Zoo Arcadia</h5>
+        <p class="text-light">
           Découvrez les merveilles de la nature au Zoo Arcadia, un lieu dédié à la préservation de la faune et à la sensibilisation écologique. Rejoignez-nous dans notre mission de protection de l'environnement.
         </p>
       </div>
       
       <!-- Liens rapides -->
-      <div class="col-md-4 mb-3 text-center">
-        <h5 class="text-uppercase text-info">Liens rapides</h5>
-        <ul class="list-unstyled ">
-          <li><a href="/" class="text-white link-underline link-underline-opacity-0">Accueil</a></li>
-          <li><a href="/services" class="text-white link-underline link-underline-opacity-0">Services</a></li>
-          <li><a href="/habitats" class="text-white link-underline link-underline-opacity-0">Habitats</a></li>
-          <li><a href="/contact" class="text-white link-underline link-underline-opacity-0">Contact</a></li>
-          <li><a href="/confidentialite" class="text-white link-underline link-underline-opacity-0">Politique de confidentialité</a></li>
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase text-info mb-3">Liens rapides</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/" class="text-white text-decoration-none link-underline-opacity-0 link-underline-hover">Accueil</a></li>
+          <li class="mb-2"><a href="/services" class="text-white text-decoration-none link-underline-opacity-0 link-underline-hover">Services</a></li>
+          <li class="mb-2"><a href="/habitats" class="text-white text-decoration-none link-underline-opacity-0 link-underline-hover">Habitats</a></li>
+          <li class="mb-2"><a href="/contact" class="text-white text-decoration-none link-underline-opacity-0 link-underline-hover">Contact</a></li>
+          <li><a href="/confidentialite" class="text-white text-decoration-none link-underline-opacity-0 link-underline-hover">Politique de confidentialité</a></li>
         </ul>
       </div>
 
       <!-- Contact & réseaux sociaux -->
-      <div class="col-md-4 mb-3 text-center">
-        <h5 class="text-uppercase text-info">Contactez-nous</h5>
-        <p>Email : <a href="mailto:info@zooarcadia.com" class="text-white link-underline link-underline-opacity-0">info@zooarcadia.com</a></p>
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase text-info mb-3">Contactez-nous</h5>
+        <p><a href="mailto:info@zooarcadia.com" class="text-white text-decoration-none">info@zooarcadia.com</a></p>
         <p>Téléphone : +33 123 456 789</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="/" class="text-white"><i class="bi bi-facebook"></i></a></li>
-          <li class="list-inline-item"><a href="/" class="text-white"><i class="bi bi-twitter"></i></a></li>
-          <li class="list-inline-item"><a href="/" class="text-white"><i class="bi bi-instagram"></i></a></li>
-        </ul>
+        <div>
+          <ul class="list-inline mt-3">
+            <li class="list-inline-item">
+              <a href="/" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="/" class="text-white fs-5"><i class="bi bi-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="/" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <div class="text-center mt-2">
-      <p>&copy; 2024 <a class="text-info" href="/"> Zoo Arcadia</a>. Tous droits réservés.</p>
+    <!-- Section du Copyright Dynamique -->
+    <div class="text-center mt-3">
+      <p class="m-0">&copy; <span id="currentYear"></span> <a class="text-info text-decoration-none" href="/">Zoo Arcadia</a>. Tous droits réservés.</p>
     </div>
   </div>
 </footer>
+
+<script>
+  // Mise à jour automatique de l'année
+  document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
+
+
 
     <script src="js/script.js"></script>
     <script type="module" src="Router/router.js"></script>

@@ -1,36 +1,49 @@
-<section class="p-4 " id="avis-section">
-    <div class="container pt-5">
-        <h1 class="text-center mb-4 text-primary pb-5">Laissez un Avis</h1>
-        
-        <!-- Formulaire d'Avis avec effet hover et dynamique -->
-        <div class="card shadow-sm border-0 bg-light">
+<section class="p-5" id="avis-section">
+    <div class="container">
+        <h1 class="text-center mb-4 text-primary pb-4">
+            <i class="bi bi-chat-square-heart-fill"></i> Laissez un Avis
+        </h1>
+
+        <div class="text-center mb-5" id="alertContainer"></div>
+
+        <!-- Formulaire d'Avis amélioré -->
+        <div class="card shadow-lg border-0 bg-light rounded-4">
             <div class="card-body p-4">
-                <form id="formulaireSoumettre">
-                    <div class="mb-3">
-                        <label for="pseudonym" class="form-label">Nom ou Pseudonyme</label>
-                        <input type="text" class="form-control bg-white border-0 shadow-sm" id="pseudonym" placeholder="Entrez votre nom ou pseudonyme" name="nom" required>
+                <form id="submitReviewForm">
+                    <!-- Nom/Pseudonyme -->
+                    <div class="mb-4">
+                        <label for="pseudonym" class="form-label fw-bold">
+                            <i class="bi bi-person-circle"></i> Nom ou Pseudonyme
+                        </label>
+                        <input type="text" class="form-control border-0 shadow-sm bg-light" id="pseudonym" placeholder="Entrez votre nom ou pseudonyme" name="nom" required>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="reviewText" class="form-label">Votre Commentaire</label>
-                        <textarea class="form-control bg-white border-0 shadow-sm" id="reviewText" rows="4" placeholder="Entrez votre commentaire ici" name="avis" required></textarea>
+                    <!-- Commentaire -->
+                    <div class="mb-4">
+                        <label for="reviewText" class="form-label fw-bold">
+                            <i class="bi bi-chat-left-text"></i> Votre Commentaire
+                        </label>
+                        <textarea class="form-control border-0 shadow-sm bg-light" id="reviewText" rows="4" placeholder="Partagez votre expérience ici" name="avis" required></textarea>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="animal_id" class="form-label">ID de l'Animal</label>
-                        <input type="number" class="form-control bg-white border-0 shadow-sm" id="animal_id" value="1" name="animalid" required>
+                    <!-- ID de l'Animal -->
+                    <div class="mb-4">
+                        <label for="animal_id" class="form-label fw-bold">
+                            <i class="bi bi-info-circle"></i> ID de l'Animal
+                        </label>
+                        <input type="number" class="form-control border-0 shadow-sm bg-light" id="animal_id" value="1" name="animalid" min="1" max="3" required>
+                        <div class="form-text">L'ID doit être compris entre 1 et 3.</div>
                     </div>
 
+                    <!-- Bouton de soumission -->
                     <div class="text-center mt-4">
-                        <button id="btn-soumettre" type="submit" class="btn btn-primary btn-lg w-100">
-                            <i class="bi bi-send"></i> Soumettre l'avis
+                        <button id="btn-soumettre" type="button" class="btn btn-primary btn-lg w-100 shadow">
+                            <i class="bi bi-send-fill"></i> Soumettre l'avis
                         </button>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- Affichage des résultats avec animation -->
-        <div id="result" class="mt-4 text-center"></div>
     </div>
 </section>
