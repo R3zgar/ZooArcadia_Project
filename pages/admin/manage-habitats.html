@@ -7,7 +7,7 @@
         
         <div class="text-center mb-5 mt-5" id="alertContainer"></div>
 
-        
+
         <!-- Bouton pour ajouter un habitat -->
         <div class="text-end mb-4">
 
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <!-- Modal pour ajouter/modifier un habitat -->
+    <!-- Modal pour ajouter un habitat -->
     <div class="modal fade" id="addHabitatModal" tabindex="-1" aria-labelledby="addHabitatModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -72,4 +72,46 @@
             </div>
         </div>
     </div>
+
+
+
+
+        <!-- Modification Modal -->
+    <div class="modal fade" id="editHabitatModal" tabindex="-1" aria-labelledby="editHabitatModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editHabitatModalLabel">Modifier Habitat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editHabitatForm">
+                        <input type="hidden" id="editHabitatId">
+                        <div class="mb-3">
+                            <label for="editHabitatName" class="form-label">Nom de l'habitat</label>
+                            <input type="text" class="form-control" id="editHabitatName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editHabitatDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="editHabitatDescription"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editHabitatImage" class="form-label">Image</label>
+                            <input type="text" class="form-control" id="editHabitatImage">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary" onclick="saveHabitatChanges()">Enregistrer les modifications</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 </main>
+
+
