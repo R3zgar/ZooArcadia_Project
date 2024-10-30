@@ -41,10 +41,10 @@ function getCookie(name) {
     return null;
 }
 
-// Fonction pour charger les rapports vétérinaires depuis l'API
 async function loadVeterinaireRapports() {
     console.log("Chargement des rapports vétérinaires...");
     const authToken = getCookie('accesstoken');
+    console.log("authToken:", authToken); 
 
     if (!authToken) {
         showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
@@ -60,23 +60,22 @@ async function loadVeterinaireRapports() {
             }
         });
 
-        console.log('Statut de la réponse:', response.status);
-        const data = await response.json();
-        console.log('Données reçues:', data);
-
         if (response.ok) {
-            rapportsData = data.data; // Store the data globally
+            const data = await response.json();
+            rapportsData = data.data; 
             populateVeterinaireRapportsTable(rapportsData);
             console.log("Rapports vétérinaires chargés avec succès.");
         } else {
-            console.error("Erreur lors de la récupération des rapports vétérinaires:", data);
-            showAlert('danger', data.message || "Erreur lors de la récupération des rapports vétérinaires.");
+            const errorData = await response.json();
+            console.error("Erreur lors de la récupération des rapports vétérinaires:", errorData);
+            showAlert('danger', errorData.message || "Erreur lors de la récupération des rapports vétérinaires.");
         }
     } catch (error) {
         console.error('Erreur de connexion:', error);
         showAlert('danger', "Une erreur est survenue pendant la connexion au serveur. Veuillez réessayer plus tard.");
     }
 }
+
 
 
 // Fonction pour vérifier l'état des animaux et afficher un résumé

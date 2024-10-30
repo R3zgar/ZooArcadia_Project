@@ -17,7 +17,7 @@ export const allRoutes = [
     new Route("/manage-services", "Gestion des services", "/pages/admin/manage-services.html", ["ROLE_EMPLOYE"], "/js/admin/manage-services.js"),
     new Route("/manage-habitats", "Gestion des habitats", "/pages/admin/manage-habitats.html", ["ROLE_VETERINAIRE"], "/js/admin/manage-habitats.js"),
 
-    new Route("/veterinaire-rapport", "Gérer l'alimentation", "/pages/employee/veterinaire-rapport.html", ["ROLE_EMPLOYE", "ROLE_VETERINAIRE"], "/js/employee/manage-feeding.js"),
+    new Route("/manage-feeding", "Gérer l'alimentation", "/pages/employee/manage-feeding.html", ["ROLE_EMPLOYE", "ROLE_VETERINAIRE"], "/js/employee/manage-feeding.js"),
     new Route("/validate-reviews", "Validation des avis", "/pages/employee/validate-reviews.html", ["ROLE_EMPLOYE"]),
     
     new Route("/checkups", "Contrôles de santé", "/pages/veterinary/checkups.html", ["ROLE_VETERINAIRE"]),
