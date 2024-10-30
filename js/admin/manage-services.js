@@ -201,6 +201,7 @@ function populateServiceTable(services) {
         row.innerHTML = `
             <td>${service.nom_service}</td>
             <td>${service.description_service}</td>
+            
             <td class="action-buttons d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
                 <button class="btn btn-warning btn-sm mb-2 mb-md-0" onclick="editService(${service.id})" title="Modifier">
                     <i class="bi bi-pencil"></i>

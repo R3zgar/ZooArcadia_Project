@@ -77,8 +77,9 @@ function populateHabitatTable(habitats) {
           <td>${habitat.nom_habitat}</td>
           <td>${habitat.description_habitat}</td>
           <td><img src="/images/${habitat.image}" alt="${habitat.nom_habitat}" style="width: 70px; height: 50px;"></td>
-          <td>
-              <button class="btn btn-warning btn-sm me-2 edit-habitat-btn">
+          
+          <td class="action-buttons d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
+              <button class="btn btn-warning btn-sm edit-habitat-btn">
                   <i class="bi bi-pencil"></i>
               </button>
               <button class="btn btn-danger btn-sm delete-habitat-btn">
