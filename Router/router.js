@@ -61,6 +61,12 @@ const LoadContentPage = async () => {
 
   // Afficher et masquer les éléments en fonction du rôle de l'utilisateur
   showAndHideElementsForRoles();
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+    }
+}
 };
 
 // Fonction pour gérer les événements de routage (clics sur les liens)

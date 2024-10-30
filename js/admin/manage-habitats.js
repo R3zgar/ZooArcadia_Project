@@ -66,42 +66,42 @@ async function loadHabitats() {
     }
 }
 
-// Fonction pour remplir la table des habitats
+// Fonction pour remplir la table des habitats avec un lien vers habitats.html
 function populateHabitatTable(habitats) {
-  habitatTableBody.innerHTML = ''; // Vide le corps de la table avant de remplir
-  
-  habitats.forEach(habitat => {
-      const row = document.createElement('tr');
+    habitatTableBody.innerHTML = ''; // Vider le contenu de la table avant de la remplir
+    
+    habitats.forEach(habitat => {
+        const row = document.createElement('tr');
 
-      row.innerHTML = `
-          <td>${habitat.nom_habitat}</td>
-          <td>${habitat.description_habitat}</td>
-          <td><img src="/images/${habitat.image}" alt="${habitat.nom_habitat}" style="width: 70px; height: 50px;"></td>
-          
-          <td class="action-buttons d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
-              <button class="btn btn-warning btn-sm edit-habitat-btn">
-                  <i class="bi bi-pencil"></i>
-              </button>
-              <button class="btn btn-danger btn-sm delete-habitat-btn">
-                  <i class="bi bi-trash"></i>
-              </button>
-          </td>
-      `;
+        // Créer un lien pour chaque nom d'habitat qui renvoie à l'ID correspondant dans habitats.html
+        row.innerHTML = `
+           <td><a href="habitats#${habitat.nom_habitat.toLowerCase()}" class="text-decoration-none text-dark">${habitat.nom_habitat}</a></td>
 
-      // Ajout de l'événement pour le bouton de modification
-      row.querySelector('.edit-habitat-btn').addEventListener('click', (event) => {
-          event.stopPropagation();
-          editHabitat(habitat); // Habitat verisini doğrudan editHabitat'a gönder
-      });
+            <td>${habitat.description_habitat}</td>
+            <td><img src="/images/${habitat.image}" alt="${habitat.nom_habitat}" style="width: 70px; height: 50px;"></td>
+            <td class="action-buttons d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
+                <button class="btn btn-warning btn-sm edit-habitat-btn">
+                    <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-danger btn-sm delete-habitat-btn">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </td>
+        `;
 
-      // Ajout de l'événement pour le bouton de suppression
-      row.querySelector('.delete-habitat-btn').addEventListener('click', (event) => {
-          event.stopPropagation();
-          showDeleteConfirmation(habitat);
-      });
+        // Ajout des événements pour les boutons de modification et de suppression
+        row.querySelector('.edit-habitat-btn').addEventListener('click', (event) => {
+            event.stopPropagation();
+            editHabitat(habitat); // Envoyer les données de l'habitat à modifier
+        });
 
-      habitatTableBody.appendChild(row);
-  });
+        row.querySelector('.delete-habitat-btn').addEventListener('click', (event) => {
+            event.stopPropagation();
+            showDeleteConfirmation(habitat);
+        });
+
+        habitatTableBody.appendChild(row);
+    });
 }
 
 // Fonction pour ajouter un nouvel habitat
@@ -152,8 +152,38 @@ document.getElementById('habitatForm').addEventListener('submit', async (e) => {
   }
 });
 
-// Charge les habitats au chargement de la page
-document.addEventListener('DOMContentLoaded', loadHabitats);
+
+// Fonction pour filtrer les habitats par nom
+function filterHabitats() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const rows = document.querySelectorAll('#habitatTableBody tr');
+
+    rows.forEach(row => {
+        const habitatName = row.querySelector('td').innerText.toLowerCase();
+        if (habitatName.includes(searchInput)) {
+            row.style.display = ''; // Affiche la ligne si elle correspond
+        } else {
+            row.style.display = 'none'; // Masque la ligne si elle ne correspond pas
+        }
+    });
+}
+
+
+
+// Ajout de l'écouteur de l'événement de recherche pour le filtre
+document.addEventListener('DOMContentLoaded', () => {
+    loadHabitats();
+
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.id = 'searchInput';
+    searchInput.className = 'form-control mb-3';
+    searchInput.placeholder = "Rechercher par nom d'habitat...";
+    searchInput.addEventListener('keyup', filterHabitats);
+
+    const mainContainer = document.querySelector('.container');
+    mainContainer.insertBefore(searchInput, mainContainer.querySelector('.table-responsive'));
+});
 
 // Fonction pour ouvrir le modal de modification avec les données de l'habitat
 function editHabitat(habitat) {

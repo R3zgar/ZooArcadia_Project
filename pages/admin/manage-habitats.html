@@ -27,6 +27,19 @@
             </div>
         </div>
 
+
+<!-- Barre de recherche stylisée pour filtrer les habitats -->
+<div class="mb-4">
+    <div class="input-group shadow-sm">
+        <span class="input-group-text bg-primary text-light">
+            <i class="bi bi-search"></i>
+        </span>
+        <input type="text" id="searchInput" class="form-control border-primary shadow-none" placeholder="Rechercher par nom d'habitat..." onkeyup="filterHabitats()">
+    </div>
+</div>
+
+        
+
         <!-- Tableau pour lister les habitats -->
         <div class="table-responsive">
             <table class="table table-hover table-bordered text-center">
