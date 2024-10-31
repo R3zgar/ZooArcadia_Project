@@ -10,18 +10,30 @@
               <div class="col-12">
                   <h3 class="text-center p-3 pb-4 border-bottom border-dark mb-4">Les Animaux de la Savane</h3>
               </div>
-              
-              <div class="col-md-4 mb-4">
-                  <a data-bs-toggle="modal" data-bs-target="#lionModal">
-                      <div class="card hover-card">
-                          <img src="images/lion.jpg" class="card-img-top rounded-top" alt="Lion, roi de la savane">
-                          <div class="card-body text-center">
-                              <h4 class="card-title fw-semibold pb-2 mt-3 mb-4">Lion</h4>
-                              <p class="card-text">Majestueux et puissant, le roi de la savane africaine</p>
-                          </div>
-                      </div>
-                  </a>
-              </div>
+
+
+
+                                
+<!-- Carte pour le Lion -->
+<div class="col-md-4 mb-4">
+  <a data-bs-toggle="modal" data-bs-target="#lionModal" onclick="loadAnimalInfo('Leo')">
+      <div class="card hover-card">
+          <img src="images/lion.jpg" class="card-img-top rounded-top" alt="Lion, roi de la savane">
+          <div class="card-body text-center">
+              <h4 class="card-title fw-semibold pb-2 mt-3 mb-4">Lion</h4>
+              <p class="card-text">Majestueux et puissant, le roi de la savane africaine</p>
+          </div>
+      </div>
+  </a>
+</div>
+
+
+
+
+
+
+
+
               <div class="col-md-4 mb-4">
                   <a data-bs-toggle="modal" data-bs-target="#girafeModal">
                       <div class="card hover-card">
@@ -122,293 +134,511 @@
   </div>
 </section>
 
-
-<!-- Modal pour Lion -->
-<div class="modal fade" id="lionModal" tabindex="-1" aria-labelledby="lionModalLabel" aria-hidden="true">
+<!-- Modal pour Leo -->
+<div class="modal fade" id="lionModal" data-animal="Leo" tabindex="-1" aria-labelledby="lionModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content shadow-lg border-0 rounded-4">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="lionModalLabel">Lion - Roi de la Savane</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <!-- En-tête du modal -->
+      <div class="modal-header bg-dark text-white border-0 rounded-top">
+        <h5 class="modal-title fw-bold" id="lionModalLabel">Leo - Roi de la Savane</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
       </div>
+      
       <div class="modal-body p-4">
         <div class="row g-4">
+          <!-- Section de l'image -->
           <div class="col-md-6">
-            <img src="images/lion-2.jpg" alt="Lion" class="img-fluid rounded-3 shadow-sm mb-3">
+            <div class="position-relative">
+              <img src="images/lion-2.jpg" alt="Lion" class="img-fluid rounded-3 shadow-sm mb-3">
+              <span class="badge bg-danger text-white position-absolute top-0 start-0 m-2 p-2">Prédateur</span>
+            </div>
           </div>
+
+          <!-- Section d'information -->
           <div class="col-md-6">
-            <div class="bg-light p-3 rounded-3 shadow-sm">
-              <h6><strong>Nom :</strong> Leo</h6>
-              <h6><strong>Espèce :</strong> Panthera leo</h6>
+            <div class="bg-light p-4 rounded-3 shadow-sm">
+              <h6 class="text-dark"><strong>Nom :</strong> Leo</h6>
+              <h6><strong>Espèce :</strong> <span class="race">Panthera leo</span></h6>
               <h6><strong>Origine :</strong> Savane africaine</h6>
               <h6><strong>Âge :</strong> 7 ans</h6>
               <h6><strong>Statut de conservation :</strong> Vulnérable (IUCN)</h6>
-              <p>Leo, l'un des lions les plus majestueux du zoo, est un emblème de la faune africaine. Son rugissement puissant et sa crinière imposante symbolisent la royauté de la savane.</p>
+              <p class="fst-italic mb-3">Leo, l'un des lions les plus majestueux du zoo, est un symbole de la faune africaine avec sa crinière imposante et son rugissement puissant.</p>
+              <br>
+              <!-- Nombre de vues -->
+              <p class="d-flex align-items-center mb-1">
+                <strong class="text-muted fw-light me-2">Nombre de vues :</strong>
+                <span class="view-count text-secondary small">0</span>
+              </p>
             </div>
           </div>
         </div>
+        
+        <!-- Section d'informations supplémentaires -->
         <div class="mt-4">
-          <h5 class="text-secondary border-bottom pb-2">Informations supplémentaires :</h5>
-          <p>Leo est né en captivité et fait partie de notre programme de conservation. Le zoo travaille en partenariat avec d'autres organisations pour garantir la préservation de cette espèce emblématique. Les visiteurs peuvent observer Leo dans son habitat naturel reconstitué, et assister à ses repas quotidiens.</p>
+          <h5 class="text-brown border-bottom pb-2">Informations supplémentaires :</h5>
+          <p class="text-muted">
+            Leo est né en captivité et fait partie de notre programme de conservation. Le zoo collabore avec des organisations internationales pour préserver cette espèce emblématique. Assistez à ses repas quotidiens et découvrez son habitat naturel reconstitué.
+          </p>
+          <div class="alert alert-info mt-3 d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <span>Les lions comme Leo jouent un rôle crucial dans l'équilibre des écosystèmes de savane.</span>
+          </div>
         </div>
       </div>
-      <div class="modal-footer bg-light border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+
+      <!-- Pied de page du modal -->
+      <div class="modal-footer bg-light border-0 rounded-bottom">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>
+  <div class="text-center mb-5 mt-5" id="alertContainer"></div>
 </div>
+
+
+
+
+
 
 <!-- Modal pour Girafe -->
-<div class="modal fade" id="girafeModal" tabindex="-1" aria-labelledby="girafeModalLabel" aria-hidden="true">
+<div class="modal fade" id="girafeModal" data-animal="Grace" tabindex="-1" aria-labelledby="girafeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content shadow-lg border-0 rounded-4">
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title" id="girafeModalLabel">Girafe - Sentinelle des Plaines</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <!-- Header Güncellemesi -->
+      <div class="modal-header bg-success text-white border-0 rounded-top">
+        <h5 class="modal-title fw-bold" id="girafeModalLabel">Grace - Sentinelle des Plaines</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
       </div>
+      
       <div class="modal-body p-4">
         <div class="row g-4">
-            <div class="col-md-6">
-                <img src="images/girafe.jpg" alt="Girafe" class="img-fluid rounded-3 shadow-sm mb-3">
+          <!-- Image Section -->
+          <div class="col-md-6">
+            <div class="position-relative">
+              <img src="images/girafe.jpg" alt="Girafe" class="img-fluid rounded-3 shadow-sm mb-3">
+              <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2 p-2">Espèce Vulnérable</span>
             </div>
-            <div class="col-md-6">
-                <div class="bg-light p-3 rounded-3 shadow-sm">
-                    <h6><strong>Nom :</strong> Grace</h6>
-                    <h6><strong>Espèce :</strong> Giraffa camelopardalis</h6>
-                    <h6><strong>Origine :</strong> Savane africaine</h6>
-                    <h6><strong>Âge :</strong> 5 ans</h6>
-                    <h6><strong>Statut de conservation :</strong> Vulnérable (IUCN)</h6>
-                    <p>Grace, avec son long cou et sa démarche élégante, est une girafe emblématique de la savane africaine. Elle utilise son long cou pour se nourrir des feuilles hautes des arbres.</p>
-                </div>
+          </div>
+
+          <!-- Information Section -->
+          <div class="col-md-6">
+            <div class="bg-light p-4 rounded-3 shadow-sm">
+              <h6 class="text-dark"><strong>Nom :</strong> Grace</h6>
+              <h6><strong>Espèce :</strong> Giraffa camelopardalis</h6>
+              <h6><strong>Origine :</strong> Savane africaine</h6>
+              <h6><strong>Âge :</strong> 5 ans</h6>
+              <h6><strong>Statut de conservation :</strong> Vulnérable (IUCN)</h6>
+              <p class="fst-italic mb-3">Grace, avec son long cou et sa démarche élégante, est une girafe emblématique de la savane africaine. Elle utilise son long cou pour se nourrir des feuilles hautes des arbres.</p>
+              <br>
+              <!-- Nombre de vues -->
+              <p class="d-flex align-items-center mb-1">
+                <strong class="text-muted fw-light me-2">Nombre de vues :</strong>
+                <span class="view-count text-secondary small">0</span>
+              </p>
             </div>
+          </div>
         </div>
+        
+        <!-- Additional Information Section -->
         <div class="mt-4">
-            <h5 class="text-success border-bottom pb-2">Informations supplémentaires :</h5>
-            <p>Grace fait partie d'un programme de conservation visant à protéger les girafes africaines. Les visiteurs peuvent l'observer se nourrir aux côtés de son groupe dans notre habitat recréé, imitant les vastes plaines africaines. Sa présence majestueuse et pacifique incarne parfaitement l'esprit de la savane.</p>
+          <h5 class="text-success border-bottom pb-2">Informations supplémentaires :</h5>
+          <p class="text-muted">
+            Grace fait partie d'un programme de conservation visant à protéger les girafes africaines. Les visiteurs peuvent l'observer se nourrir aux côtés de son groupe dans notre habitat recréé, imitant les vastes plaines africaines. Sa présence majestueuse et pacifique incarne parfaitement l'esprit de la savane.
+          </p>
+          <div class="alert alert-info mt-3 d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <span>Les girafes comme Grace jouent un rôle essentiel dans l'équilibre des écosystèmes de savane.</span>
+          </div>
         </div>
       </div>
-      <div class="modal-footer bg-light border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+
+      <!-- Footer -->
+      <div class="modal-footer bg-light border-0 rounded-bottom">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>
+  <div class="text-center mb-5 mt-5" id="alertContainer"></div>
 </div>
+
+
+
+
+
 
 <!-- Modal pour Éléphant -->
-<div class="modal fade" id="elephantModal" tabindex="-1" aria-labelledby="elephantModalLabel" aria-hidden="true">
+<div class="modal fade" id="elephantModal" data-animal="Dumbo" tabindex="-1" aria-labelledby="elephantModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content shadow-lg border-0 rounded-4">
-      <div class="modal-header bg-warning text-white">
-        <h5 class="modal-title" id="elephantModalLabel">Éléphant - Géant de la Savane</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <!-- En-tête du modal -->
+      <div class="modal-header bg-warning text-white border-0 rounded-top">
+        <h5 class="modal-title fw-bold" id="elephantModalLabel">Dumbo - Géant de la Savane</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
       </div>
+      
       <div class="modal-body p-4">
         <div class="row g-4">
-            <div class="col-md-6">
-                <img src="images/elephant.jpg" alt="Éléphant" class="img-fluid rounded-3 shadow-sm mb-3">
+          <!-- Section de l'image -->
+          <div class="col-md-6">
+            <div class="position-relative">
+              <img src="images/elephant.jpg" alt="Éléphant" class="img-fluid rounded-3 shadow-sm mb-3">
+              <span class="badge bg-info text-dark position-absolute top-0 start-0 m-2 p-2">Espèce Menacée</span>
             </div>
-            <div class="col-md-6">
-                <div class="bg-light p-3 rounded-3 shadow-sm">
-                    <h6><strong>Nom :</strong> Dumbo</h6>
-                    <h6><strong>Espèce :</strong> Loxodonta africana</h6>
-                    <h6><strong>Origine :</strong> Savane africaine</h6>
-                    <h6><strong>Âge :</strong> 10 ans</h6>
-                    <h6><strong>Statut de conservation :</strong> Vulnérable (IUCN)</h6>
-                    <p>Dumbo, l'un des plus grands mammifères terrestres, est connu pour sa mémoire impressionnante et son comportement social.</p>
-                </div>
+          </div>
+
+          <!-- Section d'information -->
+          <div class="col-md-6">
+            <div class="bg-light p-4 rounded-3 shadow-sm">
+              <h6 class="text-dark"><strong>Nom :</strong> Dumbo</h6>
+              <h6><strong>Espèce :</strong> Loxodonta africana</h6>
+              <h6><strong>Origine :</strong> Savane africaine</h6>
+              <h6><strong>Âge :</strong> 10 ans</h6>
+              <h6><strong>Statut de conservation :</strong> Vulnérable (IUCN)</h6>
+              <p class="fst-italic mb-3">Dumbo, l'un des plus grands mammifères terrestres, est connu pour sa mémoire impressionnante et son comportement social.</p>
+              <br>
+              <!-- Nombre de vues -->
+              <p class="d-flex align-items-center mb-1">
+                <strong class="text-muted fw-light me-2">Nombre de vues :</strong>
+                <span class="view-count text-secondary small">0</span>
+              </p>
             </div>
+          </div>
         </div>
+        
+        <!-- Section d'informations supplémentaires -->
         <div class="mt-4">
-            <h5 class="text-warning border-bottom pb-2">Informations supplémentaires :</h5>
-            <p>Dumbo vit dans un habitat recréé qui offre des espaces ouverts et de l'eau pour s'ébattre. Le zoo participe à un programme de conservation pour protéger cette espèce menacée. Observez Dumbo interagir avec les autres membres de son troupeau et découvrir ses comportements fascinants.</p>
+          <h5 class="text-warning border-bottom pb-2">Informations supplémentaires :</h5>
+          <p class="text-muted">
+            Dumbo vit dans un habitat recréé qui offre des espaces ouverts et de l'eau pour s'ébattre. Le zoo participe à un programme de conservation pour protéger cette espèce menacée. Observez Dumbo interagir avec les autres membres de son troupeau et découvrir ses comportements fascinants.
+          </p>
+          <div class="alert alert-info mt-3 d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <span>Les éléphants comme Dumbo sont essentiels pour l'écosystème de la savane en maintenant les ressources en eau et en végétation.</span>
+          </div>
         </div>
       </div>
-      <div class="modal-footer bg-light border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+
+      <!-- Pied de page du modal -->
+      <div class="modal-footer bg-light border-0 rounded-bottom">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mb-5 mt-5" id="alertContainer"></div>
+</div>
+
+
+
+
+
+
+<!-- Modal pour Tigre -->
+<div class="modal fade" id="tigreModal" data-animal="Rajah" tabindex="-1" aria-labelledby="tigreModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0 rounded-4">
+      <!-- Header -->
+      <div class="modal-header bg-danger text-white border-0 rounded-top">
+        <h5 class="modal-title fw-bold" id="tigreModalLabel">Rajah - Prédateur Silencieux</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+      
+      <div class="modal-body p-4">
+        <div class="row g-4">
+          <!-- Image Section -->
+          <div class="col-md-6">
+            <div class="position-relative">
+              <img src="images/tigre.jpg" alt="Tigre" class="img-fluid rounded-3 shadow-sm mb-3">
+              <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2 p-2">Espèce En Danger</span>
+            </div>
+          </div>
+
+          <!-- Information Section -->
+          <div class="col-md-6">
+            <div class="bg-light p-4 rounded-3 shadow-sm">
+              <h6 class="text-dark"><strong>Nom :</strong> Rajah</h6>
+              <h6><strong>Espèce :</strong> Panthera tigris</h6>
+              <h6><strong>Origine :</strong> Jungles d'Asie</h6>
+              <h6><strong>Âge :</strong> 8 ans</h6>
+              <h6><strong>Statut de conservation :</strong> En danger (IUCN)</h6>
+              <p class="fst-italic mb-3">Rajah, majestueux et solitaire, est un symbole de la jungle avec son regard perçant et son pelage rayé unique.</p>
+              <br>
+              <!-- Nombre de vues -->
+              <p class="d-flex align-items-center mb-1">
+                <strong class="text-muted fw-light me-2">Nombre de vues :</strong>
+                <span class="view-count text-secondary small">0</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Additional Information Section -->
+        <div class="mt-4">
+          <h5 class="text-danger border-bottom pb-2">Informations supplémentaires :</h5>
+          <p class="text-muted">
+            Rajah participe à notre programme de conservation des tigres. Découvrez-le dans notre jungle recréée, où il évolue majestueusement à l'ombre des arbres tropicaux.
+          </p>
+          <div class="alert alert-info mt-3 d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <span>Les tigres comme Rajah jouent un rôle essentiel dans l'écosystème de la jungle en régulant les populations d'autres animaux.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer bg-light border-0 rounded-bottom">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>
 </div>
 
 
- <!-- Modal pour Tigre -->
-<div class="modal fade" id="tigreModal" tabindex="-1" aria-labelledby="tigreModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content shadow-lg border-0 rounded-4">
-      <div class="modal-header bg-danger text-white">
-        <h5 class="modal-title" id="tigreModalLabel">Tigre - Prédateur Silencieux</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4">
-        <div class="row g-4">
-            <div class="col-md-6">
-                <img src="images/tigre.jpg" alt="Tigre" class="img-fluid rounded-3 shadow-sm mb-3">
-            </div>
-            <div class="col-md-6">
-                <div class="bg-light p-3 rounded-3 shadow-sm">
-                    <h6><strong>Nom :</strong> Rajah</h6>
-                    <h6><strong>Espèce :</strong> Panthera tigris</h6>
-                    <h6><strong>Origine :</strong> Jungles d'Asie</h6>
-                    <h6><strong>Âge :</strong> 8 ans</h6>
-                    <h6><strong>Statut de conservation :</strong> En danger (IUCN)</h6>
-                    <p>Rajah est un tigre majestueux et solitaire. Il se distingue par son pelage rayé unique et son regard perçant.</p>
-                </div>
-            </div>
-        </div>
-        <div class="mt-4">
-            <h5 class="text-danger border-bottom pb-2">Informations supplémentaires :</h5>
-            <p>Rajah est un acteur clé de notre programme de conservation des tigres. Observez-le évoluer dans notre jungle recréée, où il explore les zones ombragées et se repose sous les arbres tropicaux.</p>
-        </div>
-      </div>
-      <div class="modal-footer bg-light border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Modal pour Singe -->
-<div class="modal fade" id="singeModal" tabindex="-1" aria-labelledby="singeModalLabel" aria-hidden="true">
+<div class="modal fade" id="singeModal" data-animal="Coco" tabindex="-1" aria-labelledby="singeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content shadow-lg border-0 rounded-4">
-      <div class="modal-header bg-warning text-white">
-        <h5 class="modal-title" id="singeModalLabel">Singe - Acrobate de la Jungle</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <!-- En-tête du modal -->
+      <div class="modal-header bg-warning text-white border-0 rounded-top">
+        <h5 class="modal-title fw-bold" id="singeModalLabel">Coco - Acrobate de la Jungle</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
       </div>
+      
       <div class="modal-body p-4">
         <div class="row g-4">
-            <div class="col-md-6">
-                <img src="images/singe-2.jpg" alt="Singe" class="img-fluid rounded-3 shadow-sm mb-3">
+          <!-- Section de l'image -->
+          <div class="col-md-6">
+            <div class="position-relative">
+              <img src="images/singe-2.jpg" alt="Singe" class="img-fluid rounded-3 shadow-sm mb-3">
+              <span class="badge bg-primary text-white position-absolute top-0 start-0 m-2 p-2">Animal Sociable</span>
             </div>
-            <div class="col-md-6">
-                <div class="bg-light p-3 rounded-3 shadow-sm">
-                    <h6><strong>Nom :</strong> Coco</h6>
-                    <h6><strong>Espèce :</strong> Macaca fascicularis</h6>
-                    <h6><strong>Origine :</strong> Forêts tropicales d'Asie</h6>
-                    <h6><strong>Âge :</strong> 6 ans</h6>
-                    <h6><strong>Statut de conservation :</strong> Préoccupation mineure (IUCN)</h6>
-                    <p>Coco est un singe social et intelligent. Il est très agile et passe la plupart de son temps à grimper dans les arbres.</p>
-                </div>
+          </div>
+
+          <!-- Section d'information -->
+          <div class="col-md-6">
+            <div class="bg-light p-4 rounded-3 shadow-sm">
+              <h6 class="text-dark"><strong>Nom :</strong> Coco</h6>
+              <h6><strong>Espèce :</strong> Macaca fascicularis</h6>
+              <h6><strong>Origine :</strong> Forêts tropicales d'Asie</h6>
+              <h6><strong>Âge :</strong> 6 ans</h6>
+              <h6><strong>Statut de conservation :</strong> Préoccupation mineure (IUCN)</h6>
+              <p class="fst-italic mb-3">Coco est un singe social et intelligent, très agile, qui passe la plupart de son temps à grimper dans les arbres.</p>
+              <br>
+              <!-- Nombre de vues -->
+              <p class="d-flex align-items-center mb-1">
+                <strong class="text-muted fw-light me-2">Nombre de vues :</strong>
+                <span class="view-count text-secondary small">0</span>
+              </p>
             </div>
+          </div>
         </div>
+        
+        <!-- Section d'informations supplémentaires -->
         <div class="mt-4">
-            <h5 class="text-warning border-bottom pb-2">Informations supplémentaires :</h5>
-            <p>Coco fait partie d'un groupe de singes vivant dans notre jungle recréée, où il peut grimper et jouer dans un environnement naturel.</p>
+          <h5 class="text-warning border-bottom pb-2">Informations supplémentaires :</h5>
+          <p class="text-muted">
+            Coco fait partie d'un groupe de singes vivant dans notre jungle recréée, où il peut grimper et jouer dans un environnement naturel semblable à son habitat d'origine. Son comportement enjoué et ses acrobaties amusent beaucoup les visiteurs.
+          </p>
+          <div class="alert alert-info mt-3 d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <span>Les singes comme Coco sont essentiels pour maintenir l'équilibre de la forêt tropicale en dispersant les graines et en interagissant avec diverses espèces.</span>
+          </div>
         </div>
       </div>
-      <div class="modal-footer bg-light border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+
+      <!-- Pied de page du modal -->
+      <div class="modal-footer bg-light border-0 rounded-bottom">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>
+  <div class="text-center mb-5 mt-5" id="alertContainer"></div>
 </div>
+
 
 <!-- Modal pour Oiseaux Exotiques -->
-<div class="modal fade" id="oiseauxExotiquesModal" tabindex="-1" aria-labelledby="oiseauxExotiquesModalLabel" aria-hidden="true">
+<div class="modal fade" id="oiseauxExotiquesModal" data-animal="Perroquet Ara" tabindex="-1" aria-labelledby="oiseauxExotiquesModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content shadow-lg border-0 rounded-4">
-      <div class="modal-header bg-info text-white">
-        <h5 class="modal-title" id="oiseauxExotiquesModalLabel">Oiseaux Exotiques - Trésors des Forêts Tropicales</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <!-- En-tête du modal -->
+      <div class="modal-header bg-info text-white border-0 rounded-top">
+        <h5 class="modal-title fw-bold" id="oiseauxExotiquesModalLabel">Perroquet Ara - Trésor des Forêts Tropicales</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
       </div>
+      
       <div class="modal-body p-4">
         <div class="row g-4">
-            <div class="col-md-6">
-                <img src="images/oiseaux-exotiques-2.jpg" alt="Oiseaux Exotiques" class="img-fluid rounded-3 shadow-sm mb-3">
+          <!-- Section de l'image -->
+          <div class="col-md-6">
+            <div class="position-relative">
+              <img src="images/oiseaux-exotiques-2.jpg" alt="Oiseaux Exotiques" class="img-fluid rounded-3 shadow-sm mb-3">
+              <span class="badge bg-success text-white position-absolute top-0 start-0 m-2 p-2">Espèce Colorée</span>
             </div>
-            <div class="col-md-6">
-                <div class="bg-light p-3 rounded-3 shadow-sm">
-                    <h6><strong>Nom :</strong> Perroquet Ara</h6>
-                    <h6><strong>Espèce :</strong> Ara macao</h6>
-                    <h6><strong>Origine :</strong> Forêts tropicales d'Amérique du Sud</h6>
-                    <h6><strong>Âge :</strong> 4 ans</h6>
-                    <h6><strong>Statut de conservation :</strong> Préoccupation mineure (IUCN)</h6>
-                    <p>Avec leur plumage vibrant et leurs chants mélodieux, les perroquets et autres oiseaux exotiques enchantent les forêts tropicales.</p>
-                </div>
+          </div>
+
+          <!-- Section d'information -->
+          <div class="col-md-6">
+            <div class="bg-light p-4 rounded-3 shadow-sm">
+              <h6 class="text-dark"><strong>Nom :</strong> Perroquet Ara</h6>
+              <h6><strong>Espèce :</strong> Ara macao</h6>
+              <h6><strong>Origine :</strong> Forêts tropicales d'Amérique du Sud</h6>
+              <h6><strong>Âge :</strong> 4 ans</h6>
+              <h6><strong>Statut de conservation :</strong> Préoccupation mineure (IUCN)</h6>
+              <p class="fst-italic mb-3">Avec leur plumage vibrant et leurs chants mélodieux, les perroquets et autres oiseaux exotiques enchantent les forêts tropicales et émerveillent les visiteurs.</p>
+              <br>
+              <!-- Nombre de vues -->
+              <p class="d-flex align-items-center mb-1">
+                <strong class="text-muted fw-light me-2">Nombre de vues :</strong>
+                <span class="view-count text-secondary small">0</span>
+              </p>
             </div>
+          </div>
         </div>
+        
+        <!-- Section d'informations supplémentaires -->
         <div class="mt-4">
-            <h5 class="text-info border-bottom pb-2">Informations supplémentaires :</h5>
-            <p>Nos oiseaux exotiques, dont des perroquets, des toucans et d'autres espèces fascinantes, vivent dans une volière recréée pour imiter leur habitat tropical.</p>
+          <h5 class="text-info border-bottom pb-2">Informations supplémentaires :</h5>
+          <p class="text-muted">
+            Nos oiseaux exotiques, comprenant des perroquets, des toucans et d'autres espèces aux plumes colorées, vivent dans une volière spécialement conçue pour recréer leur habitat naturel tropical. Ce cadre leur permet d'exprimer leurs comportements naturels et de chanter librement, offrant ainsi une expérience immersive aux visiteurs.
+          </p>
+          <div class="alert alert-info mt-3 d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <span>Les oiseaux exotiques comme le Perroquet Ara jouent un rôle important dans l'écosystème tropical en dispersant les graines et en enrichissant la biodiversité.</span>
+          </div>
         </div>
       </div>
-      <div class="modal-footer bg-light border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+
+      <!-- Pied de page du modal -->
+      <div class="modal-footer bg-light border-0 rounded-bottom">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>
+  <div class="text-center mb-5 mt-5" id="alertContainer"></div>
 </div>
+
 
 <!-- Modal pour Crocodile -->
-<div class="modal fade" id="crocodileModal" tabindex="-1" aria-labelledby="crocodileModalLabel" aria-hidden="true">
+<div class="modal fade" id="crocodileModal" data-animal="Nile" tabindex="-1" aria-labelledby="crocodileModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content shadow-lg border-0 rounded-4">
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title" id="crocodileModalLabel">Crocodile - Maître des Marais</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <!-- En-tête du modal -->
+      <div class="modal-header bg-success text-white border-0 rounded-top">
+        <h5 class="modal-title fw-bold" id="crocodileModalLabel">Nile - Maître des Marais</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
       </div>
+      
       <div class="modal-body p-4">
         <div class="row g-4">
-            <div class="col-md-6">
-                <img src="images/crocodile-2.jpg" alt="Crocodile" class="img-fluid rounded-3 shadow-sm mb-3">
+          <!-- Section de l'image -->
+          <div class="col-md-6">
+            <div class="position-relative">
+              <img src="images/crocodile-2.jpg" alt="Crocodile" class="img-fluid rounded-3 shadow-sm mb-3">
+              <span class="badge bg-danger text-white position-absolute top-0 start-0 m-2 p-2">Prédateur</span>
             </div>
-            <div class="col-md-6">
-                <div class="bg-light p-3 rounded-3 shadow-sm">
-                    <h6><strong>Nom :</strong> Nile</h6>
-                    <h6><strong>Espèce :</strong> Crocodylus niloticus</h6>
-                    <h6><strong>Origine :</strong> Marais et rivières africaines</h6>
-                    <h6><strong>Âge :</strong> 12 ans</h6>
-                    <h6><strong>Statut de conservation :</strong> Préoccupation mineure (IUCN)</h6>
-                    <p>Nile, le crocodile, est un prédateur redoutable, doté d'une mâchoire puissante et d'une capacité à se camoufler parfaitement.</p>
-                </div>
+          </div>
+
+          <!-- Section d'information -->
+          <div class="col-md-6">
+            <div class="bg-light p-4 rounded-3 shadow-sm">
+              <h6 class="text-dark"><strong>Nom :</strong> Nile</h6>
+              <h6><strong>Espèce :</strong> Crocodylus niloticus</h6>
+              <h6><strong>Origine :</strong> Marais et rivières africaines</h6>
+              <h6><strong>Âge :</strong> 12 ans</h6>
+              <h6><strong>Statut de conservation :</strong> Préoccupation mineure (IUCN)</h6>
+              <p class="fst-italic mb-3">Nile est un prédateur redoutable, connu pour sa mâchoire puissante et son talent de camouflage dans les marécages africains.</p>
+              <br>
+              <!-- Nombre de vues -->
+              <p class="d-flex align-items-center mb-1">
+                <strong class="text-muted fw-light me-2">Nombre de vues :</strong>
+                <span class="view-count text-secondary small">0</span>
+              </p>
             </div>
+          </div>
         </div>
+        
+        <!-- Section d'informations supplémentaires -->
         <div class="mt-4">
-            <h5 class="text-success border-bottom pb-2">Informations supplémentaires :</h5>
-            <p>Nile vit dans un marais recréé avec des zones d'eau profondes pour se baigner et chasser. Observez-le se prélasser au soleil ou se déplacer furtivement.</p>
+          <h5 class="text-success border-bottom pb-2">Informations supplémentaires :</h5>
+          <p class="text-muted">
+            Nile vit dans un marais recréé avec des zones d'eau profonde pour se camoufler et chasser. Les visiteurs peuvent l'observer se prélasser au soleil ou guetter silencieusement ses proies dans l’eau. Ce prédateur emblématique contribue à l’équilibre écologique des marécages.
+          </p>
+          <div class="alert alert-info mt-3 d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <span>Les crocodiles comme Nile jouent un rôle essentiel dans leur écosystème, en régulant les populations d'autres espèces aquatiques.</span>
+          </div>
         </div>
       </div>
-      <div class="modal-footer bg-light border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+
+      <!-- Pied de page du modal -->
+      <div class="modal-footer bg-light border-0 rounded-bottom">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>
+  <div class="text-center mb-5 mt-5" id="alertContainer"></div>
 </div>
 
+
 <!-- Modal pour Tortue -->
-<div class="modal fade" id="tortueModal" tabindex="-1" aria-labelledby="tortueModalLabel" aria-hidden="true">
+<div class="modal fade" id="tortueModal" data-animal="Shelly" tabindex="-1" aria-labelledby="tortueModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content shadow-lg border-0 rounded-4">
-      <div class="modal-header bg-secondary text-white">
-        <h5 class="modal-title" id="tortueModalLabel">Tortue - Sagesse des Marais</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <!-- En-tête du modal -->
+      <div class="modal-header bg-secondary text-white border-0 rounded-top">
+        <h5 class="modal-title fw-bold" id="tortueModalLabel">Shelly - Sagesse des Marais</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
       </div>
+      
       <div class="modal-body p-4">
         <div class="row g-4">
-            <div class="col-md-6">
-                <img src="images/tortue.jpg" alt="Tortue" class="img-fluid rounded-3 shadow-sm mb-3">
+          <!-- Section de l'image -->
+          <div class="col-md-6">
+            <div class="position-relative">
+              <img src="images/tortue.jpg" alt="Tortue" class="img-fluid rounded-3 shadow-sm mb-3">
+              <span class="badge bg-primary text-white position-absolute top-0 start-0 m-2 p-2">Espèce en danger</span>
             </div>
-            <div class="col-md-6">
-                <div class="bg-light p-3 rounded-3 shadow-sm">
-                    <h6><strong>Nom :</strong> Shelly</h6>
-                    <h6><strong>Espèce :</strong> Chelonia mydas</h6>
-                    <h6><strong>Origine :</strong> Marais et rivières tropicales</h6>
-                    <h6><strong>Âge :</strong> 80 ans</h6>
-                    <h6><strong>Statut de conservation :</strong> En danger (IUCN)</h6>
-                    <p>Shelly est une tortue sage et lente, connue pour sa longévité et sa tranquillité dans les marais.</p>
-                </div>
+          </div>
+
+          <!-- Section d'information -->
+          <div class="col-md-6">
+            <div class="bg-light p-4 rounded-3 shadow-sm">
+              <h6 class="text-dark"><strong>Nom :</strong> Shelly</h6>
+              <h6><strong>Espèce :</strong> Chelonia mydas</h6>
+              <h6><strong>Origine :</strong> Marais et rivières tropicales</h6>
+              <h6><strong>Âge :</strong> 80 ans</h6>
+              <h6><strong>Statut de conservation :</strong> En danger (IUCN)</h6>
+              <p class="fst-italic mb-3">Shelly est une tortue sage et lente, connue pour sa longévité exceptionnelle et sa tranquillité. Elle incarne la patience et la persévérance dans les marais.</p>
+              <br>
+              <!-- Nombre de vues -->
+              <p class="d-flex align-items-center mb-1">
+                <strong class="text-muted fw-light me-2">Nombre de vues :</strong>
+                <span class="view-count text-secondary small">0</span>
+              </p>
             </div>
+          </div>
         </div>
+        
+        <!-- Section d'informations supplémentaires -->
         <div class="mt-4">
-            <h5 class="text-secondary border-bottom pb-2">Informations supplémentaires :</h5>
-            <p>Shelly est l'un des plus vieux résidents du zoo, représentant la sagesse et la patience dans son habitat recréé.</p>
+          <h5 class="text-secondary border-bottom pb-2">Informations supplémentaires :</h5>
+          <p class="text-muted">
+            Shelly est l'une des plus anciennes résidentes du zoo. Elle vit dans un habitat recréé qui imite parfaitement son environnement naturel, offrant des espaces calmes pour se reposer. Les visiteurs peuvent découvrir la sagesse des tortues et apprécier leur rôle dans l'écosystème aquatique.
+          </p>
+          <div class="alert alert-info mt-3 d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <span>Les tortues comme Shelly contribuent à l'écosystème en favorisant la propreté des eaux marécageuses et en aidant à la dispersion des plantes aquatiques.</span>
+          </div>
         </div>
       </div>
-      <div class="modal-footer bg-light border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+
+      <!-- Pied de page du modal -->
+      <div class="modal-footer bg-light border-0 rounded-bottom">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>
+  <div class="text-center mb-5 mt-5" id="alertContainer"></div>
 </div>
+
 

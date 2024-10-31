@@ -43,6 +43,7 @@ async function loadHabitats() {
     }
 
     try {
+        console.log("Envoi de la requête API pour récupérer les habitats...");
         const response = await fetch('https://127.0.0.1:8000/api/habitat', {
             method: 'GET',
             headers: {
@@ -51,6 +52,7 @@ async function loadHabitats() {
             }
         });
 
+        console.log("Réponse de l'API reçue.");
         if (response.ok) {
             const habitats = await response.json();
             populateHabitatTable(habitats.data);
@@ -104,73 +106,6 @@ function populateHabitatTable(habitats) {
     });
 }
 
-// Fonction pour ajouter un nouvel habitat
-document.getElementById('habitatForm').addEventListener('submit', async (e) => {
-  e.preventDefault(); // Empêche le rechargement de la page
-
-  // Récupère les valeurs des champs de formulaire
-  const name = document.getElementById('habitatName').value.trim();
-  const description = document.getElementById('habitatDescription').value.trim();
-  const image = document.getElementById('habitatImage').value.trim();
-
-  const authToken = getCookie('accesstoken');
-
-  if (!authToken) {
-      showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
-      return;
-  }
-
-  try {
-      const response = await fetch('https://127.0.0.1:8000/api/habitat', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-              'X-AUTH-TOKEN': authToken
-          },
-          body: JSON.stringify({
-              nom_habitat: name,
-              description_habitat: description,
-              image: image
-          })
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-          showAlert('success', "Habitat ajouté avec succès !");
-          loadHabitats(); // Recharge la liste des habitats
-          const addModal = bootstrap.Modal.getInstance(document.getElementById('addHabitatModal'));
-          addModal.hide();
-          document.getElementById('habitatForm').reset(); // Réinitialise le formulaire
-      } else {
-          console.error("Erreur lors de l'ajout de l'habitat :", data);
-          showAlert('danger', data.message || "Erreur lors de l'ajout de l'habitat.");
-      }
-  } catch (error) {
-      console.error("Erreur de connexion :", error);
-      showAlert('danger', "Une erreur est survenue pendant la connexion au serveur.");
-  }
-});
-
-
-// Fonction pour filtrer les habitats par nom
-function filterHabitats() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const rows = document.querySelectorAll('#habitatTableBody tr');
-
-    rows.forEach(row => {
-        const habitatName = row.querySelector('td').innerText.toLowerCase();
-        if (habitatName.includes(searchInput)) {
-            row.style.display = ''; // Affiche la ligne si elle correspond
-        } else {
-            row.style.display = 'none'; // Masque la ligne si elle ne correspond pas
-        }
-    });
-}
-
-
-
-// Ajout de l'écouteur de l'événement de recherche pour le filtre
 document.addEventListener('DOMContentLoaded', () => {
     loadHabitats();
 
@@ -184,6 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContainer = document.querySelector('.container');
     mainContainer.insertBefore(searchInput, mainContainer.querySelector('.table-responsive'));
 });
+
+
 
 // Fonction pour ouvrir le modal de modification avec les données de l'habitat
 function editHabitat(habitat) {
@@ -284,3 +221,170 @@ async function deleteHabitat(habitatId, habitatName) {
 
 // Charger les habitats lorsque la page est prête
 loadHabitats();
+
+
+
+
+
+function displayAnimals(animals) {
+    console.log("Les donnes:", animals);
+    const habitatSections = document.getElementById("habitat-sections");
+
+    // Initialisation des sections d'habitat
+    const habitats = {
+        "Savane": [],
+        "Jungle": [],
+        "Marais": []
+    };
+
+    // Grouper les animaux par habitat
+    animals.forEach(animal => {
+        habitats[animal.habitat.nom_habitat].push(animal);
+    });
+
+    // Créer des sections pour chaque habitat et y ajouter les animaux
+    for (const [habitatName, habitatAnimals] of Object.entries(habitats)) {
+        const habitatSection = document.createElement("div");
+        habitatSection.classList.add("habitat-section", "mb-5");
+
+
+        const habitatTitle = document.createElement("h2");
+        habitatTitle.classList.add("text-secondary", "mb-4");
+        habitatTitle.textContent = `Les Animaux de la ${habitatName}`;
+
+        habitatSection.appendChild(habitatTitle);
+
+        const animalRow = document.createElement("div");
+        animalRow.classList.add("row");
+
+        // Créer une carte pour chaque animal et l'ajouter à la section de l'habitat
+        habitatAnimals.forEach(animal => {
+            const animalCard = document.createElement("div");
+            animalCard.classList.add("col-md-4", "mb-4");
+
+            animalCard.innerHTML = `
+                <div class="card shadow-sm">
+                    <img src="/images/${animal.image}" class="card-img-top" alt="${animal.prenom_animal}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">${animal.prenom_animal}</h5>
+                        <p class="card-text">${animal.race_animal}</p>
+                        <p class="text-muted">Santé: ${animal.etat_animal}</p>
+                        <p class="text-primary">Vues: ${animal.view_count}</p> <!-- view_count burada görüntülenir -->
+                    </div>
+                </div>
+            `;
+
+            // Ajouter l'événement de clic pour augmenter le view_count
+            animalCard.addEventListener('click', () => {
+                updateViewCount(animal.id);
+            });
+
+            animalRow.appendChild(animalCard);
+        });
+
+        habitatSection.appendChild(animalRow);
+        habitatSections.appendChild(habitatSection);
+    }
+}
+
+
+
+// Fonction pour mettre à jour le view_count d'un animal
+async function updateViewCount(animalId) {
+    const authToken = getCookie('accesstoken');
+    if (!authToken) {
+        showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://127.0.0.1:8000/api/animal/${animalId}/view`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': authToken
+            }
+        });
+
+        if (response.ok) {
+            console.log(`view_count mis à jour pour l'animal avec l'ID ${animalId}.`);
+            loadHabitats();
+        } else {
+            console.error("Erreur lors de la mise à jour de view_count:", await response.json());
+        }
+    } catch (error) {
+        console.error("Erreur de connexion pour la mise à jour de view_count:", error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadHabitats();
+});
+
+
+// Fonction pour ajouter un nouvel habitat
+document.getElementById('habitatForm').addEventListener('submit', async (e) => {
+  e.preventDefault(); // Empêche le rechargement de la page
+
+  // Récupère les valeurs des champs de formulaire
+  const name = document.getElementById('habitatName').value.trim();
+  const description = document.getElementById('habitatDescription').value.trim();
+  const image = document.getElementById('habitatImage').value.trim();
+
+  const authToken = getCookie('accesstoken');
+
+  if (!authToken) {
+      showAlert('danger', "Token non trouvé. Veuillez vous reconnecter.");
+      return;
+  }
+
+  try {
+      const response = await fetch('https://127.0.0.1:8000/api/habitat', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-AUTH-TOKEN': authToken
+          },
+          body: JSON.stringify({
+              nom_habitat: name,
+              description_habitat: description,
+              image: image
+          })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+          showAlert('success', "Habitat ajouté avec succès !");
+          loadHabitats(); // Recharge la liste des habitats
+          const addModal = bootstrap.Modal.getInstance(document.getElementById('addHabitatModal'));
+          addModal.hide();
+          document.getElementById('habitatForm').reset(); // Réinitialise le formulaire
+      } else {
+          console.error("Erreur lors de l'ajout de l'habitat :", data);
+          showAlert('danger', data.message || "Erreur lors de l'ajout de l'habitat.");
+      }
+  } catch (error) {
+      console.error("Erreur de connexion :", error);
+      showAlert('danger', "Une erreur est survenue pendant la connexion au serveur.");
+  }
+});
+
+
+// Fonction pour filtrer les habitats par nom
+function filterHabitats() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const rows = document.querySelectorAll('#habitatTableBody tr');
+
+    rows.forEach(row => {
+        const habitatName = row.querySelector('td').innerText.toLowerCase();
+        if (habitatName.includes(searchInput)) {
+            row.style.display = ''; // Affiche la ligne si elle correspond
+        } else {
+            row.style.display = 'none'; // Masque la ligne si elle ne correspond pas
+        }
+    });
+}
+
+
+
