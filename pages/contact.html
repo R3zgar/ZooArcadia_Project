@@ -1,45 +1,75 @@
-
-<!-- Contact 5 - Bootstrap Brain Component -->
-<section class="py-2 py-md-5 py-xl-8">
+<!-- Contact Section - Section de contact -->
+<section class="contact-section py-5" style="background-color: #f5f5f5;">
   <div class="container p-4">
-    <h1 class="text-center text-dark">
-      <br />
-      <i class="bi bi-envelope text-warning"></i> Contactez-nous
-      <br />
-    </h1>
-    <p class="lead text-center p-3">
-      Si vous avez des questions ou des demandes, n'hésitez pas à nous contacter en remplissant le formulaire ci-dessous.
-  </p>
-  </div>
+    <!-- Title and Subtitle -->
+    <div class="text-center mb-5">
+      <h2 class="display-4 text-secondary fw-bold">Contactez-nous</h2>
+      <p class="text-muted fs-5">
+        Pour toute question, suggestion ou demande d'information, n'hésitez pas à nous contacter.
+      </p>
+    </div>
 
-  <div class="container bg-light p-5 rounded mb-5 mt-4">
-      <form>
-          <div class="mb-3">
-             <label for="EmailInput" class="form-label">Adresse e-mail</label>
-             <input type="email" class="form-control bg-light mb-4" id="EmailInput" placeholder="Entrez votre adresse e-mail" >
-             <div class="invalid-feedback">Identifiants incorrects. Veuillez vérifier votre email et votre mot de passe.</div>
+    <!-- Contact Form and Info -->
+    <div class="row">
+      <!-- Contact Information -->
+      <div class="col-lg-5 mb-4 mb-lg-0">
+        <div class="bg-white rounded p-4 shadow-sm">
+          <h5 class="text-center text-success mb-3">Informations de Contact</h5>
+          <p class="text-muted">
+            Nous sommes ravis de vous accueillir au cœur de la nature.
+          </p>
 
+          <div class="contact-info">
+            <p><i class="bi bi-geo-alt-fill text-success me-2"></i> Le Zoo Arcadia, 125 Route de la Forêt, près de Brocéliande</p>
+            <p><i class="bi bi-telephone-fill text-success me-2"></i> +33 2 99 23 45 67</p>
+            <p><i class="bi bi-envelope-fill text-success me-2"></i> contact@zooarcadia.fr</p>
           </div>
-              <div class="mb-3">
-                 <label for="objetInput" class="form-label">Titre de votre demande</label>
-                 <input type="text" class="form-control bg-light mb-4" id="objetInput" placeholder="Entrez titre de votre demande" >
-                 <div class="invalid-feedback">L'objet est requis</div>
-                </div>
 
-              <div class="mb-3">
-                <label for="messageInput" class="form-label">Entrez votre message</label>
-                <textarea class="form-control bg-light mb-3" id="messageInput" rows="7" placeholder="Entrez votre message" ></textarea>
-                  <div class="invalid-feedback">Le message est requis</div>
-                </div>
+          <!-- Social Media Links -->
+          <div class="social-icons text-center mt-4">
+            <a href="#" class="text-success me-3"><i class="bi bi-facebook fs-4"></i></a>
+            <a href="#" class="text-success me-3"><i class="bi bi-twitter fs-4"></i></a>
+            <a href="#" class="text-success"><i class="bi bi-instagram fs-4"></i></a>
+          </div>
+        </div>
+      </div>
 
-              <div class="text-center"> <button type="button" class="btn btn-primary btn-lg mt-3" id="btnSignin"> Envoyer</button>
-              </div>
-            
-      </form>
-
-
+      <!-- Contact Form -->
+      <div class="col-lg-7">
+        <div class="bg-white rounded p-4 shadow-sm">
+          <h5 class="text-center text-success mb-4">Envoyez-nous un Message</h5>
+          <form>
+            <!-- Name -->
+            <div class="mb-3">
+              <label for="nameInput" class="form-label text-dark fw-semibold">Nom complet</label>
+              <input type="text" class="form-control bg-light border-0 py-2" id="nameInput" placeholder="Votre nom complet">
+              <div class="invalid-feedback">Le nom est requis.</div>
+            </div>
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="emailInput" class="form-label text-dark fw-semibold">Adresse e-mail</label>
+              <input type="email" class="form-control bg-light border-0 py-2" id="emailInput" placeholder="Votre adresse e-mail">
+              <div class="invalid-feedback">Adresse e-mail invalide.</div>
+            </div>
+            <!-- Subject -->
+            <div class="mb-3">
+              <label for="subjectInput" class="form-label text-dark fw-semibold">Objet</label>
+              <input type="text" class="form-control bg-light border-0 py-2" id="subjectInput" placeholder="Sujet de votre demande">
+              <div class="invalid-feedback">L'objet est requis.</div>
+            </div>
+            <!-- Message -->
+            <div class="mb-3">
+              <label for="messageInput" class="form-label text-dark fw-semibold">Votre Message</label>
+              <textarea class="form-control bg-light border-0 py-2" id="messageInput" rows="6" placeholder="Tapez votre message ici"></textarea>
+              <div class="invalid-feedback">Le message est requis.</div>
+            </div>
+            <!-- Submit Button -->
+            <div class="text-center">
+              <button type="submit" class="btn btn-success text-white btn-lg px-5 mt-3">Envoyer le message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  
 </section>
-
-
