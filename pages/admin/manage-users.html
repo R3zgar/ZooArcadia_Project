@@ -15,7 +15,7 @@
 
         <!-- Tableau des utilisateurs -->
         <div class="table-responsive">
-            <table class="table table-hover table-bordered text-center">
+            <table class="table table-hover table-bordered table-sm text-center w-auto">
                 <thead class="table-dark">
                     <tr>
                         <th>Nom</th>
@@ -101,6 +101,60 @@
 #saveUserChanges:hover {
     background-color: #0a58ca;
     transition: background-color 0.3s ease;
+}
+
+
+
+
+@media (max-width: 768px) {
+    /* Taille de la police et hauteur de ligne réduites pour les écrans mobiles */
+    .table {
+        font-size: 0.65rem; /* Réduit la taille du texte pour mobile */
+        line-height: 1;     /* Réduit la hauteur de ligne */
+    }
+
+    /* Marges intérieures des cellules réduites pour mobile */
+    .table th, .table td {
+        padding: 0.1rem;
+        white-space: normal; /* Autorise le retour à la ligne */
+        word-wrap: break-word; /* Diminue les marges intérieures des cellules */
+    }
+
+    /* Limite la largeur des colonnes sur mobile */
+    .table th:nth-child(1),
+    .table td:nth-child(1) {
+        width: 20%; /* Largeur pour le nom */
+    }
+
+    .table th:nth-child(2),
+    .table td:nth-child(2) {
+        width: 20%; /* Largeur pour le prénom */
+    }
+
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        width: 25%; /* Largeur pour l'email */
+    }
+
+    .table th:nth-child(4),
+    .table td:nth-child(4) {
+        width: 15%; /* Largeur pour le rôle */
+    }
+
+    .table th:nth-child(5),
+    .table td:nth-child(5) {
+        width: 20%; /* Largeur pour les actions */
+    }
+
+       
+        h1 {
+        font-size: 1.15rem; 
+    }
+
+    .btn {
+        padding: 0.15rem 0.3rem; 
+        font-size: 0.7rem;      
+    }
 }
 
 </style>

@@ -118,15 +118,15 @@ function populateUserTable(users) {
         row.classList.add('hover-row');
 
         row.innerHTML = `
-            <td>${user.lastName}</td>
-            <td>${user.firstName}</td>
-            <td>${user.email}</td>
-            <td>${roles}</td>
-            <td>
-                <button class="btn btn-warning btn-sm me-2 edit-user-btn">
+            <td class="text-center align-middle">${user.lastName}</td>
+            <td class="text-center align-middle">${user.firstName}</td>
+            <td class="text-center align-middle">${user.email}</td>
+            <td class="text-center align-middle">${roles}</td>
+            <td class="text-center">
+                <button class="btn btn-warning btn-sm edit-user-btn mb-1" style="padding: 0.2rem 0.4rem; font-size: 0.75rem;">
                     <i class="bi bi-pencil"></i>
                 </button>
-                <button class="btn btn-danger btn-sm delete-user-btn">
+                <button class="btn btn-danger btn-sm delete-user-btn mb-1" style="padding: 0.2rem 0.4rem; font-size: 0.75rem;">
                     <i class="bi bi-trash"></i>
                 </button>
             </td>
@@ -216,3 +216,23 @@ document.getElementById('saveUserChanges').addEventListener('click', saveUserCha
 
 // Charger les utilisateurs lorsque la page est prête
 loadUsers();
+
+
+
+// Fonction pour ajuster le tableau uniquement pour les écrans mobiles
+function adjustTableForMobile() {
+    const table = document.querySelector('.table');
+    if (window.innerWidth <= 768) {
+        // Appliquer les classes pour les petits écrans
+        table.classList.add('table-sm'); // Compacte le tableau pour mobile
+        table.classList.add('w-auto');    // Limite la largeur au contenu pour mobile
+    } else {
+        // Supprimer les classes pour les grands écrans (desktop)
+        table.classList.remove('table-sm');
+        table.classList.remove('w-auto');
+    }
+}
+
+// Exécuter la fonction au chargement et lors du redimensionnement de la fenêtre
+window.addEventListener('load', adjustTableForMobile);
+window.addEventListener('resize', adjustTableForMobile);

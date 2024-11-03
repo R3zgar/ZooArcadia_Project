@@ -165,19 +165,25 @@ function populateCommentTable(comments) {
         row.classList.add('hover-row');
 
         row.innerHTML = `
-            <td>${comment.auteur}</td>
-            <td>${comment.contenu}</td>
-            <td>${comment.created_at}</td>
-            <td>${status}</td>
-            <td class="action-buttons d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
-                <button class="btn btn-success btn-sm mb-2 mb-md-0" onclick="approveComment(${comment.id})" title="Approuver" ${isApproved ? 'disabled' : ''}>
+        <td class="text-center align-middle">${comment.auteur}</td>
+        <td class="text-center align-middle">${comment.contenu}</td>
+        <td class="text-center align-middle">${comment.created_at}</td>
+        <td class="text-center align-middle">${status}</td>
+        <td class="text-center align-middle">
+            <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-1">
+                <button class="btn btn-success btn-sm mb-1 mb-md-0" onclick="approveComment(${comment.id})" title="Approuver" ${isApproved ? 'disabled' : ''} style="padding: 0.1rem 0.3rem; font-size: 0.7rem; align-self: center;">
                     <i class="bi bi-check-circle"></i>
                 </button>
-                <button class="btn btn-danger btn-sm" onclick="deleteComment(${comment.id})" title="Supprimer">
+                <button class="btn btn-danger btn-sm mb-1 mb-md-0" onclick="deleteComment(${comment.id})" title="Supprimer" style="padding: 0.1rem 0.3rem; font-size: 0.7rem; align-self: center;">
                     <i class="bi bi-trash"></i>
                 </button>
-            </td>
-        `;
+            </div>
+        </td>
+    `;
+    
+    
+    
+    
 
         commentsTableBody.appendChild(row);
     });
@@ -198,19 +204,24 @@ function populateServiceTable(services) {
         const row = document.createElement('tr');
         row.classList.add('hover-row');
 
-        row.innerHTML = `
-            <td>${service.nom_service}</td>
-            <td>${service.description_service}</td>
-            
-            <td class="action-buttons d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
-                <button class="btn btn-warning btn-sm mb-2 mb-md-0" onclick="editService(${service.id})" title="Modifier">
-                    <i class="bi bi-pencil"></i>
-                </button>
-                <button class="btn btn-danger btn-sm" onclick="deleteService(${service.id}, '${service.nom_service}')" title="Supprimer">
-                    <i class="bi bi-trash"></i>
-                </button>
-            </td>
-        `;
+
+            row.innerHTML = `
+                <td class="text-center align-middle">${service.nom_service}</td>
+                <td class="text-center align-middle">${service.description_service}</td>
+                <td class="text-center align-middle">
+                    <div class="action-buttons d-flex flex-column flex-md-row justify-content-center align-items-center gap-1">
+                        <button class="btn btn-warning btn-sm mb-1 mb-md-0" onclick="editService(${service.id})" title="Modifier" style="padding: 0.1rem 0.3rem; font-size: 0.7rem;">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-danger btn-sm mb-1 mb-md-0" onclick="deleteService(${service.id}, '${service.nom_service}')" title="Supprimer" style="padding: 0.1rem 0.3rem; font-size: 0.7rem;">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            `;
+
+    
+    
 
         servicesTableBody.appendChild(row);
     });

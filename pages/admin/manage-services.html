@@ -6,17 +6,16 @@
 
             <div class="text-center mb-5 mt-5" id="alertContainer"></div>
 
-
             <!-- Bouton d'ajout de service -->
             <div class="text-end mb-4">
-                <a href="manage-feeding" class="me-3 text-secondary text-decoration-none mt-2">
+                <a href="manage-feeding" class="me-3 text-secondary text-decoration-none mt-2 fs-6 fs-md-5">
                     <i class="bi bi-box-seam"></i> Gérer l'alimentation
                 </a>
-                <a href="editPassword" class="btn btn-info btn-lg shadow-sm mt-2">
+                <a href="editPassword" class="btn btn-info shadow-sm mt-2 btn-sm btn-md btn-lg">
                     <i class="bi bi-key"></i> Changer le mot de passe
                 </a>
 
-                <button class="btn btn-primary btn-lg shadow-sm mt-2" data-bs-toggle="modal" data-bs-target="#addServiceModal">
+                <button class="btn btn-primary shadow-sm mt-2 btn-sm btn-md btn-lg" data-bs-toggle="modal" data-bs-target="#addServiceModal">
                     <i class="bi bi-plus-circle"></i> Ajouter un service
                 </button>
             </div>
@@ -41,7 +40,7 @@
             <!-- Bloc de gestion des commentaires -->
             <section class="py-5 mt-5">
                 <div class="container">
-                    <h2 class=" mb-2 text-primary">Gestion des Commentaires</h2>
+                    <h2 class=" mb-3 text-primary">Gestion des Commentaires</h2>
 
                         <!-- Tableau des commentaires -->
                         <div class="table-responsive">
@@ -49,7 +48,7 @@
                             <table class="table table-hover table-bordered text-center">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>Nom de l'utilisateur</th>
+                                        <th>Nom de le visiteur</th>
                                         <th>Commentaire</th>
                                         <th>Date</th>
                                         <th>Statut</th>
@@ -120,3 +119,26 @@
         </div>
     </div>
 </div>
+
+
+<style>
+    @media (max-width: 768px) {
+        /* Réduction de la taille de police et des marges intérieures pour les cellules du tableau */
+        .table td, .table th {
+            font-size: 0.65rem; /* Taille de police plus petite pour mobile */
+            padding: 0.2rem;    /* Marges intérieures réduites */
+        }
+    
+        /* Boutons dans la colonne "Actions" pour une apparence plus compacte */
+        .action-buttons .btn {
+            padding: 0.15rem 0.3rem; /* Réduction des marges intérieures des boutons */
+            font-size: 0.65rem;      /* Taille de police plus petite pour les boutons */
+        }
+    
+        /* Réduction de l'espacement entre les boutons d'action */
+        .action-buttons {
+            gap: 0.2rem; /* Espace réduit entre les boutons */
+        }
+    }
+    </style>
+    
