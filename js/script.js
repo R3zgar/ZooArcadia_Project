@@ -2,7 +2,7 @@
 const tokenCookieName = "accesstoken";
 const RoleCookieName = "role";
 const signoutBtn = document.getElementById("signout-btn");
-const apiUrl = "https://127.0.0.1:8000/api/";
+const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
 
 signoutBtn.addEventListener("click", signout);
 
@@ -49,12 +49,7 @@ function eraseCookie(name) {
 }
 
 function isConnected(){
-    if(getToken() == null || getToken == undefined){
-        return false;
-    }
-    else{
-        return true;
-    }
+    return !(getToken() == null || getToken == undefined);
 }
 
 /*

@@ -1,3 +1,5 @@
+
+const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
 // Variables pour la table des utilisateurs
 const usersTableBody = document.querySelector('#manage-users tbody');
 const alertContainer = document.getElementById('alertContainer');
@@ -43,7 +45,7 @@ async function loadUsers() {
     }
 
     try {
-        const response = await fetch('https://127.0.0.1:8000/api/users', {
+        const response = await fetch(`${apiUrl}users`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -87,7 +89,7 @@ async function deleteUser(userId, firstName, lastName, roles) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/users/${userId}`, {
+        const response = await fetch(`${apiUrl}users/${userId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -181,7 +183,7 @@ async function saveUserChanges() {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/users/${userId}`, {
+        const response = await fetch(`${apiUrl}users/${userId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
