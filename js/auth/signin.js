@@ -1,3 +1,5 @@
+const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
+
 // Récupération des éléments HTML pour le formulaire de connexion
 const mailInput = document.getElementById("EmailInput");
 const passwordInput = document.getElementById("PasswordInput");
@@ -34,7 +36,7 @@ function checkCredentials(){
     };
 
     // Envoi de la requête pour vérifier les informations de connexion
-    fetch(apiUrl + "login", requestOptions)
+    fetch(`${apiUrl}login`, requestOptions)
     .then(response => {
         if(response.ok){
             return response.json();  // Si la réponse est valide, la convertir en JSON
