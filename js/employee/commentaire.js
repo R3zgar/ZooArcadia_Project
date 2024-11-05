@@ -1,3 +1,5 @@
+const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
+
 console.log("commentaire.js est chargé.");
 
 // Récupération des éléments du formulaire
@@ -104,7 +106,7 @@ async function soumettreAvis(event) {
     try {
         // Envoyer la requête à l'API
         console.log("Envoi de la requête à l'API...");
-        const response = await fetch("https://127.0.0.1:8000/api/commentaire", requestOptions);
+        const response = await fetch(`${apiUrl}commentaire`, requestOptions);
         const result = await response.json();
 
         if (response.ok) {

@@ -1,3 +1,5 @@
+const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
+
 // Variables pour la table des rapports vétérinaires
 const veterinaireRapportsTableBody = document.querySelector('#veterinaireRapportsTable');
 const alertContainer = document.getElementById('alertContainer');
@@ -52,7 +54,7 @@ async function loadVeterinaireRapports() {
     }
 
     try {
-        const response = await fetch('https://127.0.0.1:8000/api/veterinaire_rapport', {
+        const response = await fetch(`${apiUrl}veterinaire_rapport`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -171,7 +173,7 @@ async function deleteVeterinaireRapport(rapportId, etatAnimal) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/veterinaire_rapport/${rapportId}`, {
+        const response = await fetch(`${apiUrl}veterinaire_rapport/${rapportId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -215,7 +217,7 @@ async function saveRapportChanges(event) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/veterinaire_rapport/${rapportId}`, {
+        const response = await fetch(`${apiUrl}veterinaire_rapport/${rapportId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -305,7 +307,7 @@ async function addVeterinaireRapport(event) {
     };
 
     try {
-        const response = await fetch("https://127.0.0.1:8000/api/veterinaire_rapport", requestOptions);
+        const response = await fetch(`${apiUrl}veterinaire_rapport`, requestOptions);
         const result = await response.json();
 
         if (response.ok) {

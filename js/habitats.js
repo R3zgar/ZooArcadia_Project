@@ -39,7 +39,7 @@ async function loadAnimalInfo(animalName, modalId) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/animal`, {
+        const response = await fetch(`${apiUrl}animal`, {
             method: 'GET',
             headers: {
                 'X-AUTH-TOKEN': authToken
@@ -77,7 +77,7 @@ async function incrementViewCount(animalName, modalId) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/animal/${animalName}/view`, {
+        const response = await fetch(`${apiUrl}animal/${animalName}/view`, {
             method: 'PUT',
             headers: {
                 'X-AUTH-TOKEN': authToken

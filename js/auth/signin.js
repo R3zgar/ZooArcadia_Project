@@ -36,7 +36,7 @@ function checkCredentials(){
     };
 
     // Envoi de la requête pour vérifier les informations de connexion
-    fetch(apiUrl+"login", requestOptions)
+    fetch(`${apiUrl}login`, requestOptions)
     .then(response => {
         if(response.ok){
             return response.json();  // Si la réponse est valide, la convertir en JSON

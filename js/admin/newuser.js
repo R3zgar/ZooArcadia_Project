@@ -1,3 +1,5 @@
+const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
+
 // Récupération des éléments du formulaire
 const inputNom = document.getElementById("NomInput");
 const inputPreNom = document.getElementById("PrenomInput");
@@ -107,7 +109,7 @@ function inscrireUtilisateur(event) {
         redirect: "follow"
     };
 
-    fetch("https://127.0.0.1:8000/api/registration", requestOptions)
+    fetch(apiUrl+"registration", requestOptions)
         .then(response => {
             hideLoading();
             if (response.ok) {

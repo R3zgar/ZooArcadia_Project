@@ -1,3 +1,5 @@
+const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
+
 // Écouter l'événement 'submit' pour le formulaire de nouveau rapport
 document.getElementById("newReportForm").addEventListener("click", function(event) {
     event.preventDefault(); // Empêcher l'envoi par défaut du formulaire
@@ -37,7 +39,7 @@ document.getElementById("newReportForm").addEventListener("click", function(even
     };
 
     // Envoyer la requête fetch vers l'API pour créer un nouveau rapport vétérinaire
-    fetch("https://127.0.0.1:8000/api/veterinaire_rapport", requestOptions)
+    fetch(`${apiUrl}veterinaire_rapport`, requestOptions)
     .then(response => {
         if(response.ok){
             return response.json();  // Convertir la réponse en JSON si tout va bien

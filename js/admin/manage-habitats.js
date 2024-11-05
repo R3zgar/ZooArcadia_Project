@@ -1,3 +1,5 @@
+const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
+
 // Variables pour le corps de la table des habitats
 const habitatTableBody = document.querySelector('#habitatTableBody');
 const alertContainer = document.getElementById('alertContainer');
@@ -44,7 +46,7 @@ async function loadHabitats() {
 
     try {
         console.log("Envoi de la requête API pour récupérer les habitats...");
-        const response = await fetch('https://127.0.0.1:8000/api/habitat', {
+        const response = await fetch(`${apiUrl}habitat`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -147,7 +149,7 @@ async function saveHabitatChanges() {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/habitat/${id}`, {
+        const response = await fetch(`${apiUrl}habitat/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -197,7 +199,7 @@ async function deleteHabitat(habitatId, habitatName) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/habitat/${habitatId}`, {
+        const response = await fetch(`${apiUrl}habitat/${habitatId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -298,7 +300,7 @@ async function updateViewCount(animalId) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/animal/${animalId}/view`, {
+        const response = await fetch(`${apiUrl}animal/${animalId}/view`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -339,7 +341,7 @@ document.getElementById('habitatForm').addEventListener('submit', async (e) => {
   }
 
   try {
-      const response = await fetch('https://127.0.0.1:8000/api/habitat', {
+      const response = await fetch(`${apiUrl}habitat`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

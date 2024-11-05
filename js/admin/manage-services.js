@@ -1,3 +1,6 @@
+
+const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
+
 // Variables pour la table des commentaires
 const commentsTableBody = document.querySelector('#commentsTableBody');
 const alertContainer = document.getElementById('alertContainer');
@@ -50,7 +53,7 @@ async function loadComments() {
     }
 
     try {
-        const response = await fetch('https://127.0.0.1:8000/api/commentaire', {
+        const response = await fetch(`${apiUrl}commentaire`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -87,7 +90,7 @@ async function approveComment(commentId) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/commentaire/${commentId}/approve`, {
+        const response = await fetch(`${apiUrl}commentaire/${commentId}/approve`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -127,7 +130,7 @@ async function deleteComment(commentId) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/commentaire/${commentId}`, {
+        const response = await fetch(`${apiUrl}commentaire/${commentId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -240,7 +243,7 @@ async function loadServices() {
     }
 
     try {
-        const response = await fetch('https://127.0.0.1:8000/api/service', {
+        const response = await fetch(`${apiUrl}service`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -277,7 +280,7 @@ function editService(serviceId) {
     }
 
     // Récupérer les données du service pour pré-remplir le formulaire de modification
-    fetch(`https://127.0.0.1:8000/api/service/${serviceId}`, {
+    fetch(`${apiUrl}service/${serviceId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -326,7 +329,7 @@ async function updateService(serviceId, nomService, descriptionService) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/service/${serviceId}`, {
+        const response = await fetch(`${apiUrl}service/${serviceId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -382,7 +385,7 @@ async function addService(nomService, descriptionService) {
     }
 
     try {
-        const response = await fetch('https://127.0.0.1:8000/api/service', {
+        const response = await fetch(`${apiUrl}service`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -427,7 +430,7 @@ async function saveServiceChanges(event) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/service/${serviceId}`, {
+        const response = await fetch(`${apiUrl}service/${serviceId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -509,7 +512,7 @@ async function deleteService(serviceId, nomService) {
     }
 
     try {
-        const response = await fetch(`https://127.0.0.1:8000/api/service/${serviceId}`, {
+        const response = await fetch(`${apiUrl}service/${serviceId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

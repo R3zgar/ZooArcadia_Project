@@ -1,3 +1,4 @@
+const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
 // Variables pour les champs de formulaire et le bouton de validation
 const inputPassword = document.getElementById("PasswordInput");
 const inputValidationPassword = document.getElementById("ValidatePasswordInput");
@@ -104,7 +105,7 @@ async function changePassword() {
 
     try {
         // Prépare la requête pour changer le mot de passe
-        const response = await fetch("https://127.0.0.1:8000/api/account/change-password", {
+        const response = await fetch(`${apiUrl}account/change-password`,{
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
