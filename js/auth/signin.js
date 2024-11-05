@@ -1,4 +1,4 @@
-// const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
+
 
 // Récupération des éléments HTML pour le formulaire de connexion
 const mailInput = document.getElementById("EmailInput");

@@ -1,4 +1,4 @@
-const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
+
 
 // Écouter l'événement 'submit' pour le formulaire de nouveau rapport
 document.getElementById("newReportForm").addEventListener("click", function(event) {

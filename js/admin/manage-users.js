@@ -1,5 +1,4 @@
 
-const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
 
 // Variables pour la table des utilisateurs
 const usersTableBody = document.querySelector('#manage-users tbody');

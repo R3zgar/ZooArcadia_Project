@@ -1,4 +1,4 @@
-const apiUrl = "https://master-7rqtwti-unhphrs4kyslw.fr-3.platformsh.site/api/";
+
 
 // Variables pour le corps de la table des habitats
 const habitatTableBody = document.querySelector('#habitatTableBody');
