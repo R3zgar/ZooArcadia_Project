@@ -38,36 +38,41 @@
       <div class="col-lg-7">
         <div class="bg-white rounded p-4 shadow-sm">
           <h5 class="text-center text-success mb-4">Envoyez-nous un Message</h5>
-          <form>
-            <!-- Name -->
+
+          
+          <form id="contactForm">
+            <!-- Nom -->
             <div class="mb-3">
               <label for="nameInput" class="form-label text-dark fw-semibold">Nom complet</label>
-              <input type="text" class="form-control bg-light border-0 py-2" id="nameInput" placeholder="Votre nom complet">
+              <input type="text" class="form-control bg-light border-0 py-2" id="nameInput" name="from_name" placeholder="Votre nom complet" required>
               <div class="invalid-feedback">Le nom est requis.</div>
             </div>
             <!-- Email -->
             <div class="mb-3">
               <label for="emailInput" class="form-label text-dark fw-semibold">Adresse e-mail</label>
-              <input type="email" class="form-control bg-light border-0 py-2" id="emailInput" placeholder="Votre adresse e-mail">
+              <input type="email" class="form-control bg-light border-0 py-2" id="emailInput" name="reply_to" placeholder="Votre adresse e-mail" required>
               <div class="invalid-feedback">Adresse e-mail invalide.</div>
             </div>
-            <!-- Subject -->
+            <!-- Objet -->
             <div class="mb-3">
               <label for="subjectInput" class="form-label text-dark fw-semibold">Objet</label>
-              <input type="text" class="form-control bg-light border-0 py-2" id="subjectInput" placeholder="Sujet de votre demande">
+              <input type="text" class="form-control bg-light border-0 py-2" id="subjectInput" name="subject" placeholder="Sujet de votre demande" required>
               <div class="invalid-feedback">L'objet est requis.</div>
             </div>
             <!-- Message -->
             <div class="mb-3">
               <label for="messageInput" class="form-label text-dark fw-semibold">Votre Message</label>
-              <textarea class="form-control bg-light border-0 py-2" id="messageInput" rows="6" placeholder="Tapez votre message ici"></textarea>
+              <textarea class="form-control bg-light border-0 py-2" id="messageInput" name="message" rows="6" placeholder="Tapez votre message ici" required></textarea>
               <div class="invalid-feedback">Le message est requis.</div>
             </div>
-            <!-- Submit Button -->
+            <!-- Bouton d'envoi -->
             <div class="text-center">
-              <button type="submit" class="btn btn-success text-white btn-lg px-5 mt-3">Envoyer le message</button>
+              <button type="submit" id="submitButton" class="btn btn-success text-white btn-lg px-5 mt-3">Envoyer le message</button>
             </div>
           </form>
+          
+          
+
         </div>
       </div>
     </div>
